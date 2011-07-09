@@ -7,15 +7,27 @@
 //
 
 #import "The_Race_AppAppDelegate.h"
+#import "RaceTracksViewController.h"
+
 
 @implementation The_Race_AppAppDelegate
 
 
 @synthesize window=_window;
+@synthesize tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	// Override point for customization after application launch.
+    tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    
+    RaceTracksViewController* raceTrackViewController =
+       [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+   
+    NSArray* viewControllers = [NSArray arrayWithObjects:raceTrackViewController, nil];
+    tabBarController.viewControllers = viewControllers;
+    
+    [self.window addSubview:tabBarController.view];
 	[self.window makeKeyAndVisible];
     return YES;
 }
@@ -62,6 +74,8 @@
 - (void)dealloc
 {
 	[_window release];
+    [tabBarController release];
+    
     [super dealloc];
 }
 

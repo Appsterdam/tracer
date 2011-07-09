@@ -14,6 +14,7 @@
 		9560312D13C84D0C003204F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560312C13C84D0C003204F9 /* main.m */; };
 		9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */; };
 		9560313313C84D0C003204F9 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9560313113C84D0C003204F9 /* MainWindow.xib */; };
+		A594898B13C88166009D932E /* RaceTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A594898A13C88166009D932E /* RaceTracksViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,8 @@
 		9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = The_Race_AppAppDelegate.h; sourceTree = "<group>"; };
 		9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = The_Race_AppAppDelegate.m; sourceTree = "<group>"; };
 		9560313213C84D0C003204F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		A594898913C88166009D932E /* RaceTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceTracksViewController.h; sourceTree = "<group>"; };
+		A594898A13C88166009D932E /* RaceTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceTracksViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,8 +77,7 @@
 		9560312513C84D0C003204F9 /* The Race App */ = {
 			isa = PBXGroup;
 			children = (
-				9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */,
-				9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */,
+				A594898713C88115009D932E /* Classes */,
 				9560313113C84D0C003204F9 /* MainWindow.xib */,
 				9560312613C84D0C003204F9 /* Supporting Files */,
 			);
@@ -91,6 +93,17 @@
 				9560312C13C84D0C003204F9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A594898713C88115009D932E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */,
+				9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */,
+				A594898913C88166009D932E /* RaceTracksViewController.h */,
+				A594898A13C88166009D932E /* RaceTracksViewController.m */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -157,6 +170,7 @@
 			files = (
 				9560312D13C84D0C003204F9 /* main.m in Sources */,
 				9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */,
+				A594898B13C88166009D932E /* RaceTracksViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +275,7 @@
 				9560313813C84D0C003204F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
