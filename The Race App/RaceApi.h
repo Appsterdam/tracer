@@ -7,18 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ASIFormDataRequest.h"
 
 @protocol RaceDelegate <NSObject>
 
 @optional
 
--(void)gotResponse:(NSDictionary *)_dict;
+-(void)gotResponse:(NSArray *)_arr;
 -(void)gotError:(NSError *)_err;
 
 @end
 
 
-@interface MyClass : NSObject {
+@interface RaceApi : NSObject <ASIHTTPRequestDelegate>  {
     id<RaceDelegate> delegate;
 }
 @property (nonatomic, assign) id<RaceDelegate> delegate;

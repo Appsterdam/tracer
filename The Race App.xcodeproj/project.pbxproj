@@ -33,7 +33,7 @@
 		F4DB931D13C8C14600CBB7B5 /* SBJsonTokeniser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB930F13C8C14600CBB7B5 /* SBJsonTokeniser.m */; };
 		F4DB931E13C8C14600CBB7B5 /* SBJsonUTF8Stream.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB931113C8C14600CBB7B5 /* SBJsonUTF8Stream.m */; };
 		F4DB931F13C8C14600CBB7B5 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB931313C8C14600CBB7B5 /* SBJsonWriter.m */; };
-		F4DB932313C8C28700CBB7B5 /* MyClass.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB932213C8C28700CBB7B5 /* MyClass.m */; };
+		F4DB932313C8C28700CBB7B5 /* RaceApi.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB932213C8C28700CBB7B5 /* RaceApi.m */; };
 		F4DB934113C8C54C00CBB7B5 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB932E13C8C54C00CBB7B5 /* ASIAuthenticationDialog.m */; };
 		F4DB934213C8C54C00CBB7B5 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB933113C8C54C00CBB7B5 /* ASIDataCompressor.m */; };
 		F4DB934313C8C54C00CBB7B5 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB933313C8C54C00CBB7B5 /* ASIDataDecompressor.m */; };
@@ -47,6 +47,7 @@
 		F4DB935013C8C56E00CBB7B5 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DB934F13C8C56D00CBB7B5 /* MobileCoreServices.framework */; };
 		F4DB935213C8C57D00CBB7B5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DB935113C8C57D00CBB7B5 /* SystemConfiguration.framework */; };
 		F4DB935413C8C59E00CBB7B5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DB935313C8C59E00CBB7B5 /* libz.dylib */; };
+		F4DB935C13C8CCEE00CBB7B5 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB935B13C8CCEE00CBB7B5 /* Track.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,8 +98,8 @@
 		F4DB931113C8C14600CBB7B5 /* SBJsonUTF8Stream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonUTF8Stream.m; sourceTree = "<group>"; };
 		F4DB931213C8C14600CBB7B5 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		F4DB931313C8C14600CBB7B5 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
-		F4DB932113C8C28700CBB7B5 /* MyClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyClass.h; sourceTree = "<group>"; };
-		F4DB932213C8C28700CBB7B5 /* MyClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyClass.m; sourceTree = "<group>"; };
+		F4DB932113C8C28700CBB7B5 /* RaceApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceApi.h; sourceTree = "<group>"; };
+		F4DB932213C8C28700CBB7B5 /* RaceApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceApi.m; sourceTree = "<group>"; };
 		F4DB932D13C8C54C00CBB7B5 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		F4DB932E13C8C54C00CBB7B5 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		F4DB932F13C8C54C00CBB7B5 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -126,6 +127,8 @@
 		F4DB935113C8C57D00CBB7B5 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		F4DB935313C8C59E00CBB7B5 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		F4DB935513C8C5A400CBB7B5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F4DB935A13C8CCEE00CBB7B5 /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
+		F4DB935B13C8CCEE00CBB7B5 /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,12 +155,6 @@
 		9560311013C84D0C003204F9 = {
 			isa = PBXGroup;
 			children = (
-				F4DB935513C8C5A400CBB7B5 /* CoreGraphics.framework */,
-				F4DB935313C8C59E00CBB7B5 /* libz.dylib */,
-				F4DB935113C8C57D00CBB7B5 /* SystemConfiguration.framework */,
-				F4DB934F13C8C56D00CBB7B5 /* MobileCoreServices.framework */,
-				F4DB934D13C8C56900CBB7B5 /* CFNetwork.framework */,
-				95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */,
 				9560312513C84D0C003204F9 /* The Race App */,
 				9560311E13C84D0C003204F9 /* Frameworks */,
 				9560311C13C84D0C003204F9 /* Products */,
@@ -175,6 +172,12 @@
 		9560311E13C84D0C003204F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F4DB935513C8C5A400CBB7B5 /* CoreGraphics.framework */,
+				F4DB935313C8C59E00CBB7B5 /* libz.dylib */,
+				F4DB935113C8C57D00CBB7B5 /* SystemConfiguration.framework */,
+				F4DB934F13C8C56D00CBB7B5 /* MobileCoreServices.framework */,
+				F4DB934D13C8C56900CBB7B5 /* CFNetwork.framework */,
+				95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */,
 				9560315013C8818D003204F9 /* MapKit.framework */,
 				A5EB470613C89C8900C00219 /* QuartzCore.framework */,
 				9560311F13C84D0C003204F9 /* UIKit.framework */,
@@ -187,6 +190,7 @@
 		9560312513C84D0C003204F9 /* The Race App */ = {
 			isa = PBXGroup;
 			children = (
+				F4DB935913C8CCD700CBB7B5 /* Model */,
 				F4DB932013C8C26900CBB7B5 /* APIz */,
 				A594898713C88115009D932E /* Controllers */,
 				9560312613C84D0C003204F9 /* Supporting Files */,
@@ -276,8 +280,8 @@
 		F4DB932013C8C26900CBB7B5 /* APIz */ = {
 			isa = PBXGroup;
 			children = (
-				F4DB932113C8C28700CBB7B5 /* MyClass.h */,
-				F4DB932213C8C28700CBB7B5 /* MyClass.m */,
+				F4DB932113C8C28700CBB7B5 /* RaceApi.h */,
+				F4DB932213C8C28700CBB7B5 /* RaceApi.m */,
 			);
 			name = APIz;
 			sourceTree = "<group>";
@@ -317,6 +321,15 @@
 				F4DB934B13C8C55A00CBB7B5 /* Reachability.m */,
 			);
 			path = Reachability;
+			sourceTree = "<group>";
+		};
+		F4DB935913C8CCD700CBB7B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F4DB935A13C8CCEE00CBB7B5 /* Track.h */,
+				F4DB935B13C8CCEE00CBB7B5 /* Track.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -399,7 +412,7 @@
 				F4DB931D13C8C14600CBB7B5 /* SBJsonTokeniser.m in Sources */,
 				F4DB931E13C8C14600CBB7B5 /* SBJsonUTF8Stream.m in Sources */,
 				F4DB931F13C8C14600CBB7B5 /* SBJsonWriter.m in Sources */,
-				F4DB932313C8C28700CBB7B5 /* MyClass.m in Sources */,
+				F4DB932313C8C28700CBB7B5 /* RaceApi.m in Sources */,
 				F4DB934113C8C54C00CBB7B5 /* ASIAuthenticationDialog.m in Sources */,
 				F4DB934213C8C54C00CBB7B5 /* ASIDataCompressor.m in Sources */,
 				F4DB934313C8C54C00CBB7B5 /* ASIDataDecompressor.m in Sources */,
@@ -409,6 +422,7 @@
 				F4DB934713C8C54C00CBB7B5 /* ASIInputStream.m in Sources */,
 				F4DB934813C8C54C00CBB7B5 /* ASINetworkQueue.m in Sources */,
 				F4DB934C13C8C55A00CBB7B5 /* Reachability.m in Sources */,
+				F4DB935C13C8CCEE00CBB7B5 /* Track.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
