@@ -165,7 +165,7 @@
 {
     static NSString* reuseIdentifier = @"raceTrackCell";
     
-    RaceTrackTableViewCell* cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    RaceTrackTableViewCell* cell = (RaceTrackTableViewCell *)[aTableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
     if (cell == nil)
     {

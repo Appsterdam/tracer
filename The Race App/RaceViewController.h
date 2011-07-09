@@ -15,6 +15,7 @@
 @interface RaceViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
 	BOOL userLocated;
 	BOOL racing;
+	NSUInteger stopwatchTime;
 	NSArray *checkpoints;
 	CLLocationManager *locationManager;
 	MBProgressHUD *progressHUD;
@@ -22,9 +23,12 @@
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
-@property (nonatomic, retain) IBOutlet UIView *statsView;
+@property (nonatomic, retain) IBOutlet UIView *startRaceView;
 @property (nonatomic, retain) IBOutlet UIButton *startButton;
 @property (nonatomic, retain) IBOutlet UILabel *startLabel;
+@property (nonatomic, retain) IBOutlet UIView *raceStatsView;
+@property (nonatomic, retain) IBOutlet UILabel *stopwatchLabel;
+@property (nonatomic, retain) IBOutlet UILabel *checkpointsLabel;
 
 - (id)initWithCheckpoints:(NSArray *)points;
 - (IBAction)startRace:(id)sender;

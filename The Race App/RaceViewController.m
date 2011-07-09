@@ -14,6 +14,8 @@
 - (void)userLocationDetected:(CLLocation *)newLocation;
 - (void)userIsAtStartCheckPoint;
 - (void)updateNextCheckpoint;
+- (void)startStopwatch;
+- (void)updateCheckpointsLabel;
 
 @end
 
@@ -22,9 +24,12 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 @implementation RaceViewController
 @synthesize mapView;
-@synthesize statsView;
+@synthesize startRaceView;
 @synthesize startButton;
 @synthesize startLabel;
+@synthesize raceStatsView;
+@synthesize stopwatchLabel;
+@synthesize checkpointsLabel;
 
 - (id)initWithCheckpoints:(NSArray *)points {
 	if (![super init])
@@ -37,9 +42,12 @@ static NSUInteger CheckpointMetersThreshold = 15;
 - (void)dealloc {
 	[locationManager release];
 	[mapView release];
-	[statsView release];
+	[startRaceView release];
 	[startButton release];
 	[startLabel release];
+	[raceStatsView release];
+	[stopwatchLabel release];
+	[checkpointsLabel release];
 	[super dealloc];
 }
 
@@ -63,9 +71,12 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (void)viewDidUnload {
 	[self setMapView:nil];
-	[self setStatsView:nil];
+	[self setStartRaceView:nil];
 	[self setStartButton:nil];
 	[self setStartLabel:nil];
+	[self setRaceStatsView:nil];
+	[self setStopwatchLabel:nil];
+	[self setCheckpointsLabel:nil];
 	[super viewDidUnload];
 }
 
@@ -106,6 +117,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	}
 	
 	[self updateNextCheckpoint];
+	[self updateCheckpointsLabel];
 }
 
 #pragma mark -
@@ -113,7 +125,18 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (IBAction)startRace:(id)sender {
 	racing = YES;
-	statsView.backgroundColor = [UIColor greenColor];
+	[self startStopwatch];
+	[self updateCheckpointsLabel];
+	
+	raceStatsView.frame = startRaceView.frame;
+	raceStatsView.transform = CGAffineTransformMakeTranslation(raceStatsView.frame.size.width, 0);
+	[self.view addSubview:raceStatsView];
+	[UIView animateWithDuration:0.5 animations:^(void) {
+		raceStatsView.transform = CGAffineTransformIdentity;
+		startRaceView.transform = CGAffineTransformMakeTranslation(-startRaceView.frame.size.width, 0);
+	} completion:^(BOOL finished) {
+		[startRaceView removeFromSuperview];
+	}];
 }
 
 #pragma mark -
@@ -156,7 +179,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 			  animated:YES];
 	[mapView addAnnotations:checkpoints];
 	[UIView animateWithDuration:1 animations:^(void) {
-		statsView.alpha = 1;
+		startRaceView.alpha = 1;
 	}];	
 }
 
@@ -173,6 +196,23 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (void)updateNextCheckpoint {
 	nextCheckpoint = [checkpoints objectAtIndex:([checkpoints indexOfObject:nextCheckpoint] + 1)];
+}
+
+- (void)startStopwatch {
+	[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(stopwatchTimerFired) userInfo:nil repeats:YES];
+}
+
+- (void)stopwatchTimerFired {
+	stopwatchTime++;
+	stopwatchLabel.text = [NSString stringWithFormat:@"%.2d:%.2d:%.2d.%d",
+						   stopwatchTime / 36000,
+						   (stopwatchTime / 600) % 60,
+						   (stopwatchTime / 10) % 60,
+						   stopwatchTime % 10];
+}
+
+- (void)updateCheckpointsLabel {
+	checkpointsLabel.text = [NSString stringWithFormat:@"%d Checkpoints to go", [checkpoints count] - [checkpoints indexOfObject:nextCheckpoint]];
 }
 
 @end
