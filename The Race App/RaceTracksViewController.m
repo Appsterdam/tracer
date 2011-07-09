@@ -7,6 +7,7 @@
 //
 
 #import "RaceTracksViewController.h"
+#import "RaceTrackTableViewCell.h"
 
 @implementation RaceTracksViewController
 @synthesize tableView;
@@ -82,6 +83,7 @@
     tableView.clipsToBounds = YES;
     tableView.delegate = self;
     tableView.dataSource = self;
+    tableView.rowHeight = 60.0;
     
     [self.view addSubview:tableView];
     
@@ -138,14 +140,14 @@
 {
     static NSString* reuseIdentifier = @"raceTrackCell";
     
-    UITableViewCell* cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+    RaceTrackTableViewCell* cell = [aTableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
     if (cell == nil)
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
+        cell = [[[RaceTrackTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
     }
     
-    cell.textLabel.text = [[raceTrackEntries objectAtIndex:indexPath.row] objectForKey:@"trackName"];
+    cell.trackNameLabel.text = [[raceTrackEntries objectAtIndex:indexPath.row] objectForKey:@"trackName"];
     
     return cell;
 }

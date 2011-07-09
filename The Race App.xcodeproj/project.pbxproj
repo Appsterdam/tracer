@@ -21,6 +21,8 @@
 		A517004313C8BFAA008C8AD0 /* RaceTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A517004213C8BFAA008C8AD0 /* RaceTracksViewController.m */; };
 		A5EB470713C89C8900C00219 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EB470613C89C8900C00219 /* QuartzCore.framework */; };
 		A5F6179513C8984B00B2953D /* RefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F6179413C8984B00B2953D /* RefreshTableHeaderView.m */; };
+		A5FACFD613C8C09100522E43 /* RaceTrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */; };
+		A5FACFD913C8C44B00522E43 /* RaceTrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,9 @@
 		A5EB470613C89C8900C00219 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A5F6179313C8984B00B2953D /* RefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableHeaderView.h; sourceTree = "<group>"; };
 		A5F6179413C8984B00B2953D /* RefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableHeaderView.m; sourceTree = "<group>"; };
+		A5FACFD413C8C09100522E43 /* RaceTrackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceTrackTableViewCell.h; sourceTree = "<group>"; };
+		A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceTrackTableViewCell.m; sourceTree = "<group>"; };
+		A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RaceTrackTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +125,7 @@
 			children = (
 				9560313113C84D0C003204F9 /* MainWindow.xib */,
 				9560314D13C88030003204F9 /* RaceViewController.xib */,
+				A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -135,6 +141,8 @@
 				9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */,
 				9560314B13C88030003204F9 /* RaceViewController.h */,
 				9560314C13C88030003204F9 /* RaceViewController.m */,
+				A5FACFD413C8C09100522E43 /* RaceTrackTableViewCell.h */,
+				A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -192,6 +200,7 @@
 				9560312A13C84D0C003204F9 /* InfoPlist.strings in Resources */,
 				9560313313C84D0C003204F9 /* MainWindow.xib in Resources */,
 				9560314F13C88030003204F9 /* RaceViewController.xib in Resources */,
+				A5FACFD913C8C44B00522E43 /* RaceTrackTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +216,7 @@
 				9560314E13C88030003204F9 /* RaceViewController.m in Sources */,
 				A5F6179513C8984B00B2953D /* RefreshTableHeaderView.m in Sources */,
 				A517004313C8BFAA008C8AD0 /* RaceTracksViewController.m in Sources */,
+				A5FACFD613C8C09100522E43 /* RaceTrackTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
