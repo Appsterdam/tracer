@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RaceApi.h"
+#import "MBProgressHUD.h"
 
 @interface RaceTracksViewController : UIViewController <UITableViewDelegate,
                                                         UITableViewDataSource,
@@ -16,6 +17,8 @@
     UITableView*    tableView;
     // Array of dictionaries for each of the race tracks.
     NSMutableArray* raceTrackEntries;
+    
+    MBProgressHUD *hud;
     
     //API
     RaceApi *api;

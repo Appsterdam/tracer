@@ -102,11 +102,16 @@
     // Hardcoded for now - testing.
     [self makeHardcodedTracks];
     
+    //create a pretty hud
+    hud = [[MBProgressHUD alloc] initWithView:self.view];
+    hud.labelText = @"Loading tracks...";
+    hud.animationType = MBProgressHUDAnimationZoom;
+    [self.view addSubview:hud];
     
     //api
     api = [[RaceApi alloc] init];
     [api setDelegate:self];
-    [self getTracksFromAPI];
+    [hud showWhileExecuting:@selector(getTracksFromAPI) onTarget:self withObject:nil animated:YES];
     
 }
 
