@@ -7,6 +7,8 @@
 //
 
 #import "RaceTracksViewController.h"
+#import "RaceViewController.h"
+
 
 @implementation RaceTracksViewController
 @synthesize tableView;
@@ -146,9 +148,22 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [aTableView deselectRowAtIndexPath:indexPath animated:YES];
+	MKPointAnnotation *startPointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
+	startPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376763, 4.922088);
+	MKPointAnnotation *checkpointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
+	checkpointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376411, 4.922023);
+	MKPointAnnotation *endPointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
+	endPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376953, 4.922465);
+	NSArray *checkpoints = [NSArray arrayWithObjects:
+							startPointAnnotation,
+							checkpointAnnotation,
+							endPointAnnotation, 
+							nil];
+	
+	RaceViewController *raceController = [[[RaceViewController alloc] initWithCheckpoints:checkpoints] autorelease];
+	[self.navigationController pushViewController:raceController animated:YES];
 }
 
 
