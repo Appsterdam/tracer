@@ -87,11 +87,8 @@
 		9560311E13C84D0C003204F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				9560315013C8818D003204F9 /* MapKit.framework */,
-=======
 				A5EB470613C89C8900C00219 /* QuartzCore.framework */,
->>>>>>> Added more files
 				9560311F13C84D0C003204F9 /* UIKit.framework */,
 				9560312113C84D0C003204F9 /* Foundation.framework */,
 				9560312313C84D0C003204F9 /* CoreGraphics.framework */,
@@ -132,13 +129,10 @@
 		A594898713C88115009D932E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				958B203F13C89C2F007BD194 /* RaceTracksViewController.h */,
 				958B204013C89C2F007BD194 /* RaceTracksViewController.m */,
-=======
 				A5F6179313C8984B00B2953D /* RefreshTableHeaderView.h */,
 				A5F6179413C8984B00B2953D /* RefreshTableHeaderView.m */,
->>>>>>> Added more files
 				9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */,
 				9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */,
 				9560314B13C88030003204F9 /* RaceViewController.h */,
@@ -214,11 +208,8 @@
 				9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */,
 				9560314E13C88030003204F9 /* RaceViewController.m in Sources */,
 				A594898B13C88166009D932E /* RaceTracksViewController.m in Sources */,
-<<<<<<< HEAD
 				958B204113C89C2F007BD194 /* RaceTracksViewController.m in Sources */,
-=======
 				A5F6179513C8984B00B2953D /* RefreshTableHeaderView.m in Sources */,
->>>>>>> Added more files
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
