@@ -8,14 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "MBProgressHUD.h"
 
 
-@interface RaceViewController : UIViewController <MKMapViewDelegate> {
+@interface RaceViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
+	BOOL userLocated;
 	NSArray *checkpoints;
-	MKMapView *mapView;
+	CLLocationManager *locationManager;
+	MBProgressHUD *progressHUD;
+	MKPointAnnotation *nextCheckpoint;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
+@property (nonatomic, retain) IBOutlet UIView *statsView;
+@property (nonatomic, retain) IBOutlet UIButton *startButton;
+@property (nonatomic, retain) IBOutlet UILabel *startLabel;
 
 - (id)initWithCheckpoints:(NSArray *)points;
 

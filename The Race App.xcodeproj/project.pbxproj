@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950CE1D013C89F39009BC002 /* RaceTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950CE1CF13C89F39009BC002 /* RaceTracksViewController.m */; };
+		950CE1D813C8BE09009BC002 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 950CE1D713C8BE09009BC002 /* MBProgressHUD.m */; };
 		9560312013C84D0C003204F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560311F13C84D0C003204F9 /* UIKit.framework */; };
 		9560312213C84D0C003204F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560312113C84D0C003204F9 /* Foundation.framework */; };
 		9560312413C84D0C003204F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560312313C84D0C003204F9 /* CoreGraphics.framework */; };
@@ -53,6 +55,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		950CE1CE13C89F39009BC002 /* RaceTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceTracksViewController.h; sourceTree = "<group>"; };
+		950CE1CF13C89F39009BC002 /* RaceTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceTracksViewController.m; sourceTree = "<group>"; };
+		950CE1D613C8BE09009BC002 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		950CE1D713C8BE09009BC002 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		9560311B13C84D0C003204F9 /* The Race App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Race App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9560311F13C84D0C003204F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9560312113C84D0C003204F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -157,6 +163,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		950CE1D213C8BD89009BC002 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				950CE1D613C8BE09009BC002 /* MBProgressHUD.h */,
+				950CE1D713C8BE09009BC002 /* MBProgressHUD.m */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		9560311013C84D0C003204F9 = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +213,7 @@
 				F4DB935913C8CCD700CBB7B5 /* Model */,
 				F4DB932013C8C26900CBB7B5 /* APIz */,
 				A594898713C88115009D932E /* Controllers */,
+				950CE1D213C8BD89009BC002 /* Libraries */,
 				9560312613C84D0C003204F9 /* Supporting Files */,
 			);
 			path = "The Race App";
@@ -407,6 +423,8 @@
 				9560312D13C84D0C003204F9 /* main.m in Sources */,
 				9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */,
 				9560314E13C88030003204F9 /* RaceViewController.m in Sources */,
+				950CE1D013C89F39009BC002 /* RaceTracksViewController.m in Sources */,
+				950CE1D813C8BE09009BC002 /* MBProgressHUD.m in Sources */,
 				A5F6179513C8984B00B2953D /* RefreshTableHeaderView.m in Sources */,
 				A517004313C8BFAA008C8AD0 /* RaceTracksViewController.m in Sources */,
 				A5FACFD613C8C09100522E43 /* RaceTrackTableViewCell.m in Sources */,
