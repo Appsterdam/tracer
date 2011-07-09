@@ -211,7 +211,7 @@
 
 - (void)reloadTableViewDataSource
 {
-    [self getTracksFromAPI];
+    [api getTracksAsynchronous];
 }
 
 
