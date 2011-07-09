@@ -8,29 +8,24 @@
 
 #import <MapKit/MapKit.h>
 #import "The_Race_AppAppDelegate.h"
-#import "RaceViewController.h"
+#import "RaceTracksViewController.h"
 
 @implementation The_Race_AppAppDelegate
 
 
 @synthesize window=_window;
+@synthesize tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	MKPointAnnotation *startPointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
-	startPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376763, 4.922088);
-	MKPointAnnotation *checkpointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
-	checkpointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376411, 4.922023);
-	MKPointAnnotation *endPointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
-	endPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376953, 4.922465);
-	NSArray *checkpoints = [NSArray arrayWithObjects:
-							startPointAnnotation,
-							checkpointAnnotation,
-							endPointAnnotation, 
-							nil];
-	
-	RaceViewController *raceController = [[[RaceViewController alloc] initWithCheckpoints:checkpoints] autorelease];
-	UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:raceController] autorelease];
-	self.window.rootViewController = navigationController;
+    tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    
+    RaceTracksViewController* raceTrackViewController =
+       [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+	UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:raceTrackViewController] autorelease];
+    NSArray* viewControllers = [NSArray arrayWithObjects:navigationController, nil];
+    tabBarController.viewControllers = viewControllers;
+    
+	self.window.rootViewController = tabBarController;
 	[self.window makeKeyAndVisible];
     return YES;
 }
@@ -77,6 +72,8 @@
 - (void)dealloc
 {
 	[_window release];
+    [tabBarController release];
+    
     [super dealloc];
 }
 

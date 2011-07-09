@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate> {
-
+@interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate> 
+{
+    UIWindow*               window;
+    UITabBarController*     tabBarController;
 }
 
-@property (nonatomic, retain) IBOutlet UIWindow *window;
+@property (nonatomic, retain) IBOutlet UIWindow*  window;
+@property (nonatomic, retain) UITabBarController* tabBarController;
 
 @end
