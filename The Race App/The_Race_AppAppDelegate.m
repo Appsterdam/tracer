@@ -6,16 +6,31 @@
 //  Copyright 2011 Pawn Company Ltd. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
 #import "The_Race_AppAppDelegate.h"
+#import "RaceViewController.h"
 
 @implementation The_Race_AppAppDelegate
 
 
 @synthesize window=_window;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-	// Override point for customization after application launch.
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	MKPointAnnotation *startPointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
+	startPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376763, 4.922088);
+	MKPointAnnotation *checkpointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
+	checkpointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376411, 4.922023);
+	MKPointAnnotation *endPointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
+	endPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376953, 4.922465);
+	NSArray *checkpoints = [NSArray arrayWithObjects:
+							startPointAnnotation,
+							checkpointAnnotation,
+							endPointAnnotation, 
+							nil];
+	
+	RaceViewController *raceController = [[[RaceViewController alloc] initWithCheckpoints:checkpoints] autorelease];
+	UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:raceController] autorelease];
+	self.window.rootViewController = navigationController;
 	[self.window makeKeyAndVisible];
     return YES;
 }

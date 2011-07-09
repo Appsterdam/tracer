@@ -14,6 +14,10 @@
 		9560312D13C84D0C003204F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560312C13C84D0C003204F9 /* main.m */; };
 		9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */; };
 		9560313313C84D0C003204F9 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9560313113C84D0C003204F9 /* MainWindow.xib */; };
+		9560314E13C88030003204F9 /* RaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560314C13C88030003204F9 /* RaceViewController.m */; };
+		9560314F13C88030003204F9 /* RaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9560314D13C88030003204F9 /* RaceViewController.xib */; };
+		9560315113C8818D003204F9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560315013C8818D003204F9 /* MapKit.framework */; };
+		95E0C3AE13C8949D00A8A1F6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,11 @@
 		9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = The_Race_AppAppDelegate.h; sourceTree = "<group>"; };
 		9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = The_Race_AppAppDelegate.m; sourceTree = "<group>"; };
 		9560313213C84D0C003204F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		9560314B13C88030003204F9 /* RaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceViewController.h; sourceTree = "<group>"; };
+		9560314C13C88030003204F9 /* RaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceViewController.m; sourceTree = "<group>"; };
+		9560314D13C88030003204F9 /* RaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RaceViewController.xib; sourceTree = "<group>"; };
+		9560315013C8818D003204F9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +44,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95E0C3AE13C8949D00A8A1F6 /* CoreLocation.framework in Frameworks */,
+				9560315113C8818D003204F9 /* MapKit.framework in Frameworks */,
 				9560312013C84D0C003204F9 /* UIKit.framework in Frameworks */,
 				9560312213C84D0C003204F9 /* Foundation.framework in Frameworks */,
 				9560312413C84D0C003204F9 /* CoreGraphics.framework in Frameworks */,
@@ -47,6 +58,7 @@
 		9560311013C84D0C003204F9 = {
 			isa = PBXGroup;
 			children = (
+				95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */,
 				9560312513C84D0C003204F9 /* The Race App */,
 				9560311E13C84D0C003204F9 /* Frameworks */,
 				9560311C13C84D0C003204F9 /* Products */,
@@ -64,6 +76,7 @@
 		9560311E13C84D0C003204F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9560315013C8818D003204F9 /* MapKit.framework */,
 				9560311F13C84D0C003204F9 /* UIKit.framework */,
 				9560312113C84D0C003204F9 /* Foundation.framework */,
 				9560312313C84D0C003204F9 /* CoreGraphics.framework */,
@@ -74,9 +87,7 @@
 		9560312513C84D0C003204F9 /* The Race App */ = {
 			isa = PBXGroup;
 			children = (
-				9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */,
-				9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */,
-				9560313113C84D0C003204F9 /* MainWindow.xib */,
+				9560315313C8838D003204F9 /* Controllers */,
 				9560312613C84D0C003204F9 /* Supporting Files */,
 			);
 			path = "The Race App";
@@ -85,12 +96,33 @@
 		9560312613C84D0C003204F9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9560315413C88397003204F9 /* Xibs */,
 				9560312713C84D0C003204F9 /* The Race App-Info.plist */,
 				9560312813C84D0C003204F9 /* InfoPlist.strings */,
 				9560312B13C84D0C003204F9 /* The Race App-Prefix.pch */,
 				9560312C13C84D0C003204F9 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9560315313C8838D003204F9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */,
+				9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */,
+				9560314B13C88030003204F9 /* RaceViewController.h */,
+				9560314C13C88030003204F9 /* RaceViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		9560315413C88397003204F9 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				9560313113C84D0C003204F9 /* MainWindow.xib */,
+				9560314D13C88030003204F9 /* RaceViewController.xib */,
+			);
+			name = Xibs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +177,7 @@
 			files = (
 				9560312A13C84D0C003204F9 /* InfoPlist.strings in Resources */,
 				9560313313C84D0C003204F9 /* MainWindow.xib in Resources */,
+				9560314F13C88030003204F9 /* RaceViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +190,7 @@
 			files = (
 				9560312D13C84D0C003204F9 /* main.m in Sources */,
 				9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */,
+				9560314E13C88030003204F9 /* RaceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +295,7 @@
 				9560313813C84D0C003204F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
