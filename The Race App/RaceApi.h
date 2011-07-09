@@ -25,5 +25,6 @@
 @property (nonatomic, assign) id<RaceDelegate> delegate;
 
 -(void)getTracks;
+-(void)getTracksAsynchronous;
 
 @end

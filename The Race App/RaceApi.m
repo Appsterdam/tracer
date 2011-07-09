@@ -14,12 +14,23 @@
 
 @synthesize delegate;
 
--(void)getTracks{
+-(void)getTracks
+{
     ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL:
                                [NSURL URLWithString:@"http://mipdev.neteasy.pl/race/raceapi.php?param=race"]];
     [req setDelegate:self];
     [req startSynchronous];
 }
+
+-(void)getTracksAsynchronous
+{
+    ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL:
+                               [NSURL URLWithString:@"http://mipdev.neteasy.pl/race/raceapi.php?param=race"]];
+    [req setDelegate:self];
+    [req startAsynchronous];
+}
+
+
 
 #pragma mark asiformdatarequestdelegate
 - (void)requestFinished:(ASIHTTPRequest *)request{

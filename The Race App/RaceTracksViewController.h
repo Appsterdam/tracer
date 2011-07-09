@@ -7,23 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+RefreshView.h"
 #import "RaceApi.h"
 
-@interface RaceTracksViewController : UIViewController <UITableViewDelegate,
-                                                        UITableViewDataSource,
-                                                        RaceDelegate>
+@class MBProgressHUD;
+
+@interface RaceTracksViewController : UIViewController_RefreshView <UITableViewDelegate,
+                                                                    UITableViewDataSource,
+                                                                    RaceDelegate>
 {
     UITableView*    tableView;
-    // Array of dictionaries for each of the race tracks.
-    NSMutableArray* raceTrackEntries;
+    MBProgressHUD*  hud;
     
     //API
-    RaceApi *api;
-    NSArray *tracks;
+    RaceApi*        api;
+    NSArray*        tracks;
 }
 -(void)getTracksFromAPI;
 
 @property(nonatomic, retain) UITableView*       tableView;
-@property(nonatomic, retain) NSMutableArray*    raceTrackEntries;
+@property(nonatomic, retain) NSArray*           tracks;
 
 @end

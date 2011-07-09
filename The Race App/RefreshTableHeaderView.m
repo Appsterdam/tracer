@@ -176,9 +176,15 @@
     {
         [lastUpdatedDate release];
         lastUpdatedDate = [newDate retain];
+
+        NSDateFormatter* formatter = [[[NSDateFormatter alloc] init] autorelease];
+        [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        
+        NSString* dateString = [formatter stringFromDate:newDate];
+        
         lastUpdatedLabel.text = [NSString stringWithFormat:@"%@: %@",
                                  NSLocalizedString(@"Last update",@"Refresh header update string"),
-                                 [lastUpdatedDate description]];        
+                                 dateString];        
     }
     else
     {
