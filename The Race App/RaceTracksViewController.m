@@ -70,6 +70,10 @@
 {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"Race Tracks";
+    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+    self.navigationController.tabBarItem = self.tabBarItem;
+    
     tableView = [[UITableView alloc] initWithFrame:self.view.bounds 
                                              style:UITableViewStylePlain];
     
