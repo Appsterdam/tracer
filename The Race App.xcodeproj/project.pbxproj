@@ -1,0 +1,268 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9560312013C84D0C003204F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560311F13C84D0C003204F9 /* UIKit.framework */; };
+		9560312213C84D0C003204F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560312113C84D0C003204F9 /* Foundation.framework */; };
+		9560312413C84D0C003204F9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560312313C84D0C003204F9 /* CoreGraphics.framework */; };
+		9560312A13C84D0C003204F9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9560312813C84D0C003204F9 /* InfoPlist.strings */; };
+		9560312D13C84D0C003204F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560312C13C84D0C003204F9 /* main.m */; };
+		9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */; };
+		9560313313C84D0C003204F9 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9560313113C84D0C003204F9 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9560311B13C84D0C003204F9 /* The Race App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Race App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9560311F13C84D0C003204F9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9560312113C84D0C003204F9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9560312313C84D0C003204F9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9560312713C84D0C003204F9 /* The Race App-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "The Race App-Info.plist"; sourceTree = "<group>"; };
+		9560312913C84D0C003204F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9560312B13C84D0C003204F9 /* The Race App-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "The Race App-Prefix.pch"; sourceTree = "<group>"; };
+		9560312C13C84D0C003204F9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = The_Race_AppAppDelegate.h; sourceTree = "<group>"; };
+		9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = The_Race_AppAppDelegate.m; sourceTree = "<group>"; };
+		9560313213C84D0C003204F9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9560311813C84D0C003204F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9560312013C84D0C003204F9 /* UIKit.framework in Frameworks */,
+				9560312213C84D0C003204F9 /* Foundation.framework in Frameworks */,
+				9560312413C84D0C003204F9 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9560311013C84D0C003204F9 = {
+			isa = PBXGroup;
+			children = (
+				9560312513C84D0C003204F9 /* The Race App */,
+				9560311E13C84D0C003204F9 /* Frameworks */,
+				9560311C13C84D0C003204F9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9560311C13C84D0C003204F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9560311B13C84D0C003204F9 /* The Race App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9560311E13C84D0C003204F9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9560311F13C84D0C003204F9 /* UIKit.framework */,
+				9560312113C84D0C003204F9 /* Foundation.framework */,
+				9560312313C84D0C003204F9 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9560312513C84D0C003204F9 /* The Race App */ = {
+			isa = PBXGroup;
+			children = (
+				9560312E13C84D0C003204F9 /* The_Race_AppAppDelegate.h */,
+				9560312F13C84D0C003204F9 /* The_Race_AppAppDelegate.m */,
+				9560313113C84D0C003204F9 /* MainWindow.xib */,
+				9560312613C84D0C003204F9 /* Supporting Files */,
+			);
+			path = "The Race App";
+			sourceTree = "<group>";
+		};
+		9560312613C84D0C003204F9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9560312713C84D0C003204F9 /* The Race App-Info.plist */,
+				9560312813C84D0C003204F9 /* InfoPlist.strings */,
+				9560312B13C84D0C003204F9 /* The Race App-Prefix.pch */,
+				9560312C13C84D0C003204F9 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9560311A13C84D0C003204F9 /* The Race App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9560313613C84D0C003204F9 /* Build configuration list for PBXNativeTarget "The Race App" */;
+			buildPhases = (
+				9560311713C84D0C003204F9 /* Sources */,
+				9560311813C84D0C003204F9 /* Frameworks */,
+				9560311913C84D0C003204F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "The Race App";
+			productName = "The Race App";
+			productReference = 9560311B13C84D0C003204F9 /* The Race App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9560311213C84D0C003204F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Pawn Company Ltd";
+			};
+			buildConfigurationList = 9560311513C84D0C003204F9 /* Build configuration list for PBXProject "The Race App" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9560311013C84D0C003204F9;
+			productRefGroup = 9560311C13C84D0C003204F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9560311A13C84D0C003204F9 /* The Race App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9560311913C84D0C003204F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9560312A13C84D0C003204F9 /* InfoPlist.strings in Resources */,
+				9560313313C84D0C003204F9 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9560311713C84D0C003204F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9560312D13C84D0C003204F9 /* main.m in Sources */,
+				9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9560312813C84D0C003204F9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9560312913C84D0C003204F9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9560313113C84D0C003204F9 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9560313213C84D0C003204F9 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9560313413C84D0C003204F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9560313513C84D0C003204F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		9560313713C84D0C003204F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "The Race App/The Race App-Prefix.pch";
+				INFOPLIST_FILE = "The Race App/The Race App-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9560313813C84D0C003204F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "The Race App/The Race App-Prefix.pch";
+				INFOPLIST_FILE = "The Race App/The Race App-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9560311513C84D0C003204F9 /* Build configuration list for PBXProject "The Race App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9560313413C84D0C003204F9 /* Debug */,
+				9560313513C84D0C003204F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9560313613C84D0C003204F9 /* Build configuration list for PBXNativeTarget "The Race App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9560313713C84D0C003204F9 /* Debug */,
+				9560313813C84D0C003204F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9560311213C84D0C003204F9 /* Project object */;
+}
