@@ -7,14 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RaceApi.h"
 
 @interface RaceTracksViewController : UIViewController <UITableViewDelegate,
-                                                        UITableViewDataSource>
+                                                        UITableViewDataSource,
+                                                        RaceDelegate>
 {
     UITableView*    tableView;
     // Array of dictionaries for each of the race tracks.
     NSMutableArray* raceTrackEntries;
+    
+    //API
+    RaceApi *api;
+    NSArray *tracks;
 }
+-(void)getTracksFromAPI;
 
 @property(nonatomic, retain) UITableView*       tableView;
 @property(nonatomic, retain) NSMutableArray*    raceTrackEntries;

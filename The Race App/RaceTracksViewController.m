@@ -35,6 +35,16 @@
     
     // Release any cached data, images, etc that aren't in use.
 }
+#pragma mark - instance methods
+-(void)getTracksFromAPI{
+    [api getTracks];
+}
+#pragma mark - api delegate
+-(void)gotResponse:(NSArray *)_arr{
+    tracks = [_arr retain];
+    
+    //TODO RELOAD TABLE VIEW AND FEED IT WITH ABOVE DATA :>
+}
 
 #pragma mark - View lifecycle
 
@@ -91,6 +101,13 @@
     
     // Hardcoded for now - testing.
     [self makeHardcodedTracks];
+    
+    
+    //api
+    api = [[RaceApi alloc] init];
+    [api setDelegate:self];
+    [self getTracksFromAPI];
+    
 }
 
 
