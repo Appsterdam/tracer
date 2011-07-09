@@ -9,7 +9,7 @@
 #import <MapKit/MapKit.h>
 #import "The_Race_AppAppDelegate.h"
 #import "RaceTracksViewController.h"
-
+#import "ResultsViewController.h"
 
 @implementation The_Race_AppAppDelegate
 
@@ -23,9 +23,22 @@
     RaceTracksViewController* raceTrackViewController =
        [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];
 
-	UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:raceTrackViewController] autorelease];
+	UINavigationController* raceTrackNavigationController = [[[UINavigationController alloc] initWithRootViewController:raceTrackViewController] autorelease];
 
-    NSArray* viewControllers = [NSArray arrayWithObjects:navigationController, nil];
+    raceTrackNavigationController.tabBarItem = 
+        raceTrackViewController.tabBarItem;
+    
+    ResultsViewController* resultsViewController =
+        [[[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil] autorelease];
+    
+    UINavigationController* resultsNavigationController =
+        [[[UINavigationController alloc] initWithRootViewController:resultsViewController] autorelease];
+    
+    resultsNavigationController.tabBarItem =
+        resultsViewController.tabBarItem;
+    
+    NSArray* viewControllers = [NSArray arrayWithObjects:raceTrackNavigationController, 
+                                resultsNavigationController, nil];
 
     tabBarController.viewControllers = viewControllers;
     
