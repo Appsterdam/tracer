@@ -23,6 +23,8 @@
 		A537E3E113C8DFD900D3BDE1 /* arrow_down_small.png in Resources */ = {isa = PBXBuildFile; fileRef = A537E3DF13C8DFD900D3BDE1 /* arrow_down_small.png */; };
 		A537E3E213C8DFD900D3BDE1 /* arrow_up_small.png in Resources */ = {isa = PBXBuildFile; fileRef = A537E3E013C8DFD900D3BDE1 /* arrow_up_small.png */; };
 		A537E3E513C8E01F00D3BDE1 /* UIViewController+RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = A537E3E413C8E01E00D3BDE1 /* UIViewController+RefreshView.m */; };
+		A537E3E813C8ED6800D3BDE1 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */; };
+		A537E3EA13C8EFA200D3BDE1 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A537E3E913C8EFA200D3BDE1 /* ResultsViewController.xib */; };
 		A5EB470713C89C8900C00219 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EB470613C89C8900C00219 /* QuartzCore.framework */; };
 		A5F6179513C8984B00B2953D /* RefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F6179413C8984B00B2953D /* RefreshTableHeaderView.m */; };
 		A5FACFD613C8C09100522E43 /* RaceTrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */; };
@@ -79,8 +81,11 @@
 		A517004213C8BFAA008C8AD0 /* RaceTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceTracksViewController.m; sourceTree = "<group>"; };
 		A537E3DF13C8DFD900D3BDE1 /* arrow_down_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down_small.png; sourceTree = "<group>"; };
 		A537E3E013C8DFD900D3BDE1 /* arrow_up_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up_small.png; sourceTree = "<group>"; };
-		A537E3E313C8E01E00D3BDE1 /* UIViewController+RefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIViewController+RefreshView.h"; sourceTree = "<group>"; };
+		A537E3E313C8E01E00D3BDE1 /* UIViewController+RefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RefreshView.h"; sourceTree = "<group>"; };
 		A537E3E413C8E01E00D3BDE1 /* UIViewController+RefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RefreshView.m"; sourceTree = "<group>"; };
+		A537E3E613C8ED6700D3BDE1 /* ResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ResultsViewController.h; sourceTree = "<group>"; };
+		A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
+		A537E3E913C8EFA200D3BDE1 /* ResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
 		A5EB470613C89C8900C00219 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A5F6179313C8984B00B2953D /* RefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableHeaderView.h; sourceTree = "<group>"; };
 		A5F6179413C8984B00B2953D /* RefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableHeaderView.m; sourceTree = "<group>"; };
@@ -243,6 +248,7 @@
 				9560313113C84D0C003204F9 /* MainWindow.xib */,
 				9560314D13C88030003204F9 /* RaceViewController.xib */,
 				A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */,
+				A537E3E913C8EFA200D3BDE1 /* ResultsViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -271,6 +277,8 @@
 				9560314C13C88030003204F9 /* RaceViewController.m */,
 				A5FACFD413C8C09100522E43 /* RaceTrackTableViewCell.h */,
 				A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */,
+				A537E3E613C8ED6700D3BDE1 /* ResultsViewController.h */,
+				A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -428,6 +436,7 @@
 				A5FACFD913C8C44B00522E43 /* RaceTrackTableViewCell.xib in Resources */,
 				A537E3E113C8DFD900D3BDE1 /* arrow_down_small.png in Resources */,
 				A537E3E213C8DFD900D3BDE1 /* arrow_up_small.png in Resources */,
+				A537E3EA13C8EFA200D3BDE1 /* ResultsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,6 +478,7 @@
 				F4DB934C13C8C55A00CBB7B5 /* Reachability.m in Sources */,
 				F4DB935C13C8CCEE00CBB7B5 /* Track.m in Sources */,
 				A537E3E513C8E01F00D3BDE1 /* UIViewController+RefreshView.m in Sources */,
+				A537E3E813C8ED6800D3BDE1 /* ResultsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
