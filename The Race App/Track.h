@@ -13,11 +13,11 @@
     NSString *trackName;
     NSString *trackScore;
     NSString *trackWinner;
-    NSDictionary *trackData;
+    NSArray *trackData;
 }
 @property (nonatomic, retain) NSString *trackName;
 @property (nonatomic, retain) NSString *trackScore;
 @property (nonatomic, retain) NSString *trackWinner;
-@property (nonatomic, retain) NSDictionary *trackData;
+@property (nonatomic, retain) NSArray *trackData;
 
 @end

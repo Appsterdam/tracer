@@ -9,11 +9,11 @@
 #import "RaceTracksViewController.h"
 #import "RaceTrackTableViewCell.h"
 #import "RaceViewController.h"
-
+#import "Track.h"
 
 @implementation RaceTracksViewController
 @synthesize tableView;
-@synthesize raceTrackEntries;
+@synthesize tracks;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +26,7 @@
                                                                         tag:0] autorelease];
         
         self.tabBarItem = raceTracksItem;
+        self.tracks = [NSArray array];
     }
     return self;
 }
@@ -42,10 +43,9 @@
     [api getTracks];
 }
 #pragma mark - api delegate
--(void)gotResponse:(NSArray *)_arr{
-    tracks = [_arr retain];
-    
-    //TODO RELOAD TABLE VIEW AND FEED IT WITH ABOVE DATA :>
+-(void)gotResponse:(NSArray *)_arr
+{
+    [self performSelectorOnMainThread:@selector(updateDataWithTracks:) withObject:_arr waitUntilDone:NO];
 }
 
 #pragma mark - View lifecycle
@@ -73,8 +73,6 @@
         [raceTrackArray addObject:trackDictionary];
         [trackDictionary release];
     }
-    
-    self.raceTrackEntries = raceTrackArray;
 }
 
 
@@ -99,11 +97,6 @@
     
     [self.view addSubview:tableView];
     
-#warning "Implement getting track data from the server!"
-    
-    // Hardcoded for now - testing.
-    [self makeHardcodedTracks];
-    
     //create a pretty hud
     hud = [[MBProgressHUD alloc] initWithView:self.view];
     hud.labelText = @"Loading tracks...";
@@ -122,6 +115,9 @@
 {
     [super viewDidUnload];
     
+    [hud release];
+    [api release];
+
     tableView.delegate = nil;
     tableView.dataSource = nil;
     
@@ -141,7 +137,7 @@
         [self viewDidUnload];
     }
 
-    [raceTrackEntries release];
+    [tracks release];
     
     [super dealloc];
 }
@@ -151,7 +147,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [raceTrackEntries count];
+    return [tracks count];
 }
 
 
@@ -171,7 +167,11 @@
         cell = [[[RaceTrackTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
     }
     
-    cell.trackNameLabel.text = [[raceTrackEntries objectAtIndex:indexPath.row] objectForKey:@"trackName"];
+    Track* track = [tracks objectAtIndex:indexPath.row];
+    cell.trackNameLabel.text = track.trackName;
+    cell.winnerNameLabel.text = track.trackWinner;
+    cell.winnerTimeLabel.text = track.trackScore;
+    cell.checkPointCountLabel = [NSString stringWithFormat:@"%d checkpoints", [track.trackData count]];
     
     return cell;
 }
@@ -192,6 +192,12 @@
 	
 	RaceViewController *raceController = [[[RaceViewController alloc] initWithCheckpoints:checkpoints] autorelease];
 	[self.navigationController pushViewController:raceController animated:YES];
+}
+
+-(void)updateDataWithTracks:(NSArray*)aTracks
+{
+    self.tracks = aTracks;
+    [tableView reloadData];
 }
 
 

@@ -15,18 +15,15 @@
                                                         RaceDelegate>
 {
     UITableView*    tableView;
-    // Array of dictionaries for each of the race tracks.
-    NSMutableArray* raceTrackEntries;
-    
-    MBProgressHUD *hud;
+    MBProgressHUD*  hud;
     
     //API
-    RaceApi *api;
-    NSArray *tracks;
+    RaceApi*        api;
+    NSArray*        tracks;
 }
 -(void)getTracksFromAPI;
 
 @property(nonatomic, retain) UITableView*       tableView;
-@property(nonatomic, retain) NSMutableArray*    raceTrackEntries;
+@property(nonatomic, retain) NSArray*           tracks;
 
 @end
