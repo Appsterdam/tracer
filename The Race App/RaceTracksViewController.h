@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIViewController+RefreshView.h"
 #import "RaceApi.h"
-#import "MBProgressHUD.h"
 
-@interface RaceTracksViewController : UIViewController <UITableViewDelegate,
-                                                        UITableViewDataSource,
-                                                        RaceDelegate>
+@class MBProgressHUD;
+
+@interface RaceTracksViewController : UIViewController_RefreshView <UITableViewDelegate,
+                                                                    UITableViewDataSource,
+                                                                    RaceDelegate>
 {
     UITableView*    tableView;
     MBProgressHUD*  hud;

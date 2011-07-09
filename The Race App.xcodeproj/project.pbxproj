@@ -20,6 +20,9 @@
 		9560315113C8818D003204F9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560315013C8818D003204F9 /* MapKit.framework */; };
 		95E0C3AE13C8949D00A8A1F6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */; };
 		A517004313C8BFAA008C8AD0 /* RaceTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A517004213C8BFAA008C8AD0 /* RaceTracksViewController.m */; };
+		A537E3E113C8DFD900D3BDE1 /* arrow_down_small.png in Resources */ = {isa = PBXBuildFile; fileRef = A537E3DF13C8DFD900D3BDE1 /* arrow_down_small.png */; };
+		A537E3E213C8DFD900D3BDE1 /* arrow_up_small.png in Resources */ = {isa = PBXBuildFile; fileRef = A537E3E013C8DFD900D3BDE1 /* arrow_up_small.png */; };
+		A537E3E513C8E01F00D3BDE1 /* UIViewController+RefreshView.m in Sources */ = {isa = PBXBuildFile; fileRef = A537E3E413C8E01E00D3BDE1 /* UIViewController+RefreshView.m */; };
 		A5EB470713C89C8900C00219 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5EB470613C89C8900C00219 /* QuartzCore.framework */; };
 		A5F6179513C8984B00B2953D /* RefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F6179413C8984B00B2953D /* RefreshTableHeaderView.m */; };
 		A5FACFD613C8C09100522E43 /* RaceTrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */; };
@@ -74,6 +77,10 @@
 		95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A517004113C8BFAA008C8AD0 /* RaceTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceTracksViewController.h; sourceTree = "<group>"; };
 		A517004213C8BFAA008C8AD0 /* RaceTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceTracksViewController.m; sourceTree = "<group>"; };
+		A537E3DF13C8DFD900D3BDE1 /* arrow_down_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down_small.png; sourceTree = "<group>"; };
+		A537E3E013C8DFD900D3BDE1 /* arrow_up_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up_small.png; sourceTree = "<group>"; };
+		A537E3E313C8E01E00D3BDE1 /* UIViewController+RefreshView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = "UIViewController+RefreshView.h"; sourceTree = "<group>"; };
+		A537E3E413C8E01E00D3BDE1 /* UIViewController+RefreshView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RefreshView.m"; sourceTree = "<group>"; };
 		A5EB470613C89C8900C00219 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A5F6179313C8984B00B2953D /* RefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshTableHeaderView.h; sourceTree = "<group>"; };
 		A5F6179413C8984B00B2953D /* RefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RefreshTableHeaderView.m; sourceTree = "<group>"; };
@@ -219,6 +226,7 @@
 		9560312613C84D0C003204F9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A537E3DD13C8DFBD00D3BDE1 /* Images */,
 				F4DB92F713C8C13000CBB7B5 /* External codez */,
 				9560315413C88397003204F9 /* Xibs */,
 				9560312713C84D0C003204F9 /* The Race App-Info.plist */,
@@ -239,9 +247,20 @@
 			name = Xibs;
 			sourceTree = "<group>";
 		};
+		A537E3DD13C8DFBD00D3BDE1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A537E3DF13C8DFD900D3BDE1 /* arrow_down_small.png */,
+				A537E3E013C8DFD900D3BDE1 /* arrow_up_small.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		A594898713C88115009D932E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A537E3E313C8E01E00D3BDE1 /* UIViewController+RefreshView.h */,
+				A537E3E413C8E01E00D3BDE1 /* UIViewController+RefreshView.m */,
 				A517004113C8BFAA008C8AD0 /* RaceTracksViewController.h */,
 				A517004213C8BFAA008C8AD0 /* RaceTracksViewController.m */,
 				A5F6179313C8984B00B2953D /* RefreshTableHeaderView.h */,
@@ -407,6 +426,8 @@
 				9560313313C84D0C003204F9 /* MainWindow.xib in Resources */,
 				9560314F13C88030003204F9 /* RaceViewController.xib in Resources */,
 				A5FACFD913C8C44B00522E43 /* RaceTrackTableViewCell.xib in Resources */,
+				A537E3E113C8DFD900D3BDE1 /* arrow_down_small.png in Resources */,
+				A537E3E213C8DFD900D3BDE1 /* arrow_up_small.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +468,7 @@
 				F4DB934813C8C54C00CBB7B5 /* ASINetworkQueue.m in Sources */,
 				F4DB934C13C8C55A00CBB7B5 /* Reachability.m in Sources */,
 				F4DB935C13C8CCEE00CBB7B5 /* Track.m in Sources */,
+				A537E3E513C8E01F00D3BDE1 /* UIViewController+RefreshView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

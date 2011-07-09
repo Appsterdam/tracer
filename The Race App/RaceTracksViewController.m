@@ -10,6 +10,8 @@
 #import "RaceTrackTableViewCell.h"
 #import "RaceViewController.h"
 #import "Track.h"
+#import "MBProgressHUD.h"
+
 
 @implementation RaceTracksViewController
 @synthesize tableView;
@@ -39,7 +41,8 @@
     // Release any cached data, images, etc that aren't in use.
 }
 #pragma mark - instance methods
--(void)getTracksFromAPI{
+-(void)getTracksFromAPI
+{
     [api getTracks];
 }
 #pragma mark - api delegate
@@ -60,6 +63,19 @@
     ownView.clipsToBounds = YES;
     
     self.view = ownView;
+
+    tableView = [[UITableView alloc] initWithFrame:self.view.bounds 
+                                             style:UITableViewStylePlain];
+    
+    tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
+    tableView.clipsToBounds = YES;
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.rowHeight = 60.0;
+    
+    [self.view addSubview:tableView];
+
 }
 
 -(void)makeHardcodedTracks
@@ -85,17 +101,6 @@
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.navigationController.tabBarItem = self.tabBarItem;
     
-    tableView = [[UITableView alloc] initWithFrame:self.view.bounds 
-                                             style:UITableViewStylePlain];
-    
-    tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    tableView.clipsToBounds = YES;
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    tableView.rowHeight = 60.0;
-    
-    [self.view addSubview:tableView];
     
     //create a pretty hud
     hud = [[MBProgressHUD alloc] initWithView:self.view];
@@ -198,6 +203,15 @@
 {
     self.tracks = aTracks;
     [tableView reloadData];
+    [super dataSourceDidFinishLoadingNewData:[NSDate date]];
+}
+
+#pragma mark -
+#pragma mark Reloading
+
+- (void)reloadTableViewDataSource
+{
+    [self getTracksFromAPI];
 }
 
 
