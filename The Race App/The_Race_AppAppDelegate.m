@@ -10,6 +10,7 @@
 #import "The_Race_AppAppDelegate.h"
 #import "RaceTracksViewController.h"
 
+
 @implementation The_Race_AppAppDelegate
 
 
@@ -21,8 +22,11 @@
     
     RaceTracksViewController* raceTrackViewController =
        [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+
 	UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:raceTrackViewController] autorelease];
+
     NSArray* viewControllers = [NSArray arrayWithObjects:navigationController, nil];
+
     tabBarController.viewControllers = viewControllers;
     
 	self.window.rootViewController = tabBarController;
