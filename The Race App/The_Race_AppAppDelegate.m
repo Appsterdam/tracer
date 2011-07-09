@@ -21,16 +21,11 @@
     
     RaceTracksViewController* raceTrackViewController =
        [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-<<<<<<< HEAD
+
 	UINavigationController *navigationController = [[[UINavigationController alloc] initWithRootViewController:raceTrackViewController] autorelease];
+
     NSArray* viewControllers = [NSArray arrayWithObjects:navigationController, nil];
-=======
-   
-    UINavigationController* raceTracksEnvelopingNavigationController =
-        [[[UINavigationController alloc] initWithRootViewController:raceTrackViewController] autorelease];
-    
-    NSArray* viewControllers = [NSArray arrayWithObjects:raceTracksEnvelopingNavigationController, nil];
->>>>>>> Added more files
+
     tabBarController.viewControllers = viewControllers;
     
 	self.window.rootViewController = tabBarController;
