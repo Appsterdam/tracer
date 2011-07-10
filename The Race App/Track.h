@@ -20,4 +20,11 @@
 @property (nonatomic, retain) NSString *trackWinner;
 @property (nonatomic, retain) NSArray *trackData;
 
+-(id)initWithTrackName:(NSString*)aTrackName 
+            trackScore:(NSString*)aTrackScore
+           trackWinner:(NSString*)aTrackWinner
+             trackData:(NSArray*)aTrackData;
+
+
+
 @end

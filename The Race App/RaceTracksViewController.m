@@ -80,17 +80,43 @@
 
 }
 
--(void)makeHardcodedTracks
+-(NSArray*)makeHardcodedTracks
 {
-    NSMutableArray* raceTrackArray = [NSMutableArray arrayWithCapacity:5];
+    NSMutableArray* raceTrackArray = [NSMutableArray arrayWithCapacity:20];
 
-    for (int i = 0; i < 20; ++i)
-    {
-        NSMutableDictionary* trackDictionary = [[NSMutableDictionary alloc] initWithCapacity:5];
-        [trackDictionary setObject:[NSString stringWithFormat:@"Test Track %d", i] forKey:@"trackName"];
-        [raceTrackArray addObject:trackDictionary];
-        [trackDictionary release];
-    }
+    [raceTrackArray addObject:
+     [[[Track alloc] initWithTrackName:@"Amsterdam Heroes" 
+                           trackScore:@"34:05" 
+                          trackWinner:@"Peter" 
+                             trackData:nil] autorelease]];
+
+    [raceTrackArray addObject:
+     [[[Track alloc] initWithTrackName:@"North Holland Scenic" 
+                            trackScore:@"1:30:05" 
+                           trackWinner:@"Mike" 
+                             trackData:nil] autorelease]];
+    
+
+    [raceTrackArray addObject:
+     [[[Track alloc] initWithTrackName:@"Harley Poche" 
+                            trackScore:@"26:05" 
+                           trackWinner:@"Jeroen" 
+                             trackData:nil] autorelease]];
+
+    [raceTrackArray addObject:
+     [[[Track alloc] initWithTrackName:@"Tortoise Meadows" 
+                            trackScore:@"59:20" 
+                           trackWinner:@"YourBestFriend" 
+                             trackData:nil] autorelease]];
+
+    [raceTrackArray addObject:
+     [[[Track alloc] initWithTrackName:@"Dark Lunatic Trail" 
+                            trackScore:@"16:00" 
+                           trackWinner:@"Leonardo" 
+                             trackData:nil] autorelease]];
+    
+    
+    return raceTrackArray;
 }
 
 
@@ -178,7 +204,10 @@
     cell.trackNameLabel.text = track.trackName;
     cell.winnerNameLabel.text = track.trackWinner;
     cell.winnerTimeLabel.text = track.trackScore;
-    cell.checkPointCountLabel = [NSString stringWithFormat:@"%d checkpoints", [track.trackData count]];
+    
+#warning "Hardcoded!"
+    cell.checkPointCountLabel.text = [NSString stringWithFormat:@"%d checkpoints",
+                                 indexPath.row + 3/*[track.trackData count]*/];
     
     return cell;
 }
@@ -203,7 +232,11 @@
 
 -(void)updateDataWithTracks:(NSArray*)aTracks
 {
-    self.tracks = aTracks;
+#warning "API results are NOT used. Hardcoded data is used instead!"
+    //self.tracks = aTracks;
+    
+    self.tracks = [self makeHardcodedTracks];
+    
     [tableView reloadData];
     [super dataSourceDidFinishLoadingNewData:[NSDate date]];
 }
