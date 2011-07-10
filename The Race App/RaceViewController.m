@@ -30,6 +30,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 @synthesize raceStatsView;
 @synthesize stopwatchLabel;
 @synthesize checkpointsLabel;
+@synthesize arrowImageView;
 
 - (id)initWithCheckpoints:(NSArray *)points {
 	if (![super init])
@@ -48,6 +49,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	[raceStatsView release];
 	[stopwatchLabel release];
 	[checkpointsLabel release];
+	[arrowImageView release];
 	[super dealloc];
 }
 
@@ -67,6 +69,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = 1;
     [locationManager startUpdatingLocation];
+	[locationManager startUpdatingHeading];
 }
 
 - (void)viewDidUnload {
@@ -77,6 +80,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	[self setRaceStatsView:nil];
 	[self setStopwatchLabel:nil];
 	[self setCheckpointsLabel:nil];
+	[self setArrowImageView:nil];
 	[super viewDidUnload];
 }
 
@@ -93,8 +97,9 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	
 	CLLocation *nextCheckpointLocation = [[[CLLocation alloc] initWithLatitude:nextCheckpoint.coordinate.latitude
 																	 longitude:nextCheckpoint.coordinate.longitude] autorelease];
-	CLLocationDistance distanceFromNextCheckPoint = [newLocation distanceFromLocation:nextCheckpointLocation];
-	if (distanceFromNextCheckPoint > CheckpointMetersThreshold)
+	distanceFromNextCheckpoint = [newLocation distanceFromLocation:nextCheckpointLocation];
+	verticalDistanceFromNextCheckpoint = nextCheckpoint.coordinate.latitude - newLocation.coordinate.latitude;
+	if (distanceFromNextCheckpoint > CheckpointMetersThreshold)
 		return;
 	
 	MKPinAnnotationView *checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:nextCheckpoint];
@@ -112,12 +117,21 @@ static NSUInteger CheckpointMetersThreshold = 15;
 																cancelButtonTitle:@"Yes, I'm cool"
 																otherButtonTitles:nil] autorelease];
 		[raceCompletedAlertView show];
+		[locationManager stopUpdatingLocation];
 		[locationManager stopUpdatingHeading];
 		return;
 	}
 	
 	[self updateNextCheckpoint];
 	[self updateCheckpointsLabel];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+	if (newHeading.headingAccuracy < 0)
+		return;
+	
+	
+	arrowImageView.transform = CGAffineTransformMakeRotation(-newHeading.trueHeading * M_PI / 180);
 }
 
 #pragma mark -

@@ -14,6 +14,7 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<string>IBUILabel</string>
 			<string>IBUIButton</string>
+			<string>IBUIImageView</string>
 			<string>IBUIView</string>
 			<string>IBMKMapView</string>
 			<string>IBProxyObject</string>
@@ -98,7 +99,6 @@
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
-								<float key="IBUIAlpha">0.0</float>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<int key="IBUIContentHorizontalAlignment">0</int>
 								<int key="IBUIContentVerticalAlignment">0</int>
@@ -186,7 +186,7 @@
 						<string key="NSFrame">{{232, 10}, {68, 18}}</string>
 						<reference key="NSSuperview" ref="89822778"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="995520926"/>
+						<reference key="NSNextKeyView"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -209,7 +209,7 @@
 						<string key="NSFrame">{{114, 29}, {186, 18}}</string>
 						<reference key="NSSuperview" ref="89822778"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="813825529"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<int key="IBUIContentMode">7</int>
@@ -232,11 +232,27 @@
 						<float key="IBUIMinimumFontSize">10</float>
 						<int key="IBUITextAlignment">2</int>
 					</object>
+					<object class="IBUIImageView" id="766032106">
+						<reference key="NSNextResponder" ref="89822778"/>
+						<int key="NSvFlags">256</int>
+						<string key="NSFrame">{{20, 7}, {35, 47}}</string>
+						<reference key="NSSuperview" ref="89822778"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="995520926"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<bool key="IBUIMultipleTouchEnabled">YES</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">race-arrow.png</string>
+						</object>
+					</object>
 				</object>
 				<string key="NSFrameSize">{320, 61}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="813825529"/>
+				<reference key="NSNextKeyView" ref="766032106"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MCAwIDAgMC43AA</bytes>
@@ -337,6 +353,14 @@
 					</object>
 					<int key="connectionID">25</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">arrowImageView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="766032106"/>
+					</object>
+					<int key="connectionID">27</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -402,6 +426,7 @@
 							<reference ref="813825529"/>
 							<reference ref="129078602"/>
 							<reference ref="995520926"/>
+							<reference ref="766032106"/>
 						</object>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">Race stats view</string>
@@ -419,6 +444,11 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">22</int>
 						<reference key="object" ref="995520926"/>
+						<reference key="parent" ref="89822778"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">26</int>
+						<reference key="object" ref="766032106"/>
 						<reference key="parent" ref="89822778"/>
 					</object>
 				</object>
@@ -468,7 +498,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">25</int>
+			<int key="maxID">27</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -491,6 +521,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>arrowImageView</string>
 							<string>checkpointsLabel</string>
 							<string>mapView</string>
 							<string>raceStatsView</string>
@@ -501,6 +532,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UIImageView</string>
 							<string>UILabel</string>
 							<string>MKMapView</string>
 							<string>UIView</string>
@@ -514,6 +546,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>arrowImageView</string>
 							<string>checkpointsLabel</string>
 							<string>mapView</string>
 							<string>raceStatsView</string>
@@ -524,6 +557,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBToOneOutletInfo">
+								<string key="name">arrowImageView</string>
+								<string key="candidateClassName">UIImageView</string>
+							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">checkpointsLabel</string>
 								<string key="candidateClassName">UILabel</string>
@@ -569,6 +606,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">race-arrow.png</string>
+			<string key="NS.object.0">{154, 200}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>
 </archive>
