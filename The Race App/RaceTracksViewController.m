@@ -24,7 +24,7 @@
     {
         // Custom initialization
         UITabBarItem* raceTracksItem = [[[UITabBarItem alloc] initWithTitle:@"Tracks" 
-                                                                      image:nil 
+                                                                      image:[UIImage imageNamed:@"racemap.png"] 
                                                                         tag:0] autorelease];
         
         self.tabBarItem = raceTracksItem;

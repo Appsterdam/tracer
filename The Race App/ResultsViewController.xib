@@ -122,7 +122,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">10:54</string>
+						<string key="IBUIText">5:25</string>
 						<reference key="IBUITextColor" ref="122716575"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -167,7 +167,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">10:54</string>
+						<string key="IBUIText">5:25</string>
 						<reference key="IBUITextColor" ref="122716575"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -213,7 +213,7 @@
 						<int key="IBUIContentMode">7</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<string key="IBUIText">Current Winner Name</string>
+						<string key="IBUIText">Peter</string>
 						<reference key="IBUITextColor" ref="122716575"/>
 						<nil key="IBUIHighlightedColor"/>
 						<int key="IBUIBaselineAdjustment">1</int>
@@ -264,6 +264,7 @@
 						<string key="NSFrame">{{20, 219}, {280, 230}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:398</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="853809864">
 							<int key="NSColorSpace">3</int>

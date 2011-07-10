@@ -18,18 +18,31 @@
 @synthesize tableView;
 @synthesize results;
 
+-(NSArray*)makeHardcodedResults
+{
+    NSMutableArray* resultArray = [NSMutableArray arrayWithCapacity:5];
+    
+    [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Peter", @"racerName", @"5:25", @"racerTime", nil]];
+    [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Matteo", @"racerName", @"5:51", @"racerTime", nil]];
+    [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Kate", @"racerName", @"6:04", @"racerTime", nil]];
+    [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Sergey", @"racerName", @"6:07", @"racerTime", nil]];
+    
+    return resultArray;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) 
     {
-        UITabBarItem* raceTracksItem = [[[UITabBarItem alloc] initWithTitle:@"Results" 
-                                                                      image:nil 
-                                                                        tag:1] autorelease];
+        UITabBarItem* raceTracksItem = 
+            [[[UITabBarItem alloc] initWithTitle:@"Results" 
+                                          image:[UIImage imageNamed:@"trophy.png"] 
+                                            tag:1] autorelease];
         
         self.tabBarItem = raceTracksItem;
         
-        self.results = [NSArray array];
+        self.results = [self makeHardcodedResults];
     }
     return self;
 }
@@ -107,8 +120,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // return [tracks count];
-    return 10;
+    return [results count];
 }
 
 
@@ -125,14 +137,16 @@
     
     if (cell == nil)
     {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier] autorelease];
         cell.textLabel.textColor = [UIColor whiteColor];
+        cell.detailTextLabel.textColor = [UIColor redColor];
     }
     
-    /*
-        Result* result = [results objectAtIndex:indexPath.row];
-    */
-    cell.textLabel.text = [NSString stringWithFormat:@"Winner %d", indexPath.row];
+    
+    NSDictionary* result = [results objectAtIndex:indexPath.row];
+
+    cell.textLabel.text = [result objectForKey:@"racerName"];
+    cell.detailTextLabel.text = [result objectForKey:@"racerTime"];
      
     return cell;
 }
