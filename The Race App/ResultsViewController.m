@@ -62,6 +62,9 @@
     tableView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     tableView.layer.borderWidth = 1.0;
     
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    
     [super viewDidLoad];
     
     
@@ -76,6 +79,8 @@
     self.bestTimeLabel = nil;
     self.bestResultNameLabel = nil;
     self.resultTextLabel = nil;
+    tableView.delegate = nil;
+    tableView.dataSource = nil;
     self.tableView = nil;
 }
 

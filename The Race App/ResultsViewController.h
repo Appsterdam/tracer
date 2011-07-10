@@ -10,7 +10,7 @@
 #import "UIViewController+RefreshView.h"
 
 @interface ResultsViewController : UIViewController_RefreshView <UITableViewDataSource,
-                                                                UITabBarDelegate>
+                                                                 UITableViewDelegate>
 {
     // Shows the result text message.
     UILabel*        resultTextLabel;
