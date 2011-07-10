@@ -24,7 +24,7 @@
     {
         // Custom initialization
         UITabBarItem* raceTracksItem = [[[UITabBarItem alloc] initWithTitle:@"Tracks" 
-                                                                      image:nil 
+                                                                      image:[UIImage imageNamed:@"racemap.png"] 
                                                                         tag:0] autorelease];
         
         self.tabBarItem = raceTracksItem;
@@ -61,6 +61,7 @@
     ownView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     ownView.clipsToBounds = YES;
+    ownView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
     self.view = ownView;
 
@@ -68,6 +69,7 @@
                                              style:UITableViewStylePlain];
     
     tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    tableView.backgroundColor = [UIColor clearColor];
     
     tableView.clipsToBounds = YES;
     tableView.delegate = self;

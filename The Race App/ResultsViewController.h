@@ -10,7 +10,7 @@
 #import "UIViewController+RefreshView.h"
 
 @interface ResultsViewController : UIViewController_RefreshView <UITableViewDataSource,
-                                                                UITabBarDelegate>
+                                                                 UITableViewDelegate>
 {
     // Shows the result text message.
     UILabel*        resultTextLabel;
@@ -23,7 +23,7 @@
     // Hall of fame table view.
     // Needs to be called tableView for the refresh functionality to work.
     UITableView*    tableView;
-    
+    // For now - an array of dictionaries with names and times.
     NSArray*        results;
 }
 
