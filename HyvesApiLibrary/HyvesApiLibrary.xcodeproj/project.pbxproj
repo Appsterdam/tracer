@@ -1,0 +1,600 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5063B85131E41F2003327A0 /* HyvesAPICallHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063B03131E41F1003327A0 /* HyvesAPICallHandler.h */; };
+		A5063B86131E41F2003327A0 /* HyvesAPICallHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063B04131E41F1003327A0 /* HyvesAPICallHandler.m */; };
+		A5063B87131E41F2003327A0 /* HyvesAPICall.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063B05131E41F1003327A0 /* HyvesAPICall.h */; };
+		A5063B88131E41F2003327A0 /* HyvesAPICall.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063B06131E41F1003327A0 /* HyvesAPICall.m */; };
+		A5063B89131E41F2003327A0 /* HyvesAPILayer.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063B07131E41F1003327A0 /* HyvesAPILayer.h */; };
+		A5063B8A131E41F2003327A0 /* HyvesAPILayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063B08131E41F1003327A0 /* HyvesAPILayer.m */; };
+		A5063B97131E41F2003327A0 /* BatchedAPICallHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063B15131E41F1003327A0 /* BatchedAPICallHandler.h */; };
+		A5063B98131E41F2003327A0 /* BatchedAPICallHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063B16131E41F1003327A0 /* BatchedAPICallHandler.m */; };
+		A5063B9F131E41F2003327A0 /* NSDictionary+HyvesApi.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063B1D131E41F1003327A0 /* NSDictionary+HyvesApi.h */; };
+		A5063BA0131E41F2003327A0 /* NSDictionary+HyvesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063B1E131E41F1003327A0 /* NSDictionary+HyvesApi.m */; };
+		A5063BB3131E41F2003327A0 /* MalformedResponseException.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063B31131E41F1003327A0 /* MalformedResponseException.h */; };
+		A5063BB4131E41F2003327A0 /* MalformedResponseException.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063B32131E41F1003327A0 /* MalformedResponseException.m */; };
+		A5063BE1131E41F2003327A0 /* HyvesAPIResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063B5F131E41F1003327A0 /* HyvesAPIResponse.h */; };
+		A5063BEC131E41F2003327A0 /* LogoutAPICallHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063B6A131E41F2003327A0 /* LogoutAPICallHandler.h */; };
+		A5063BED131E41F2003327A0 /* LogoutAPICallHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063B6B131E41F2003327A0 /* LogoutAPICallHandler.m */; };
+		A5063C01131E4225003327A0 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5063C00131E4225003327A0 /* CFNetwork.framework */; };
+		A5063C09131E429B003327A0 /* AuthenticateProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063C08131E429B003327A0 /* AuthenticateProtocol.h */; };
+		A5063D08131E4A58003327A0 /* Base64Transcoder.c in Sources */ = {isa = PBXBuildFile; fileRef = A5063D06131E4A58003327A0 /* Base64Transcoder.c */; };
+		A5063D09131E4A58003327A0 /* Base64Transcoder.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D07131E4A58003327A0 /* Base64Transcoder.h */; };
+		A5063D1A131E4B0D003327A0 /* AuthenticateResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D19131E4B0D003327A0 /* AuthenticateResponse.h */; };
+		A5063D1F131E4B36003327A0 /* SynthesizeSingleton.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D1E131E4B36003327A0 /* SynthesizeSingleton.h */; };
+		A5063D27131E4BB1003327A0 /* LockedThread.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D25131E4BB1003327A0 /* LockedThread.h */; };
+		A5063D28131E4BB1003327A0 /* LockedThread.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063D26131E4BB1003327A0 /* LockedThread.m */; };
+		A5063D39131E4C40003327A0 /* PingTypeType.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D38131E4C40003327A0 /* PingTypeType.h */; };
+		A5063D44131E4C6E003327A0 /* SearchType.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D43131E4C6E003327A0 /* SearchType.h */; };
+		A5063D49131E4C87003327A0 /* HyvesVisibility.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D47131E4C87003327A0 /* HyvesVisibility.h */; };
+		A5063D4A131E4C87003327A0 /* HyvesVisibility.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063D48131E4C87003327A0 /* HyvesVisibility.m */; };
+		A5063D52131E4CDE003327A0 /* BuzzTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D50131E4CDE003327A0 /* BuzzTypes.h */; };
+		A5063D53131E4CDE003327A0 /* BuzzTypes.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063D51131E4CDE003327A0 /* BuzzTypes.m */; };
+		A5063D75131E4E25003327A0 /* HyvesRespectType.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063D73131E4E25003327A0 /* HyvesRespectType.h */; };
+		A5063D76131E4E25003327A0 /* HyvesRespectType.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063D74131E4E25003327A0 /* HyvesRespectType.m */; };
+		A5063E6C131E7431003327A0 /* AuthRequestTokenAPICallHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063E6A131E7431003327A0 /* AuthRequestTokenAPICallHandler.h */; };
+		A5063E6D131E7431003327A0 /* AuthRequestTokenAPICallHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063E6B131E7431003327A0 /* AuthRequestTokenAPICallHandler.m */; };
+		A5063F1E131E9694003327A0 /* AuthAccessTokenAPICallHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = A5063F1C131E9694003327A0 /* AuthAccessTokenAPICallHandler.h */; };
+		A5063F1F131E9694003327A0 /* AuthAccessTokenAPICallHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = A5063F1D131E9694003327A0 /* AuthAccessTokenAPICallHandler.m */; };
+		A521045E132CEE1D00B1F8CE /* AuthorizationViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = A521045C132CEE1D00B1F8CE /* AuthorizationViewController.h */; };
+		A521045F132CEE1D00B1F8CE /* AuthorizationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A521045D132CEE1D00B1F8CE /* AuthorizationViewController.m */; };
+		A57FC78113B9D98A00AE5AA0 /* CDataScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = A57FC77213B9D98A00AE5AA0 /* CDataScanner.h */; };
+		A57FC78213B9D98A00AE5AA0 /* CDataScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FC77313B9D98A00AE5AA0 /* CDataScanner.m */; };
+		A57FC78313B9D98A00AE5AA0 /* CDataScanner_Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = A57FC77513B9D98A00AE5AA0 /* CDataScanner_Extensions.h */; };
+		A57FC78413B9D98A00AE5AA0 /* CDataScanner_Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FC77613B9D98A00AE5AA0 /* CDataScanner_Extensions.m */; };
+		A57FC78513B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = A57FC77713B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.h */; };
+		A57FC78613B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FC77813B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.m */; };
+		A57FC78713B9D98A00AE5AA0 /* CJSONDeserializer.h in Headers */ = {isa = PBXBuildFile; fileRef = A57FC77A13B9D98A00AE5AA0 /* CJSONDeserializer.h */; };
+		A57FC78813B9D98A00AE5AA0 /* CJSONDeserializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FC77B13B9D98A00AE5AA0 /* CJSONDeserializer.m */; };
+		A57FC78913B9D98A00AE5AA0 /* CJSONScanner.h in Headers */ = {isa = PBXBuildFile; fileRef = A57FC77C13B9D98A00AE5AA0 /* CJSONScanner.h */; };
+		A57FC78A13B9D98A00AE5AA0 /* CJSONScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FC77D13B9D98A00AE5AA0 /* CJSONScanner.m */; };
+		A57FC78B13B9D98A00AE5AA0 /* CJSONSerializer.h in Headers */ = {isa = PBXBuildFile; fileRef = A57FC77E13B9D98A00AE5AA0 /* CJSONSerializer.h */; };
+		A57FC78C13B9D98A00AE5AA0 /* CJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FC77F13B9D98A00AE5AA0 /* CJSONSerializer.m */; };
+		A57FC78D13B9D98A00AE5AA0 /* JSONRepresentation.h in Headers */ = {isa = PBXBuildFile; fileRef = A57FC78013B9D98A00AE5AA0 /* JSONRepresentation.h */; };
+		AA747D9F0F9514B9006C5449 /* HyvesApiLibrary_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* HyvesApiLibrary_Prefix.pch */; };
+		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A5063B03131E41F1003327A0 /* HyvesAPICallHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyvesAPICallHandler.h; sourceTree = "<group>"; };
+		A5063B04131E41F1003327A0 /* HyvesAPICallHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyvesAPICallHandler.m; sourceTree = "<group>"; };
+		A5063B05131E41F1003327A0 /* HyvesAPICall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyvesAPICall.h; sourceTree = "<group>"; };
+		A5063B06131E41F1003327A0 /* HyvesAPICall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyvesAPICall.m; sourceTree = "<group>"; };
+		A5063B07131E41F1003327A0 /* HyvesAPILayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyvesAPILayer.h; sourceTree = "<group>"; };
+		A5063B08131E41F1003327A0 /* HyvesAPILayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyvesAPILayer.m; sourceTree = "<group>"; };
+		A5063B15131E41F1003327A0 /* BatchedAPICallHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchedAPICallHandler.h; sourceTree = "<group>"; };
+		A5063B16131E41F1003327A0 /* BatchedAPICallHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchedAPICallHandler.m; sourceTree = "<group>"; };
+		A5063B1D131E41F1003327A0 /* NSDictionary+HyvesApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+HyvesApi.h"; sourceTree = "<group>"; };
+		A5063B1E131E41F1003327A0 /* NSDictionary+HyvesApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+HyvesApi.m"; sourceTree = "<group>"; };
+		A5063B31131E41F1003327A0 /* MalformedResponseException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MalformedResponseException.h; sourceTree = "<group>"; };
+		A5063B32131E41F1003327A0 /* MalformedResponseException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MalformedResponseException.m; sourceTree = "<group>"; };
+		A5063B5F131E41F1003327A0 /* HyvesAPIResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyvesAPIResponse.h; sourceTree = "<group>"; };
+		A5063B6A131E41F2003327A0 /* LogoutAPICallHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoutAPICallHandler.h; sourceTree = "<group>"; };
+		A5063B6B131E41F2003327A0 /* LogoutAPICallHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoutAPICallHandler.m; sourceTree = "<group>"; };
+		A5063C00131E4225003327A0 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A5063C08131E429B003327A0 /* AuthenticateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateProtocol.h; sourceTree = "<group>"; };
+		A5063D06131E4A58003327A0 /* Base64Transcoder.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = Base64Transcoder.c; sourceTree = "<group>"; };
+		A5063D07131E4A58003327A0 /* Base64Transcoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Transcoder.h; sourceTree = "<group>"; };
+		A5063D19131E4B0D003327A0 /* AuthenticateResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthenticateResponse.h; sourceTree = "<group>"; };
+		A5063D1E131E4B36003327A0 /* SynthesizeSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SynthesizeSingleton.h; sourceTree = "<group>"; };
+		A5063D25131E4BB1003327A0 /* LockedThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LockedThread.h; sourceTree = "<group>"; };
+		A5063D26131E4BB1003327A0 /* LockedThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LockedThread.m; sourceTree = "<group>"; };
+		A5063D38131E4C40003327A0 /* PingTypeType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingTypeType.h; sourceTree = "<group>"; };
+		A5063D43131E4C6E003327A0 /* SearchType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchType.h; sourceTree = "<group>"; };
+		A5063D47131E4C87003327A0 /* HyvesVisibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyvesVisibility.h; sourceTree = "<group>"; };
+		A5063D48131E4C87003327A0 /* HyvesVisibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyvesVisibility.m; sourceTree = "<group>"; };
+		A5063D50131E4CDE003327A0 /* BuzzTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BuzzTypes.h; sourceTree = "<group>"; };
+		A5063D51131E4CDE003327A0 /* BuzzTypes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BuzzTypes.m; sourceTree = "<group>"; };
+		A5063D73131E4E25003327A0 /* HyvesRespectType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyvesRespectType.h; sourceTree = "<group>"; };
+		A5063D74131E4E25003327A0 /* HyvesRespectType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HyvesRespectType.m; sourceTree = "<group>"; };
+		A5063E6A131E7431003327A0 /* AuthRequestTokenAPICallHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthRequestTokenAPICallHandler.h; sourceTree = "<group>"; };
+		A5063E6B131E7431003327A0 /* AuthRequestTokenAPICallHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthRequestTokenAPICallHandler.m; sourceTree = "<group>"; };
+		A5063F1C131E9694003327A0 /* AuthAccessTokenAPICallHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthAccessTokenAPICallHandler.h; sourceTree = "<group>"; };
+		A5063F1D131E9694003327A0 /* AuthAccessTokenAPICallHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthAccessTokenAPICallHandler.m; sourceTree = "<group>"; };
+		A521045C132CEE1D00B1F8CE /* AuthorizationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorizationViewController.h; sourceTree = "<group>"; };
+		A521045D132CEE1D00B1F8CE /* AuthorizationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorizationViewController.m; sourceTree = "<group>"; };
+		A57FC77213B9D98A00AE5AA0 /* CDataScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDataScanner.h; path = ../../TouchJSON/Source/CDataScanner.h; sourceTree = "<group>"; };
+		A57FC77313B9D98A00AE5AA0 /* CDataScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDataScanner.m; path = ../../TouchJSON/Source/CDataScanner.m; sourceTree = "<group>"; };
+		A57FC77513B9D98A00AE5AA0 /* CDataScanner_Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDataScanner_Extensions.h; sourceTree = "<group>"; };
+		A57FC77613B9D98A00AE5AA0 /* CDataScanner_Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDataScanner_Extensions.m; sourceTree = "<group>"; };
+		A57FC77713B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDictionary_JSONExtensions.h; sourceTree = "<group>"; };
+		A57FC77813B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDictionary_JSONExtensions.m; sourceTree = "<group>"; };
+		A57FC77A13B9D98A00AE5AA0 /* CJSONDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONDeserializer.h; sourceTree = "<group>"; };
+		A57FC77B13B9D98A00AE5AA0 /* CJSONDeserializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONDeserializer.m; sourceTree = "<group>"; };
+		A57FC77C13B9D98A00AE5AA0 /* CJSONScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONScanner.h; sourceTree = "<group>"; };
+		A57FC77D13B9D98A00AE5AA0 /* CJSONScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONScanner.m; sourceTree = "<group>"; };
+		A57FC77E13B9D98A00AE5AA0 /* CJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CJSONSerializer.h; sourceTree = "<group>"; };
+		A57FC77F13B9D98A00AE5AA0 /* CJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CJSONSerializer.m; sourceTree = "<group>"; };
+		A57FC78013B9D98A00AE5AA0 /* JSONRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONRepresentation.h; sourceTree = "<group>"; };
+		A57FC78E13B9DC6A00AE5AA0 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		AA747D9E0F9514B9006C5449 /* HyvesApiLibrary_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HyvesApiLibrary_Prefix.pch; sourceTree = SOURCE_ROOT; };
+		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D2AAC07E0554694100DB518D /* libHyvesApiLibrary.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libHyvesApiLibrary.a; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D2AAC07C0554694100DB518D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
+				A5063C01131E4225003327A0 /* CFNetwork.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC07E0554694100DB518D /* libHyvesApiLibrary.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* HyvesApiLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				A57FC78E13B9DC6A00AE5AA0 /* README.txt */,
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				0867D69AFE84028FC02AAC07 /* Frameworks */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = HyvesApiLibrary;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				A5063C00131E4225003327A0 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A57FC77113B9D7E200AE5AA0 /* TouchJSON */,
+				A5063AFD131E41F1003327A0 /* HyvesApi */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA747D9E0F9514B9006C5449 /* HyvesApiLibrary_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		A5063AFD131E41F1003327A0 /* HyvesApi */ = {
+			isa = PBXGroup;
+			children = (
+				A5210454132CED9700B1F8CE /* ViewControllers */,
+				A5063C2D131E449D003327A0 /* HelperClasses */,
+				A5063AFE131E41F1003327A0 /* APILayer */,
+			);
+			name = HyvesApi;
+			sourceTree = "<group>";
+		};
+		A5063AFE131E41F1003327A0 /* APILayer */ = {
+			isa = PBXGroup;
+			children = (
+				A5063C30131E4682003327A0 /* APIHandlers */,
+				A5063C2F131E4675003327A0 /* BaseClasses */,
+			);
+			path = APILayer;
+			sourceTree = "<group>";
+		};
+		A5063C2D131E449D003327A0 /* HelperClasses */ = {
+			isa = PBXGroup;
+			children = (
+				A5063D73131E4E25003327A0 /* HyvesRespectType.h */,
+				A5063D74131E4E25003327A0 /* HyvesRespectType.m */,
+				A5063D50131E4CDE003327A0 /* BuzzTypes.h */,
+				A5063D51131E4CDE003327A0 /* BuzzTypes.m */,
+				A5063D47131E4C87003327A0 /* HyvesVisibility.h */,
+				A5063D48131E4C87003327A0 /* HyvesVisibility.m */,
+				A5063D43131E4C6E003327A0 /* SearchType.h */,
+				A5063D38131E4C40003327A0 /* PingTypeType.h */,
+				A5063D25131E4BB1003327A0 /* LockedThread.h */,
+				A5063D26131E4BB1003327A0 /* LockedThread.m */,
+				A5063D1E131E4B36003327A0 /* SynthesizeSingleton.h */,
+				A5063D19131E4B0D003327A0 /* AuthenticateResponse.h */,
+				A5063D05131E4A58003327A0 /* Base64 */,
+				A5063C08131E429B003327A0 /* AuthenticateProtocol.h */,
+				A5063B1D131E41F1003327A0 /* NSDictionary+HyvesApi.h */,
+				A5063B1E131E41F1003327A0 /* NSDictionary+HyvesApi.m */,
+				A5063B31131E41F1003327A0 /* MalformedResponseException.h */,
+				A5063B32131E41F1003327A0 /* MalformedResponseException.m */,
+			);
+			path = HelperClasses;
+			sourceTree = "<group>";
+		};
+		A5063C2F131E4675003327A0 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				A5063B5F131E41F1003327A0 /* HyvesAPIResponse.h */,
+				A5063B07131E41F1003327A0 /* HyvesAPILayer.h */,
+				A5063B08131E41F1003327A0 /* HyvesAPILayer.m */,
+				A5063B03131E41F1003327A0 /* HyvesAPICallHandler.h */,
+				A5063B04131E41F1003327A0 /* HyvesAPICallHandler.m */,
+				A5063B15131E41F1003327A0 /* BatchedAPICallHandler.h */,
+				A5063B16131E41F1003327A0 /* BatchedAPICallHandler.m */,
+				A5063B05131E41F1003327A0 /* HyvesAPICall.h */,
+				A5063B06131E41F1003327A0 /* HyvesAPICall.m */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		A5063C30131E4682003327A0 /* APIHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				A5063B6A131E41F2003327A0 /* LogoutAPICallHandler.h */,
+				A5063B6B131E41F2003327A0 /* LogoutAPICallHandler.m */,
+				A5063E6A131E7431003327A0 /* AuthRequestTokenAPICallHandler.h */,
+				A5063E6B131E7431003327A0 /* AuthRequestTokenAPICallHandler.m */,
+				A5063F1C131E9694003327A0 /* AuthAccessTokenAPICallHandler.h */,
+				A5063F1D131E9694003327A0 /* AuthAccessTokenAPICallHandler.m */,
+			);
+			path = APIHandlers;
+			sourceTree = "<group>";
+		};
+		A5063D05131E4A58003327A0 /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				A5063D06131E4A58003327A0 /* Base64Transcoder.c */,
+				A5063D07131E4A58003327A0 /* Base64Transcoder.h */,
+			);
+			name = Base64;
+			sourceTree = "<group>";
+		};
+		A5210454132CED9700B1F8CE /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A521045C132CEE1D00B1F8CE /* AuthorizationViewController.h */,
+				A521045D132CEE1D00B1F8CE /* AuthorizationViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A57FC77113B9D7E200AE5AA0 /* TouchJSON */ = {
+			isa = PBXGroup;
+			children = (
+				A57FC77213B9D98A00AE5AA0 /* CDataScanner.h */,
+				A57FC77313B9D98A00AE5AA0 /* CDataScanner.m */,
+				A57FC77413B9D98A00AE5AA0 /* Extensions */,
+				A57FC77913B9D98A00AE5AA0 /* JSON */,
+			);
+			name = TouchJSON;
+			path = /Users/sergey/github/TouchJSON/Source;
+			sourceTree = "<absolute>";
+		};
+		A57FC77413B9D98A00AE5AA0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A57FC77513B9D98A00AE5AA0 /* CDataScanner_Extensions.h */,
+				A57FC77613B9D98A00AE5AA0 /* CDataScanner_Extensions.m */,
+				A57FC77713B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.h */,
+				A57FC77813B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.m */,
+			);
+			name = Extensions;
+			path = ../../TouchJSON/Source/Extensions;
+			sourceTree = "<group>";
+		};
+		A57FC77913B9D98A00AE5AA0 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				A57FC77A13B9D98A00AE5AA0 /* CJSONDeserializer.h */,
+				A57FC77B13B9D98A00AE5AA0 /* CJSONDeserializer.m */,
+				A57FC77C13B9D98A00AE5AA0 /* CJSONScanner.h */,
+				A57FC77D13B9D98A00AE5AA0 /* CJSONScanner.m */,
+				A57FC77E13B9D98A00AE5AA0 /* CJSONSerializer.h */,
+				A57FC77F13B9D98A00AE5AA0 /* CJSONSerializer.m */,
+				A57FC78013B9D98A00AE5AA0 /* JSONRepresentation.h */,
+			);
+			name = JSON;
+			path = ../../TouchJSON/Source/JSON;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC07A0554694100DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA747D9F0F9514B9006C5449 /* HyvesApiLibrary_Prefix.pch in Headers */,
+				A5063B85131E41F2003327A0 /* HyvesAPICallHandler.h in Headers */,
+				A5063B87131E41F2003327A0 /* HyvesAPICall.h in Headers */,
+				A5063B89131E41F2003327A0 /* HyvesAPILayer.h in Headers */,
+				A5063B97131E41F2003327A0 /* BatchedAPICallHandler.h in Headers */,
+				A5063B9F131E41F2003327A0 /* NSDictionary+HyvesApi.h in Headers */,
+				A5063BB3131E41F2003327A0 /* MalformedResponseException.h in Headers */,
+				A5063BE1131E41F2003327A0 /* HyvesAPIResponse.h in Headers */,
+				A5063BEC131E41F2003327A0 /* LogoutAPICallHandler.h in Headers */,
+				A5063C09131E429B003327A0 /* AuthenticateProtocol.h in Headers */,
+				A5063D09131E4A58003327A0 /* Base64Transcoder.h in Headers */,
+				A5063D1A131E4B0D003327A0 /* AuthenticateResponse.h in Headers */,
+				A5063D1F131E4B36003327A0 /* SynthesizeSingleton.h in Headers */,
+				A5063D27131E4BB1003327A0 /* LockedThread.h in Headers */,
+				A5063D39131E4C40003327A0 /* PingTypeType.h in Headers */,
+				A5063D44131E4C6E003327A0 /* SearchType.h in Headers */,
+				A5063D49131E4C87003327A0 /* HyvesVisibility.h in Headers */,
+				A5063D52131E4CDE003327A0 /* BuzzTypes.h in Headers */,
+				A5063D75131E4E25003327A0 /* HyvesRespectType.h in Headers */,
+				A5063E6C131E7431003327A0 /* AuthRequestTokenAPICallHandler.h in Headers */,
+				A5063F1E131E9694003327A0 /* AuthAccessTokenAPICallHandler.h in Headers */,
+				A521045E132CEE1D00B1F8CE /* AuthorizationViewController.h in Headers */,
+				A57FC78113B9D98A00AE5AA0 /* CDataScanner.h in Headers */,
+				A57FC78313B9D98A00AE5AA0 /* CDataScanner_Extensions.h in Headers */,
+				A57FC78513B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.h in Headers */,
+				A57FC78713B9D98A00AE5AA0 /* CJSONDeserializer.h in Headers */,
+				A57FC78913B9D98A00AE5AA0 /* CJSONScanner.h in Headers */,
+				A57FC78B13B9D98A00AE5AA0 /* CJSONSerializer.h in Headers */,
+				A57FC78D13B9D98A00AE5AA0 /* JSONRepresentation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC07D0554694100DB518D /* HyvesApiLibrary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "HyvesApiLibrary" */;
+			buildPhases = (
+				D2AAC07A0554694100DB518D /* Headers */,
+				D2AAC07B0554694100DB518D /* Sources */,
+				D2AAC07C0554694100DB518D /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HyvesApiLibrary;
+			productName = HyvesApiLibrary;
+			productReference = D2AAC07E0554694100DB518D /* libHyvesApiLibrary.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "HyvesApiLibrary" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 0867D691FE84028FC02AAC07 /* HyvesApiLibrary */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D2AAC07D0554694100DB518D /* HyvesApiLibrary */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC07B0554694100DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5063B86131E41F2003327A0 /* HyvesAPICallHandler.m in Sources */,
+				A5063B88131E41F2003327A0 /* HyvesAPICall.m in Sources */,
+				A5063B8A131E41F2003327A0 /* HyvesAPILayer.m in Sources */,
+				A5063B98131E41F2003327A0 /* BatchedAPICallHandler.m in Sources */,
+				A5063BA0131E41F2003327A0 /* NSDictionary+HyvesApi.m in Sources */,
+				A5063BB4131E41F2003327A0 /* MalformedResponseException.m in Sources */,
+				A5063BED131E41F2003327A0 /* LogoutAPICallHandler.m in Sources */,
+				A5063D08131E4A58003327A0 /* Base64Transcoder.c in Sources */,
+				A5063D28131E4BB1003327A0 /* LockedThread.m in Sources */,
+				A5063D4A131E4C87003327A0 /* HyvesVisibility.m in Sources */,
+				A5063D53131E4CDE003327A0 /* BuzzTypes.m in Sources */,
+				A5063D76131E4E25003327A0 /* HyvesRespectType.m in Sources */,
+				A5063E6D131E7431003327A0 /* AuthRequestTokenAPICallHandler.m in Sources */,
+				A5063F1F131E9694003327A0 /* AuthAccessTokenAPICallHandler.m in Sources */,
+				A521045F132CEE1D00B1F8CE /* AuthorizationViewController.m in Sources */,
+				A57FC78213B9D98A00AE5AA0 /* CDataScanner.m in Sources */,
+				A57FC78413B9D98A00AE5AA0 /* CDataScanner_Extensions.m in Sources */,
+				A57FC78613B9D98A00AE5AA0 /* NSDictionary_JSONExtensions.m in Sources */,
+				A57FC78813B9D98A00AE5AA0 /* CJSONDeserializer.m in Sources */,
+				A57FC78A13B9D98A00AE5AA0 /* CJSONScanner.m in Sources */,
+				A57FC78C13B9D98A00AE5AA0 /* CJSONSerializer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB921F08733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DSTROOT = /tmp/HyvesApiLibrary.dst;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = HyvesApiLibrary_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = HyvesApiLibrary;
+			};
+			name = Debug;
+		};
+		1DEB922008733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/HyvesApiLibrary.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = HyvesApiLibrary_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = HyvesApiLibrary;
+			};
+			name = Release;
+		};
+		1DEB922308733DC00010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DEBUGGING_SYMBOLS = full;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HYVES_API_LIBRARY_BUILD_DIR = $SRCROOT/build;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				SHARED_PRECOMPS_DIR = $HYVES_API_LIBRARY_BUILD_DIR;
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = $HYVES_API_LIBRARY_BUILD_DIR;
+				TOUCH_JSON_SOURCE_DIR = $SRCROOT/../TouchJSON/Source;
+			};
+			name = Debug;
+		};
+		1DEB922408733DC00010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HYVES_API_LIBRARY_BUILD_DIR = $SRCROOT/build;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				SHARED_PRECOMPS_DIR = $HYVES_API_LIBRARY_BUILD_DIR;
+				SKIP_INSTALL = YES;
+				SYMROOT = $HYVES_API_LIBRARY_BUILD_DIR;
+				TOUCH_JSON_SOURCE_DIR = $SRCROOT/../TouchJSON/Source;
+			};
+			name = Release;
+		};
+		A576755A1321507500003DE6 /* Distribution adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HYVES_API_LIBRARY_BUILD_DIR = $SRCROOT/build;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				SHARED_PRECOMPS_DIR = $HYVES_API_LIBRARY_BUILD_DIR;
+				SKIP_INSTALL = YES;
+				SYMROOT = $HYVES_API_LIBRARY_BUILD_DIR;
+				TOUCH_JSON_SOURCE_DIR = $SRCROOT/../TouchJSON/Source;
+			};
+			name = "Distribution adhoc";
+		};
+		A576755B1321507500003DE6 /* Distribution adhoc */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/HyvesApiLibrary.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = HyvesApiLibrary_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = HyvesApiLibrary;
+			};
+			name = "Distribution adhoc";
+		};
+		A576755C1321507E00003DE6 /* Distribution appstore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HYVES_API_LIBRARY_BUILD_DIR = $SRCROOT/build;
+				IPHONEOS_DEPLOYMENT_TARGET = 3.2;
+				OTHER_LDFLAGS = "-ObjC";
+				SDKROOT = iphoneos;
+				SHARED_PRECOMPS_DIR = $HYVES_API_LIBRARY_BUILD_DIR;
+				SKIP_INSTALL = YES;
+				SYMROOT = $HYVES_API_LIBRARY_BUILD_DIR;
+				TOUCH_JSON_SOURCE_DIR = $SRCROOT/../TouchJSON/Source;
+			};
+			name = "Distribution appstore";
+		};
+		A576755D1321507E00003DE6 /* Distribution appstore */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				DSTROOT = /tmp/HyvesApiLibrary.dst;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = HyvesApiLibrary_Prefix.pch;
+				INSTALL_PATH = /usr/local/lib;
+				PRODUCT_NAME = HyvesApiLibrary;
+			};
+			name = "Distribution appstore";
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB921E08733DC00010E9CD /* Build configuration list for PBXNativeTarget "HyvesApiLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB921F08733DC00010E9CD /* Debug */,
+				1DEB922008733DC00010E9CD /* Release */,
+				A576755B1321507500003DE6 /* Distribution adhoc */,
+				A576755D1321507E00003DE6 /* Distribution appstore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB922208733DC00010E9CD /* Build configuration list for PBXProject "HyvesApiLibrary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB922308733DC00010E9CD /* Debug */,
+				1DEB922408733DC00010E9CD /* Release */,
+				A576755A1321507500003DE6 /* Distribution adhoc */,
+				A576755C1321507E00003DE6 /* Distribution appstore */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}
