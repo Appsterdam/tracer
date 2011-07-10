@@ -20,6 +20,8 @@
 	CLLocationManager *locationManager;
 	MBProgressHUD *progressHUD;
 	MKPointAnnotation *nextCheckpoint;
+	CLLocationDistance distanceFromNextCheckpoint;
+	float verticalDistanceFromNextCheckpoint;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
@@ -29,6 +31,7 @@
 @property (nonatomic, retain) IBOutlet UIView *raceStatsView;
 @property (nonatomic, retain) IBOutlet UILabel *stopwatchLabel;
 @property (nonatomic, retain) IBOutlet UILabel *checkpointsLabel;
+@property (nonatomic, retain) IBOutlet UIImageView *arrowImageView;
 
 - (id)initWithCheckpoints:(NSArray *)points;
 - (IBAction)startRace:(id)sender;

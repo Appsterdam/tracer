@@ -18,6 +18,7 @@
 		9560314E13C88030003204F9 /* RaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9560314C13C88030003204F9 /* RaceViewController.m */; };
 		9560314F13C88030003204F9 /* RaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9560314D13C88030003204F9 /* RaceViewController.xib */; };
 		9560315113C8818D003204F9 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560315013C8818D003204F9 /* MapKit.framework */; };
+		95B5192C13C9904400E4DB3E /* race-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95B5192B13C9904400E4DB3E /* race-arrow.png */; };
 		95E0C3AE13C8949D00A8A1F6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */; };
 		A517004313C8BFAA008C8AD0 /* RaceTracksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A517004213C8BFAA008C8AD0 /* RaceTracksViewController.m */; };
 		A53197AF13C9B68000E02F81 /* flags.png in Resources */ = {isa = PBXBuildFile; fileRef = A53197A913C9B68000E02F81 /* flags.png */; };
@@ -82,6 +83,7 @@
 		9560314C13C88030003204F9 /* RaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceViewController.m; sourceTree = "<group>"; };
 		9560314D13C88030003204F9 /* RaceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RaceViewController.xib; sourceTree = "<group>"; };
 		9560315013C8818D003204F9 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		95B5192B13C9904400E4DB3E /* race-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "race-arrow.png"; sourceTree = "<group>"; };
 		95E0C3AD13C8949D00A8A1F6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A517004113C8BFAA008C8AD0 /* RaceTracksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceTracksViewController.h; sourceTree = "<group>"; };
 		A517004213C8BFAA008C8AD0 /* RaceTracksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceTracksViewController.m; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		A537E3DD13C8DFBD00D3BDE1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				95B5192B13C9904400E4DB3E /* race-arrow.png */,
 				A53197A913C9B68000E02F81 /* flags.png */,
 				A53197AA13C9B68000E02F81 /* flags@2x.png */,
 				A53197AB13C9B68000E02F81 /* racemap.png */,
@@ -463,6 +466,7 @@
 				A537E3E113C8DFD900D3BDE1 /* arrow_down_small.png in Resources */,
 				A537E3E213C8DFD900D3BDE1 /* arrow_up_small.png in Resources */,
 				A537E3EA13C8EFA200D3BDE1 /* ResultsViewController.xib in Resources */,
+				95B5192C13C9904400E4DB3E /* race-arrow.png in Resources */,
 				A53197AF13C9B68000E02F81 /* flags.png in Resources */,
 				A53197B013C9B68000E02F81 /* flags@2x.png in Resources */,
 				A53197B113C9B68000E02F81 /* racemap.png in Resources */,
