@@ -31,6 +31,19 @@ TheRaceApp.controllers :tracks do
     end
   end
 
+  post :create, :provides => :json do
+    track = Track.new({ :name => params[:name], :data => params[:data]})
+    if track.save
+      redirect url(:tracks, :show, :id => track.id, :format => content_type)
+    else
+      {
+        :ok => false,
+        :messages => track.errors,
+        :data => params
+      }.to_json
+    end
+  end
+
   post :start, :map => "/tracks/:id/start", :provides => :json do
     track = Track.get(params[:id])
     race = track.start_race(params[:username])

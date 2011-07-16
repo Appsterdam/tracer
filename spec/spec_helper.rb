@@ -1,6 +1,8 @@
 PADRINO_ENV = 'test' unless defined?(PADRINO_ENV)
 require File.expand_path(File.dirname(__FILE__) + "/../config/boot")
 
+# load fixtures
+Dir[File.join(Padrino.root, 'spec/fixtures/*.rb')].each { |f| require f }
 
 RSpec.configure do |conf|
   conf.mock_with :mocha
@@ -14,5 +16,10 @@ def app
   TheRaceApp.tap { |app|  }
 end
 
-# load fixtures
-Dir[File.join(Padrino.root, 'spec/fixtures/*.rb')].each { |f| require f }
+# def seed_tracks
+#   track_data.each do |k,v|
+#     puts k
+#     Track.gen(:name => k, :data => v)
+#   end
+# end
+
