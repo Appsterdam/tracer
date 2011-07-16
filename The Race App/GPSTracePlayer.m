@@ -10,11 +10,14 @@
 
 @interface GPSTracePlayer ()
 
-@property(nonatomic, assign) BOOL         isPlaying;
-@property(nonatomic, assign) NSUInteger   currentIndex;
-@property(nonatomic, retain) NSDate     * currentTimestamp;
+@property(nonatomic, assign) BOOL             isPlaying;
+@property(nonatomic, assign) NSUInteger       currentIndex;
+@property(nonatomic, retain) NSDate         * currentTimestamp;
+@property(nonatomic, assign) NSTimeInterval   logToPlayerStartDelta;
 
 - (void)synthesizeNextEvent;
+
+/* - */
 
 @property(nonatomic, assign) CLLocationAccuracy desiredAccuracy;
 @property(nonatomic, assign) CLLocationDistance distanceFilter;
@@ -24,7 +27,6 @@
 
 - (void)startUpdatingHeading;
 - (void)stopUpdatingHeading;
-
 
 @end
 
@@ -36,6 +38,7 @@
 @synthesize isPlaying;
 @synthesize currentIndex;
 @synthesize currentTimestamp;
+@synthesize logToPlayerStartDelta;
 
 - (CLLocationManager *)playerAsLocationManager;
 {
@@ -44,9 +47,10 @@
 
 - (void)startPlayingTrace;
 {
-	self.isPlaying        = YES;
-	self.currentIndex     = NSNotFound;
-	self.currentTimestamp = nil;
+	self.isPlaying              = YES;
+	self.currentIndex           = NSNotFound;
+	self.currentTimestamp       = nil;
+	self.logToPlayerStartDelta  = - [self.trace.startTime timeIntervalSinceNow];
 	
 	[self synthesizeNextEvent];	
 }
@@ -70,11 +74,20 @@
 		return;
 	}
 	
-	CLLocation * event     = [self.trace pointAtIndex:self.currentIndex];
-	CLLocation * nextEvent = [self nextEvent];
+	CLLocation * event            = [self.trace pointAtIndex:self.currentIndex];
+	CLLocation * nextEvent        = [self nextEvent];
+	CLLocation * timeRebasedEvent;;
+	
+	{
+		timeRebasedEvent = [[CLLocation alloc] initWithCoordinate:event.coordinate
+														 altitude:event.altitude
+											   horizontalAccuracy:event.horizontalAccuracy
+												 verticalAccuracy:event.verticalAccuracy
+														timestamp:[event.timestamp dateByAddingTimeInterval:self.logToPlayerStartDelta]];
+	}
 	
 	[self.delegate locationManager:self.playerAsLocationManager
-			   didUpdateToLocation:event
+			   didUpdateToLocation:timeRebasedEvent
 					  fromLocation:nil]; // we don't use it, so...
 	
 	if (nextEvent != nil)

@@ -9,12 +9,16 @@
 #import "RaceViewController.h"
 #import "Trace.h"
 #import "TraceOverlayView.h"
+#import "GPSTracePlayer.h"
 
 @interface RaceViewController ()
 
-@property(nonatomic, retain) Trace            * currentTrace;
-@property(nonatomic, retain) TraceOverlayView * currentTraceView;
+@property(nonatomic, retain) Trace             * currentTrace;
+@property(nonatomic, retain) TraceOverlayView  * currentTraceView;
 
+@property(nonatomic, retain) GPSTracePlayer    * tracePlayer;
+
+@property(nonatomic, retain) MKPointAnnotation * ghostAnnotation;
 
 - (void)userLocationDetected:(CLLocation *)newLocation;
 - (void)userIsAtStartCheckPoint;
@@ -43,9 +47,13 @@ static NSUInteger CheckpointMetersThreshold = 15;
 @synthesize playTraceButton;
 @synthesize saveTraceButton;
 
+@synthesize tracePlayer;
+@synthesize ghostAnnotation;
+
 - (id)initWithCheckpoints:(NSArray *)points {
 	if (![super init])
 		return nil;
+	
 	checkpoints = [points retain];
 	nextCheckpoint = [points objectAtIndex:0];
 	
@@ -53,6 +61,8 @@ static NSUInteger CheckpointMetersThreshold = 15;
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     locationManager.distanceFilter = 1;
+	
+	self.tracePlayer = [[[GPSTracePlayer alloc] init] autorelease];
 	
 	return self;
 }
@@ -63,6 +73,8 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 	self.saveTraceButton = nil;
 	self.playTraceButton = nil;
+	
+	self.tracePlayer = nil;
 	
 	[locationManager release];
 	[mapView release];
@@ -95,7 +107,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	self.currentTraceView = nil;	
 	self.saveTraceButton = nil;
 	self.playTraceButton = nil;
-
+	self.ghostAnnotation = nil;
 
 	[self setMapView:nil];
 	[self setStartRaceView:nil];
@@ -114,6 +126,8 @@ static NSUInteger CheckpointMetersThreshold = 15;
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	
 	[self.currentTrace addPoint:newLocation];
+	
+	self.ghostAnnotation.coordinate = newLocation.coordinate;
 	
 	if (!userLocated) {
 		if ([newLocation.timestamp timeIntervalSinceNow] > 15)
@@ -187,6 +201,21 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	// If it's the user location, just return nil.
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
+	
+	if (annotation == self.ghostAnnotation)
+	{
+		static NSString * ghostid = @"ghostid";
+		MKPinAnnotationView * ghostView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:ghostid];
+		
+		if (ghostView == nil)
+		{
+			ghostView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation
+														 reuseIdentifier:ghostid] autorelease];
+			ghostView.pinColor = MKPinAnnotationColorGreen;
+		}
+		
+		return ghostView;
+	}
 	
 	static NSString *checkpointViewIdentifier = @"checkpointViewIdentifier";
 	MKPinAnnotationView *checkpointView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:checkpointViewIdentifier];
@@ -281,7 +310,17 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (IBAction)playTrace:(id)sender;
 {
+	[locationManager release];
 	
+	locationManager = [self.tracePlayer.playerAsLocationManager retain];
+	locationManager.delegate = self;
+	
+	self.tracePlayer.trace = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"default-trace" ofType:nil]];
+	
+	[self.tracePlayer startPlayingTrace];
+	
+	self.ghostAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
+	[mapView addAnnotation:self.ghostAnnotation];
 }
 
 @end

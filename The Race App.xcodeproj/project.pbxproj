@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3FB0AA0F13D1BC8300C2FDE1 /* GPSTracePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB0AA0E13D1BC8300C2FDE1 /* GPSTracePlayer.m */; };
+		3FB0AA1113D1D6F800C2FDE1 /* default-trace in Resources */ = {isa = PBXBuildFile; fileRef = 3FB0AA1013D1D6F800C2FDE1 /* default-trace */; };
 		3FDE189513D1A7DD0035498C /* TraceOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE189413D1A7DD0035498C /* TraceOverlayView.m */; };
 		3FDE189913D1A8EC0035498C /* Trace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE189813D1A8EC0035498C /* Trace.m */; };
 		950CE1D813C8BE09009BC002 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 950CE1D713C8BE09009BC002 /* MBProgressHUD.m */; };
@@ -79,6 +80,7 @@
 /* Begin PBXFileReference section */
 		3FB0AA0D13D1BC8300C2FDE1 /* GPSTracePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPSTracePlayer.h; path = "The Race App/GPSTracePlayer.h"; sourceTree = "<group>"; };
 		3FB0AA0E13D1BC8300C2FDE1 /* GPSTracePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPSTracePlayer.m; path = "The Race App/GPSTracePlayer.m"; sourceTree = "<group>"; };
+		3FB0AA1013D1D6F800C2FDE1 /* default-trace */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "default-trace"; sourceTree = "<group>"; };
 		3FDE189313D1A7DD0035498C /* TraceOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceOverlayView.h; sourceTree = "<group>"; };
 		3FDE189413D1A7DD0035498C /* TraceOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceOverlayView.m; sourceTree = "<group>"; };
 		3FDE189713D1A8EC0035498C /* Trace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trace.h; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				9560312813C84D0C003204F9 /* InfoPlist.strings */,
 				9560312B13C84D0C003204F9 /* The Race App-Prefix.pch */,
 				9560312C13C84D0C003204F9 /* main.m */,
+				3FB0AA1013D1D6F800C2FDE1 /* default-trace */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				A53197B313C9B68000E02F81 /* trophy.png in Resources */,
 				A53197B413C9B68000E02F81 /* trophy@2x.png in Resources */,
 				A5D83D5613D19CAE00B68EC1 /* FBDialog.bundle in Resources */,
+				3FB0AA1113D1D6F800C2FDE1 /* default-trace in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
