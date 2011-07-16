@@ -15,12 +15,14 @@
     IBOutlet UITableView *tableView;
     
     NSMutableArray *coordinates;
+    NSString *name;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) IBOutlet UITableView *tableView;
 
 @property (nonatomic, retain) NSMutableArray *coordinates;
+@property (nonatomic, retain) NSString *name;
 
 - (IBAction)segmentValueChanged:(id)sender;
 - (IBAction)addPin:(id)sender;

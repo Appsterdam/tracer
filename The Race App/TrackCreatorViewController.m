@@ -11,7 +11,7 @@
 #import "DDAnnotationView.h"
 
 @implementation TrackCreatorViewController
-@synthesize mapView, tableView, coordinates;
+@synthesize mapView, tableView, coordinates, name;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +26,17 @@
         [saveItem release];
     }
     return self;
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex==0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        UITextField *txt = (UITextField *)[alertView viewWithTag:99];
+        self.title = txt.text;
+        
+        [self.mapView setRegion:MKCoordinateRegionMake([[self.mapView userLocation] location].coordinate, MKCoordinateSpanMake(0.05, 0.05)) animated:YES];
+    }
 }
 
 - (IBAction)segmentValueChanged:(id)sender {
@@ -60,8 +71,36 @@
 		return;
     } else {
         //Save track and pass it on to some object.
+        NSMutableArray *locationArray = [[NSMutableArray alloc] init];
         for (int i = 0; i<[self.coordinates count]; i++) {
-            
+            DDAnnotation *ann = [self.coordinates objectAtIndex:i];
+            CLLocation *loc = [[CLLocation alloc] initWithLatitude:ann.coordinate.latitude
+                                                         longitude:ann.coordinate.longitude];
+            [locationArray addObject:loc];
+            [loc release];
+        }
+        NSLog(@"\r\n Track wit name: %@ \r\n Coordinates: %@",self.title, locationArray);
+    }
+}
+
+- (void)handleLongPress:(id)sender {
+    NSLog(@"sender: %@", sender);
+
+    UILongPressGestureRecognizer *gestureRecognizer = (UILongPressGestureRecognizer*)sender;
+    if ([gestureRecognizer state]==UIGestureRecognizerStateBegan) {
+        CGPoint point = [gestureRecognizer locationInView:[gestureRecognizer view]];
+        
+        CLLocationCoordinate2D coord = [self.mapView convertPoint:point toCoordinateFromView:self.mapView];
+        
+        DDAnnotation *annotation = [[[DDAnnotation alloc] initWithCoordinate:coord addressDictionary:nil] autorelease];
+        annotation.title = [NSString stringWithFormat:@"Checkpoint: %d", [self.coordinates count]+1];;
+        annotation.subtitle = [NSString	stringWithFormat:@"%f %f", annotation.coordinate.latitude, annotation.coordinate.longitude];
+        
+        [self.mapView addAnnotation:annotation];
+        [self.coordinates addObject:annotation];
+        
+        if (![self.tableView isHidden]) {
+            [self.tableView reloadData];
         }
     }
 }
@@ -83,7 +122,7 @@
 }
 
 - (IBAction)addPin:(id)sender {
-    DDAnnotation *annotation = [[[DDAnnotation alloc] initWithCoordinate:[[self.mapView userLocation]location].coordinate addressDictionary:nil] autorelease];
+    DDAnnotation *annotation = [[[DDAnnotation alloc] initWithCoordinate:[self.mapView centerCoordinate] addressDictionary:nil] autorelease];
 	annotation.title = [NSString stringWithFormat:@"Checkpoint: %d", [self.coordinates count]+1];;
 	annotation.subtitle = [NSString	stringWithFormat:@"%f %f", annotation.coordinate.latitude, annotation.coordinate.longitude];
 	
@@ -143,9 +182,9 @@
     cell.textLabel.text = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
     ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).title = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
     
-    DDAnnotation *startAnnotation = [self.coordinates objectAtIndex:[indexPath row]];
+    /*DDAnnotation *startAnnotation = [self.coordinates objectAtIndex:[indexPath row]];
 	MKPinAnnotationView *checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
-	//checkPointPinView.image = [UIImage imageNamed:@"race-arrow.png"];    
+	checkPointPinView.image = [UIImage imageNamed:[NSString stringWithFormat:@"PinNumber%d.png", [indexPath row]+1]];*/    
     return cell;
 }
 
@@ -214,8 +253,10 @@
 {
     [super viewDidLoad];
     [self.mapView setDelegate:self];
-    [self.mapView setCenterCoordinate:[[self.mapView userLocation]location].coordinate];
     
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    [self.mapView addGestureRecognizer:longPress];
+    [longPress release];
     // Do any additional setup after loading the view from its nib.
 }
 

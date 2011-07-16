@@ -153,6 +153,24 @@
     TrackCreatorViewController *creationController = [[TrackCreatorViewController alloc] initWithNibName:@"TrackCreatorViewController" bundle:nil];
     [creationController setHidesBottomBarWhenPushed:YES];
     [self.navigationController pushViewController:creationController animated:YES];
+    
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Name your track" message:@"\n"
+                                                           delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    
+    UITextField *textField= [[UITextField alloc] initWithFrame:CGRectMake(16,42,252,25)];
+    textField.font = [UIFont systemFontOfSize:18];
+    textField.backgroundColor = [UIColor whiteColor];
+    textField.keyboardAppearance = UIKeyboardAppearanceAlert;
+    textField.borderStyle = UITextBorderStyleLine;
+    [textField setTag:99];
+    
+    [textField becomeFirstResponder];
+    [alert addSubview:textField];
+    [alert show];
+    [alert setTransform:CGAffineTransformMakeTranslation(0,99)];
+    [alert setDelegate:creationController];
+    [alert release];
     [creationController release];
 }
 
