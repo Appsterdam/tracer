@@ -11,6 +11,7 @@
 #import "RaceViewController.h"
 #import "Track.h"
 #import "MBProgressHUD.h"
+#import "TrackCreatorViewController.h"
 
 
 @implementation RaceTracksViewController
@@ -29,6 +30,7 @@
         
         self.tabBarItem = raceTracksItem;
         self.tracks = [NSArray array];
+        
     }
     return self;
 }
@@ -64,7 +66,7 @@
     ownView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
     self.view = ownView;
-
+    
     tableView = [[UITableView alloc] initWithFrame:self.view.bounds 
                                              style:UITableViewStylePlain];
     
@@ -77,38 +79,38 @@
     tableView.rowHeight = 60.0;
     
     [self.view addSubview:tableView];
-
+    
 }
 
 -(NSArray*)makeHardcodedTracks
 {
     NSMutableArray* raceTrackArray = [NSMutableArray arrayWithCapacity:20];
-
+    
     [raceTrackArray addObject:
      [[[Track alloc] initWithTrackName:@"Amsterdam Heroes" 
-                           trackScore:@"34:05" 
-                          trackWinner:@"Peter" 
+                            trackScore:@"34:05" 
+                           trackWinner:@"Peter" 
                              trackData:nil] autorelease]];
-
+    
     [raceTrackArray addObject:
      [[[Track alloc] initWithTrackName:@"North Holland Scenic" 
                             trackScore:@"1:30:05" 
                            trackWinner:@"Mike" 
                              trackData:nil] autorelease]];
     
-
+    
     [raceTrackArray addObject:
      [[[Track alloc] initWithTrackName:@"Harley Poche" 
                             trackScore:@"26:05" 
                            trackWinner:@"Jeroen" 
                              trackData:nil] autorelease]];
-
+    
     [raceTrackArray addObject:
      [[[Track alloc] initWithTrackName:@"Tortoise Meadows" 
                             trackScore:@"59:20" 
                            trackWinner:@"YourBestFriend" 
                              trackData:nil] autorelease]];
-
+    
     [raceTrackArray addObject:
      [[[Track alloc] initWithTrackName:@"Dark Lunatic Trail" 
                             trackScore:@"16:00" 
@@ -129,6 +131,9 @@
     self.navigationController.navigationBar.tintColor = [UIColor blackColor];
     self.navigationController.tabBarItem = self.tabBarItem;
     
+    UIBarButtonItem *addItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newTrack:)];
+    [self.navigationItem setRightBarButtonItem:addItem];
+    [addItem release];
     
     //create a pretty hud
     hud = [[MBProgressHUD alloc] initWithView:self.view];
@@ -144,13 +149,20 @@
 }
 
 
+- (void)newTrack:(id)sender {
+    TrackCreatorViewController *creationController = [[TrackCreatorViewController alloc] initWithNibName:@"TrackCreatorViewController" bundle:nil];
+    [creationController setHidesBottomBarWhenPushed:YES];
+    [self.navigationController pushViewController:creationController animated:YES];
+    [creationController release];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     
     [hud release];
     [api release];
-
+    
     tableView.delegate = nil;
     tableView.dataSource = nil;
     
@@ -169,7 +181,7 @@
     {
         [self viewDidUnload];
     }
-
+    
     [tracks release];
     
     [super dealloc];
@@ -207,7 +219,7 @@
     
 #warning "Hardcoded!"
     cell.checkPointCountLabel.text = [NSString stringWithFormat:@"%d checkpoints",
-                                 indexPath.row + 3/*[track.trackData count]*/];
+                                      indexPath.row + 3/*[track.trackData count]*/];
     
     return cell;
 }
