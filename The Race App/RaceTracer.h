@@ -6,30 +6,36 @@
 //  Copyright 2011 Pawn Company Ltd. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class MKPointAnnotation;
 
-@protocol RaceTracerDelegate <NSObject>
+@protocol RaceTracerDelegate;
 
-- (void)userFirstLocationDetected:(CLLocation *)userLocation;
-- (void)userMovedToNewLocation:(CLLocation *)newLocation;
-- (void)usedChangedHeading:(CLHeading *)newHeading;
+@interface RaceTracer : NSObject <CLLocationManagerDelegate>
+
+@property(nonatomic, retain) NSArray    * checkpoints;
+@property(nonatomic, assign) NSUInteger   checkpointsLeft;
+
+@property(nonatomic, assign) float        headingToNextCheckpoint;
+
+- (id)initWithDelegate:(id<RaceTracerDelegate>)aDelegate;
+
+- (void)startLocationServices;
+- (void)startRace;
+- (void)stopRace;
+
+@property(nonatomic, retain, readonly) MKPointAnnotation * annotationForDebugTrace;
+- (void)playDebugTrace;
 
 @end
 
+@protocol RaceTracerDelegate <NSObject>
 
-@interface RaceTracer : NSObject <CLLocationManagerDelegate> {
-	BOOL userLocated;
-	id<RaceTracerDelegate> delegate;
-	CLLocationManager *locationManager;
-}
+- (void)raceTracer:(RaceTracer *)tracer gotFirstFix:(CLLocation *)userLocation;
+- (void)raceTracer:(RaceTracer *)tracer reachedCheckpointAtIndex:(NSUInteger)checkpointReachedIdx;
 
-- (id)initWithDelegate:(id<RaceTracerDelegate>)aDelegate;
-- (void)startTrackingUserLocation;
-- (void)startTrackingUserHeading;
-- (void)startRecordingUserLocation;
-- (void)stopTrackingUserLocation;
-- (void)stopTrackingUserHeading;
+- (void)raceTracerReachedStartPoint:(RaceTracer *)tracer;
+- (void)raceTracerReachedEndPoint:(RaceTracer *)tracer;
 
 @end
