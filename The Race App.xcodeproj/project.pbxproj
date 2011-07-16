@@ -51,6 +51,8 @@
 		A5FACFD613C8C09100522E43 /* RaceTrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */; };
 		A5FACFD913C8C44B00522E43 /* RaceTrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */; };
 		D4512D0A13D1E1BC008CCDDF /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D4512D0913D1E1BC008CCDDF /* GameKitHelper.m */; };
+		D461F1F913D23E4100C8C8CA /* GPSTracePlayer.h in Sources */ = {isa = PBXBuildFile; fileRef = D461F1F713D23E4000C8C8CA /* GPSTracePlayer.h */; };
+		D461F1FA13D23E4100C8C8CA /* GPSTracePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D461F1F813D23E4000C8C8CA /* GPSTracePlayer.m */; };
 		D496A0F313D1B4BA00EE18B1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D496A0F213D1B4BA00EE18B1 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F23F584913D1B94200DD4672 /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F23F584013D1B94200DD4672 /* DDAnnotation.m */; };
 		F23F584A13D1B94200DD4672 /* DDAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = F23F584213D1B94200DD4672 /* DDAnnotationView.m */; };
@@ -157,6 +159,8 @@
 		A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RaceTrackTableViewCell.xib; sourceTree = "<group>"; };
 		D4512D0813D1E1BC008CCDDF /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameKitHelper.h; path = GameKitHelpers/GameKitHelper.h; sourceTree = "<group>"; };
 		D4512D0913D1E1BC008CCDDF /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameKitHelper.m; path = GameKitHelpers/GameKitHelper.m; sourceTree = "<group>"; };
+		D461F1F713D23E4000C8C8CA /* GPSTracePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GPSTracePlayer.h; path = "The Race App/GPSTracePlayer.h"; sourceTree = "<group>"; };
+		D461F1F813D23E4000C8C8CA /* GPSTracePlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GPSTracePlayer.m; path = "The Race App/GPSTracePlayer.m"; sourceTree = "<group>"; };
 		D496A0F213D1B4BA00EE18B1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		F23F583F13D1B94200DD4672 /* DDAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAnnotation.h; sourceTree = "<group>"; };
 		F23F584013D1B94200DD4672 /* DDAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAnnotation.m; sourceTree = "<group>"; };
@@ -265,6 +269,8 @@
 		9560311013C84D0C003204F9 = {
 			isa = PBXGroup;
 			children = (
+				D461F1F713D23E4000C8C8CA /* GPSTracePlayer.h */,
+				D461F1F813D23E4000C8C8CA /* GPSTracePlayer.m */,
 				9560312513C84D0C003204F9 /* The Race App */,
 				9560311E13C84D0C003204F9 /* Frameworks */,
 				9560311C13C84D0C003204F9 /* Products */,
@@ -614,6 +620,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D461F1F913D23E4100C8C8CA /* GPSTracePlayer.h in Sources */,
+				D461F1FA13D23E4100C8C8CA /* GPSTracePlayer.m in Sources */,
 				9560312D13C84D0C003204F9 /* main.m in Sources */,
 				9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */,
 				9560314E13C88030003204F9 /* RaceViewController.m in Sources */,
