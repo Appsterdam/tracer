@@ -591,7 +591,7 @@
 			</dict>
 		</dict>
 		<string>file://localhost/Users/midas/Desktop/TheRaceApp/The%20Race%20App/arrow_down_small.png</string>
-		<real>332506425.07197201</real>
+		<real>332510627.62282997</real>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -1203,7 +1203,7 @@
 		</dict>
 		<string>IDEDeviceLocation</string>
 		<string>IDEDeviceArchitecture</string>
-		<string>dvtdevice-iphone:1363fa002615079e261fde68e25763b0c6f05b47</string>
+		<string>dvtdevice-iphonePlaceholder:placeholder</string>
 		<string>armv7</string>
 		<dict>
 			<key>$class</key>
@@ -3248,7 +3248,7 @@
 				<integer>293</integer>
 			</dict>
 		</dict>
-		<real>332506425.07440102</real>
+		<real>332510627.62528902</real>
 		<dict>
 			<key>$class</key>
 			<dict>
