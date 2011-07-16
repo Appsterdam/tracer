@@ -6,7 +6,7 @@ TheRaceApp.controllers :tracks do
     }.to_json
   end
 
-  get :show, :with => :id, :provides => :json do
+  get :show, :map => "/tracks/:id", :provides => :json do
     track = Track.get(params[:id])
     {
       :ok => true,
