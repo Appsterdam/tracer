@@ -16,10 +16,3 @@ def app
   TheRaceApp.tap { |app|  }
 end
 
-# def seed_tracks
-#   track_data.each do |k,v|
-#     puts k
-#     Track.gen(:name => k, :data => v)
-#   end
-# end
-

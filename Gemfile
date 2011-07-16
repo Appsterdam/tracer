@@ -7,6 +7,9 @@ source :rubygems
 gem 'rake'
 gem 'rack-flash'
 
+gem 'uuid'
+gem 'json_pure'
+
 # Component requirements
 gem 'compass'
 gem 'haml'
@@ -19,7 +22,8 @@ gem 'dm-constraints'
 gem 'dm-aggregates'
 gem 'dm-serializer'
 gem 'dm-core'
-gem 'uuid'
+gem 'dm-types'
+
 
 # Test requirements
 gem 'mocha', :group => "test"

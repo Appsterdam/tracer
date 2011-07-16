@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe "TracksController" do
   let(:json) { JSON.parse(last_response.body) }
+  let(:valid_data) { Track.make.data.to_json }
+
   before do
     DataMapper.auto_migrate!
   end
@@ -77,7 +79,7 @@ describe "TracksController" do
     let(:track) { Track.gen }
 
     before do
-      post TheRaceApp.url(:tracks, :start, :id => track.id), { :username => "emma" }
+      post TheRaceApp.url(:tracks, :start, :id => track.id), { :username => "emma", :data => valid_data }
     end
 
     it 'responds with json' do
@@ -86,7 +88,7 @@ describe "TracksController" do
 
     it 'creates an new race' do
       expect do
-        post TheRaceApp.url(:tracks, :start, :id => track.id), { :username => "emma" }
+        post TheRaceApp.url(:tracks, :start, :id => track.id), { :username => "emma", :data => valid_data }
       end.to change(track.races, :count).by(1)
     end
 
@@ -160,12 +162,12 @@ describe "TracksController" do
 
     it 'creates a new track' do
       expect do
-        put TheRaceApp.url(:tracks, :create), { :name => "A new track name" }
+        put TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => valid_data }
       end.to change(Track, :count).by(1)
     end
 
     it 'redirects to the created resource' do
-      put TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => "[{'lat':123, 'long': '456'}]" }
+      put TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => valid_data }
       last_response.location.should == "http://example.org" + TheRaceApp.url(:tracks, :show, :id => Track.last.id, :format => :json)
     end
 

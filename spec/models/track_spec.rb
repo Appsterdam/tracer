@@ -97,14 +97,4 @@ describe "Track Model" do
       end
     end
   end
-
-  describe "location" do
-    before do
-      seed_tracks
-    end
-
-    it 'helo' do
-      
-    end
-  end
 end
