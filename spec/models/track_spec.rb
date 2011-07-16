@@ -21,6 +21,16 @@ describe "Track Model" do
     end
   end
 
+  describe "#best_race" do
+    it 'only returns races not in progress' do
+      r1 = track.start("emma")
+      r2 = track.start("judy")
+      r3 = track.start("jerrol")
+
+      track.best_race.should be_nil
+    end
+  end
+
   describe "#start_race" do
     let(:track) { Track.gen }
     let(:race) { @race }
