@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 
 
-@protocol LocationTracerDelegate <NSObject>
+@protocol RaceTracerDelegate <NSObject>
 
 - (void)userFirstLocationDetected:(CLLocation *)userLocation;
 - (void)userMovedToNewLocation:(CLLocation *)newLocation;
@@ -21,12 +21,15 @@
 
 @interface RaceTracer : NSObject <CLLocationManagerDelegate> {
 	BOOL userLocated;
-	id<LocationTracerDelegate> delegate;
+	id<RaceTracerDelegate> delegate;
 	CLLocationManager *locationManager;
-	NSMutableArray *trace;
 }
 
+- (id)initWithDelegate:(id<RaceTracerDelegate>)aDelegate;
 - (void)startTrackingUserLocation;
 - (void)startTrackingUserHeading;
+- (void)startRecordingUserLocation;
+- (void)stopTrackingUserLocation;
+- (void)stopTrackingUserHeading;
 
 @end

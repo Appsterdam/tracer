@@ -11,12 +11,11 @@
 
 @implementation RaceTracer
 
-- (id)initWithDelegate:(id<LocationTracerDelegate>)aDelegate {
+- (id)initWithDelegate:(id<RaceTracerDelegate>)aDelegate {
     if (![super init])
         return nil;
 	
 	delegate = aDelegate;
-	trace = [[NSMutableArray array] retain];
 	
 	// Set up the location manager to track user position.
 	// We want updates every meter to keep an accurate trace.
@@ -28,7 +27,6 @@
 }
 
 - (void)dealloc {
-    [trace release];
     [super dealloc];
 }
 
@@ -36,6 +34,8 @@
 #pragma mark Public
 
 - (void)startTrackingUserLocation {
+	// We start tracking user location to guide him to the starting point in the race
+	// but we don't record his trace because the race is not started yet.
 	[locationManager startUpdatingLocation];
 }
 
@@ -44,7 +44,15 @@
 }
 
 - (void)startRecordingUserLocation {
-	
+	// Start recording user trace when the race starts.
+}
+
+- (void)stopTrackingUserLocation {
+	[locationManager stopUpdatingLocation];
+}
+
+- (void)stopTrackingUserHeading {
+	[locationManager stopUpdatingHeading];
 }
 
 #pragma mark -
@@ -61,7 +69,6 @@
 	}
 	
 	// Save the new location in the trace and pass it to the delegate
-	[trace addObject:newLocation];
 	[delegate userMovedToNewLocation:newLocation];
 }
 
@@ -69,6 +76,7 @@
 	// Discard inaccurate headings.
 	if (newHeading.headingAccuracy < 0)
 		return;
+	
 	[delegate usedChangedHeading:newHeading];
 }
 

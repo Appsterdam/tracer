@@ -37,11 +37,12 @@ static NSUInteger CheckpointMetersThreshold = 15;
 		return nil;
 	checkpoints = [points retain];
 	nextCheckpoint = [points objectAtIndex:0];
+	raceTracer = [[RaceTracer alloc] initWithDelegate:self];
 	return self;
 }
 
 - (void)dealloc {
-	[locationManager release];
+	[raceTracer release];
 	[mapView release];
 	[startRaceView release];
 	[startButton release];
@@ -58,13 +59,11 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-	
 	progressHUD = [[[MBProgressHUD alloc] initWithView:self.view] autorelease];
 	progressHUD.labelText = @"Getting your location";
 	[self.view addSubview:progressHUD];
 	[progressHUD show:YES];
-	
-	[locationManager startUpdatingHeading];
+	[raceTracer startTrackingUserLocation];
 }
 
 - (void)viewDidUnload {
@@ -84,6 +83,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (void)userFirstLocationDetected:(CLLocation *)newLocation {
 	[progressHUD hide:YES];
+	[raceTracer startTrackingUserHeading];
 	CLLocationDistance maxDistanceFromUser = 0;
 	for (MKPointAnnotation *checkpoint in checkpoints) {
 		CLLocation *checkpointLocation = [[[CLLocation alloc] initWithLatitude:checkpoint.coordinate.latitude
@@ -124,8 +124,8 @@ static NSUInteger CheckpointMetersThreshold = 15;
 																cancelButtonTitle:@"Yes, I'm cool"
 																otherButtonTitles:nil] autorelease];
 		[raceCompletedAlertView show];
-		[locationManager stopUpdatingLocation];
-		[locationManager stopUpdatingHeading];
+		[raceTracer stopTrackingUserLocation];
+		[raceTracer stopTrackingUserHeading];
 		return;
 	}
 	
@@ -142,6 +142,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (IBAction)startRace:(id)sender {
 	racing = YES;
+	[raceTracer startRecordingUserLocation];
 	[self startStopwatch];
 	[self updateCheckpointsLabel];
 	
