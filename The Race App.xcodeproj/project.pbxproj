@@ -51,7 +51,6 @@
 		A5FACFD613C8C09100522E43 /* RaceTrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */; };
 		A5FACFD913C8C44B00522E43 /* RaceTrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */; };
 		D4512D0A13D1E1BC008CCDDF /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D4512D0913D1E1BC008CCDDF /* GameKitHelper.m */; };
-		D461F1F913D23E4100C8C8CA /* GPSTracePlayer.h in Sources */ = {isa = PBXBuildFile; fileRef = D461F1F713D23E4000C8C8CA /* GPSTracePlayer.h */; };
 		D461F1FA13D23E4100C8C8CA /* GPSTracePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D461F1F813D23E4000C8C8CA /* GPSTracePlayer.m */; };
 		D496A0F313D1B4BA00EE18B1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D496A0F213D1B4BA00EE18B1 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F23F584913D1B94200DD4672 /* DDAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F23F584013D1B94200DD4672 /* DDAnnotation.m */; };
@@ -620,7 +619,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D461F1F913D23E4100C8C8CA /* GPSTracePlayer.h in Sources */,
 				D461F1FA13D23E4100C8C8CA /* GPSTracePlayer.m in Sources */,
 				9560312D13C84D0C003204F9 /* main.m in Sources */,
 				9560313013C84D0C003204F9 /* The_Race_AppAppDelegate.m in Sources */,
@@ -697,9 +695,10 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -713,7 +712,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_SYMBOLS_PRIVATE_EXTERN = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -725,7 +726,7 @@
 		9560313713C84D0C003204F9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -741,7 +742,7 @@
 		9560313813C84D0C003204F9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
+				ALWAYS_SEARCH_USER_PATHS = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "The Race App/The Race App-Prefix.pch";

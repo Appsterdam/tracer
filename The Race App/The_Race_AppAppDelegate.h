@@ -12,6 +12,11 @@
 
 @class Facebook;
 
+#if USEGAMEKIT
+@class GKPlayer;
+#endif
+
+
 @interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate> 
 {
     UIWindow*               window;
