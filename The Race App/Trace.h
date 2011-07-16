@@ -12,7 +12,7 @@
 
 @interface Trace : NSObject
 
-@property(nonatomic, readonly) id<TraceDelegate> delegate;
+@property(nonatomic, assign) id<TraceDelegate> delegate;
 
 @property(nonatomic, readonly) NSDate * startTime;
 @property(nonatomic, readonly) NSDate * endTime;

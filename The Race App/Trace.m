@@ -8,7 +8,6 @@
 
 #import "Trace.h"
 
-
 @interface Trace()
 @property(nonatomic, retain) NSMutableArray * trace;
 @property(nonatomic, retain) NSMutableArray * timestamps;
