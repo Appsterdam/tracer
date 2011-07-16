@@ -17,7 +17,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         self.coordinates = [NSMutableArray array];
         
         UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTrack:)];
@@ -28,8 +27,11 @@
     return self;
 }
 
+//Alertview is active when the view appears. If the user doesn't give in a track name pop the viewcontroller
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex==0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([((UITextField *)[alertView viewWithTag:99]).text length]==0) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         UITextField *txt = (UITextField *)[alertView viewWithTag:99];
@@ -42,13 +44,13 @@
 - (IBAction)segmentValueChanged:(id)sender {
     UISegmentedControl *segment = (UISegmentedControl *)sender;
     switch (segment.selectedSegmentIndex) {
-        case 0:{
+        case 0:{ //show Map
             [self.tableView setHidden:YES];
             [self.mapView setHidden:NO];
             [self.navigationItem rightBarButtonItem].enabled = NO;
         }
             break;
-        case 1:{
+        case 1:{ //show Tableview
             [self.mapView setHidden:YES];
             [self.tableView setHidden:NO];
             [self.tableView reloadData];
@@ -79,13 +81,12 @@
             [locationArray addObject:loc];
             [loc release];
         }
-        NSLog(@"\r\n Track wit name: %@ \r\n Coordinates: %@",self.title, locationArray);
+#warning Incomplete implementation! Still have to upload the LocationArray to server.
+        [locationArray release];
     }
 }
 
 - (void)handleLongPress:(id)sender {
-    NSLog(@"sender: %@", sender);
-
     UILongPressGestureRecognizer *gestureRecognizer = (UILongPressGestureRecognizer*)sender;
     if ([gestureRecognizer state]==UIGestureRecognizerStateBegan) {
         CGPoint point = [gestureRecognizer locationInView:[gestureRecognizer view]];
@@ -105,6 +106,7 @@
     }
 }
 
+//Tableview enter editmode
 - (void)editTrack:(id)sender {
     [tableView setEditing: YES animated: YES];
     
@@ -139,29 +141,21 @@
     [self.mapView release];
     [self.tableView release];
     [self.coordinates release];
+    [self.name release];
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 #pragma mark - 
 #pragma mark UITableView Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [self.coordinates count];
 }
 
@@ -175,16 +169,13 @@
         cell.showsReorderControl = YES;
     }
     
-    // Configure the cell...
-    
     CLLocationCoordinate2D coordinate = ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).coordinate;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%f %f", coordinate.latitude, coordinate.longitude];
     cell.textLabel.text = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
+    
+    //Update the checkpoint number of the pin.
     ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).title = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
     
-    /*DDAnnotation *startAnnotation = [self.coordinates objectAtIndex:[indexPath row]];
-	MKPinAnnotationView *checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
-	checkPointPinView.image = [UIImage imageNamed:[NSString stringWithFormat:@"PinNumber%d.png", [indexPath row]+1]];*/    
     return cell;
 }
 
@@ -199,6 +190,15 @@
     [object release];
     
     [self.tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.mapView removeAnnotation:[self.coordinates objectAtIndex:[indexPath row]]];
+        [self.coordinates removeObjectAtIndex:[indexPath row]];
+        [self.tableView reloadData]; 
+    }
+
 }
 
 #pragma mark -
@@ -254,17 +254,11 @@
     [super viewDidLoad];
     [self.mapView setDelegate:self];
     
+    
+    //Add gesture recognizer to get notified when a user holds down his finger.
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     [self.mapView addGestureRecognizer:longPress];
     [longPress release];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -277,7 +271,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
