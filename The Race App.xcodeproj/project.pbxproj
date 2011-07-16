@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FDE189513D1A7DD0035498C /* TraceOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE189413D1A7DD0035498C /* TraceOverlayView.m */; };
+		3FDE189913D1A8EC0035498C /* Trace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE189813D1A8EC0035498C /* Trace.m */; };
 		950CE1D813C8BE09009BC002 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 950CE1D713C8BE09009BC002 /* MBProgressHUD.m */; };
 		9560312013C84D0C003204F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560311F13C84D0C003204F9 /* UIKit.framework */; };
 		9560312213C84D0C003204F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560312113C84D0C003204F9 /* Foundation.framework */; };
@@ -74,6 +76,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FDE189313D1A7DD0035498C /* TraceOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceOverlayView.h; sourceTree = "<group>"; };
+		3FDE189413D1A7DD0035498C /* TraceOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceOverlayView.m; sourceTree = "<group>"; };
+		3FDE189713D1A8EC0035498C /* Trace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trace.h; sourceTree = "<group>"; };
+		3FDE189813D1A8EC0035498C /* Trace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trace.m; sourceTree = "<group>"; };
 		950CE1D613C8BE09009BC002 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		950CE1D713C8BE09009BC002 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		9560311B13C84D0C003204F9 /* The Race App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Race App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -329,6 +335,8 @@
 				A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */,
 				A5D83CFF13D1976C00B68EC1 /* LoginViewController.h */,
 				A5D83D0013D1976C00B68EC1 /* LoginViewController.m */,
+				3FDE189313D1A7DD0035498C /* TraceOverlayView.h */,
+				3FDE189413D1A7DD0035498C /* TraceOverlayView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -445,6 +453,8 @@
 			children = (
 				F4DB935A13C8CCEE00CBB7B5 /* Track.h */,
 				F4DB935B13C8CCEE00CBB7B5 /* Track.m */,
+				3FDE189713D1A8EC0035498C /* Trace.h */,
+				3FDE189813D1A8EC0035498C /* Trace.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -561,6 +571,8 @@
 				A5D83D5713D19CAE00B68EC1 /* FBDialog.m in Sources */,
 				A5D83D5813D19CAE00B68EC1 /* FBLoginDialog.m in Sources */,
 				A5D83D5913D19CAE00B68EC1 /* FBRequest.m in Sources */,
+				3FDE189513D1A7DD0035498C /* TraceOverlayView.m in Sources */,
+				3FDE189913D1A8EC0035498C /* Trace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
