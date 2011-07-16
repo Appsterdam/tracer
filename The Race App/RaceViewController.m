@@ -40,17 +40,29 @@ static NSUInteger CheckpointMetersThreshold = 15;
 @synthesize checkpointsLabel;
 @synthesize arrowImageView;
 
+@synthesize playTraceButton;
+@synthesize saveTraceButton;
+
 - (id)initWithCheckpoints:(NSArray *)points {
 	if (![super init])
 		return nil;
 	checkpoints = [points retain];
 	nextCheckpoint = [points objectAtIndex:0];
+	
+	locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    locationManager.distanceFilter = 1;
+	
 	return self;
 }
 
 - (void)dealloc {
 	self.currentTrace = nil;
 	self.currentTraceView = nil;
+
+	self.saveTraceButton = nil;
+	self.playTraceButton = nil;
 	
 	[locationManager release];
 	[mapView release];
@@ -75,15 +87,16 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	[self.view addSubview:progressHUD];
 	[progressHUD show:YES];
 	
-	locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = 1;
     [locationManager startUpdatingLocation];
 	[locationManager startUpdatingHeading];
 }
 
 - (void)viewDidUnload {
+	self.currentTraceView = nil;	
+	self.saveTraceButton = nil;
+	self.playTraceButton = nil;
+
+
 	[self setMapView:nil];
 	[self setStartRaceView:nil];
 	[self setStartButton:nil];
@@ -99,6 +112,9 @@ static NSUInteger CheckpointMetersThreshold = 15;
 #pragma mark CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+	
+	[self.currentTrace addPoint:newLocation];
+	
 	if (!userLocated) {
 		if ([newLocation.timestamp timeIntervalSinceNow] > 15)
 			return;
@@ -251,6 +267,21 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (void)updateCheckpointsLabel {
 	checkpointsLabel.text = [NSString stringWithFormat:@"%d Checkpoints to go", [checkpoints count] - [checkpoints indexOfObject:nextCheckpoint]];
+}
+
+
+- (IBAction)saveTrace:(id)sender;
+{
+	NSArray  * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+	NSString * path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"trace"];
+					   
+	[NSKeyedArchiver archiveRootObject:self.currentTrace
+								toFile:path];
+}
+
+- (IBAction)playTrace:(id)sender;
+{
+	
 }
 
 @end

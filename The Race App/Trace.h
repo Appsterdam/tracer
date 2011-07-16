@@ -11,9 +11,11 @@
 
 @protocol TraceDelegate;
 
-@interface Trace : NSObject <MKOverlay>
+@interface Trace : NSObject <NSCoding, MKOverlay>
 
 @property(nonatomic, assign) id<TraceDelegate> delegate;
+
+@property(nonatomic, readonly) NSUInteger count;
 
 @property(nonatomic, readonly) NSDate * startTime;
 @property(nonatomic, readonly) NSDate * endTime;
@@ -21,7 +23,8 @@
 @property (nonatomic, assign)  CLLocationCoordinate2D coordinate;
 @property (nonatomic, assign)  MKMapRect              boundingMapRect;
 
-- (void)addPoint:(CLLocation *)point withTimestamp:(NSDate *)timestamp;
+- (void)addPoint:(CLLocation *)point;
+- (CLLocation *)pointAtIndex:(NSUInteger)i;
 
 @end
 
