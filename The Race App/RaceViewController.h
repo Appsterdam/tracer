@@ -10,18 +10,16 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
+#import "RaceTracer.h"
 
 
-@interface RaceViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
-	BOOL userLocated;
+@interface RaceViewController : UIViewController <MKMapViewDelegate, RaceTracerDelegate> {
 	BOOL racing;
 	NSUInteger stopwatchTime;
 	NSArray *checkpoints;
-	CLLocationManager *locationManager;
 	MBProgressHUD *progressHUD;
-	MKPointAnnotation *nextCheckpoint;
+	RaceTracer *raceTracer;
 	CLLocationDistance distanceFromNextCheckpoint;
-	float verticalDistanceFromNextCheckpoint;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;

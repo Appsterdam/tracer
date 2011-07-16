@@ -10,15 +10,30 @@
 #import "The_Race_AppAppDelegate.h"
 #import "RaceTracksViewController.h"
 #import "ResultsViewController.h"
+#import "LoginViewController.h"
+#import "FBConnect.h"
+
+#define RACE_APP_FACEBOOK_APP_ID @"198763226840194"
+
 
 @implementation The_Race_AppAppDelegate
 
 
 @synthesize window=_window;
 @synthesize tabBarController;
+@synthesize faceBookApi;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+{
     tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    faceBookApi = [[Facebook alloc] initWithAppId:RACE_APP_FACEBOOK_APP_ID];
+    
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString* accessToken = [userDefaults objectForKey:@"FBAccessToken"];
+    NSDate* expirationDate = [userDefaults objectForKey:@"FBExpirationDate"];
+
+    faceBookApi.accessToken = accessToken;
+    faceBookApi.expirationDate = expirationDate;
     
     RaceTracksViewController* raceTrackViewController =
        [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];
@@ -34,11 +49,23 @@
     UINavigationController* resultsNavigationController =
         [[[UINavigationController alloc] initWithRootViewController:resultsViewController] autorelease];
     
-    resultsNavigationController.tabBarItem =
-        resultsViewController.tabBarItem;
+    resultsNavigationController.tabBarItem = resultsViewController.tabBarItem;
     
-    NSArray* viewControllers = [NSArray arrayWithObjects:raceTrackNavigationController, 
-                                resultsNavigationController, nil];
+    
+    // -------------------------- Login
+    LoginViewController* loginViewController =
+        [[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] autorelease];
+    
+    UINavigationController* loginNavigationController =
+        [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
+    
+    loginNavigationController.tabBarItem = loginViewController.tabBarItem;
+    
+    NSArray* viewControllers = 
+        [NSArray arrayWithObjects:raceTrackNavigationController, 
+                                  resultsNavigationController, 
+                                  loginNavigationController,
+                                  nil];
 
     tabBarController.viewControllers = viewControllers;
     
@@ -90,8 +117,18 @@
 {
 	[_window release];
     [tabBarController release];
+    [faceBookApi release];
     
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark FaceBook
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL handled = [faceBookApi handleOpenURL:url];
+    return handled;
 }
 
 @end

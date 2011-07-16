@@ -16,20 +16,11 @@
 @property(nonatomic, retain) Trace             * currentTrace;
 @property(nonatomic, retain) TraceOverlayView  * currentTraceView;
 
-@property(nonatomic, retain) GPSTracePlayer    * tracePlayer;
-
 @property(nonatomic, retain) MKPointAnnotation * ghostAnnotation;
 
-- (void)userLocationDetected:(CLLocation *)newLocation;
-- (void)userIsAtStartCheckPoint;
-- (void)updateNextCheckpoint;
 - (void)startStopwatch;
-- (void)updateCheckpointsLabel;
 
 @end
-
-
-static NSUInteger CheckpointMetersThreshold = 15;
 
 @implementation RaceViewController
 
@@ -47,7 +38,6 @@ static NSUInteger CheckpointMetersThreshold = 15;
 @synthesize playTraceButton;
 @synthesize saveTraceButton;
 
-@synthesize tracePlayer;
 @synthesize ghostAnnotation;
 
 - (id)initWithCheckpoints:(NSArray *)points {
@@ -55,14 +45,8 @@ static NSUInteger CheckpointMetersThreshold = 15;
 		return nil;
 	
 	checkpoints = [points retain];
-	nextCheckpoint = [points objectAtIndex:0];
-	
-	locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = 1;
-	
-	self.tracePlayer = [[[GPSTracePlayer alloc] init] autorelease];
+	raceTracer = [[RaceTracer alloc] initWithDelegate:self];
+	raceTracer.checkpoints = checkpoints;
 	
 	return self;
 }
@@ -74,9 +58,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	self.saveTraceButton = nil;
 	self.playTraceButton = nil;
 	
-	self.tracePlayer = nil;
-	
-	[locationManager release];
+	[raceTracer release];
 	[mapView release];
 	[startRaceView release];
 	[startButton release];
@@ -99,8 +81,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	[self.view addSubview:progressHUD];
 	[progressHUD show:YES];
 	
-    [locationManager startUpdatingLocation];
-	[locationManager startUpdatingHeading];
+	[raceTracer startLocationServices];
 }
 
 - (void)viewDidUnload {
@@ -121,77 +102,108 @@ static NSUInteger CheckpointMetersThreshold = 15;
 }
 
 #pragma mark -
-#pragma mark CLLocationManagerDelegate
+#pragma mark LocationTracerDelegate
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+- (void)raceTracer:(RaceTracer *)tracer gotFirstFix:(CLLocation *)newLocation;
+{
+	[progressHUD hide:YES];
 	
-	//[self.currentTrace addPoint:newLocation];
+	[UIView animateWithDuration:1
+					 animations:^{ startRaceView.alpha = 1; }];	
 	
-	self.ghostAnnotation.coordinate = newLocation.coordinate;
-	
-	if (!userLocated) {
-		if ([newLocation.timestamp timeIntervalSinceNow] > 15)
-			return;
-		[self userLocationDetected:newLocation];
-		return;
-	}
-	
-	CLLocation *nextCheckpointLocation = [[[CLLocation alloc] initWithLatitude:nextCheckpoint.coordinate.latitude
-																	 longitude:nextCheckpoint.coordinate.longitude] autorelease];
-	distanceFromNextCheckpoint = [newLocation distanceFromLocation:nextCheckpointLocation];
-	verticalDistanceFromNextCheckpoint = nextCheckpoint.coordinate.latitude - newLocation.coordinate.latitude;
-	if (distanceFromNextCheckpoint > CheckpointMetersThreshold)
-		return;
-	
-	MKPinAnnotationView *checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:nextCheckpoint];
-	if ([checkpoints indexOfObject:nextCheckpoint] == 0)
-		[self userIsAtStartCheckPoint];
-	
-	if (!racing)
-		return;
-	
-	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
-	if (nextCheckpoint == [checkpoints lastObject]) {
-		UIAlertView *raceCompletedAlertView = [[[UIAlertView alloc] initWithTitle:@"Race completed!" 
-																		  message:@"You did it!"
-																		 delegate:nil
-																cancelButtonTitle:@"Yes, I'm cool"
-																otherButtonTitles:nil] autorelease];
-		[raceCompletedAlertView show];
-		[locationManager stopUpdatingLocation];
-		[locationManager stopUpdatingHeading];
-		return;
-	}
-	
-	[self updateNextCheckpoint];
-	[self updateCheckpointsLabel];
+	{	
+		CLLocationDistance maxDistanceFromUser = 0;
+		
+		for (MKPointAnnotation *checkpoint in checkpoints)
+		{
+			CLLocation *checkpointLocation = [[[CLLocation alloc] initWithLatitude:checkpoint.coordinate.latitude
+																		 longitude:checkpoint.coordinate.longitude] autorelease];
+			maxDistanceFromUser = MAX(maxDistanceFromUser, [newLocation distanceFromLocation:checkpointLocation]);
+		}
+		
+		[mapView setRegion:MKCoordinateRegionMakeWithDistance(newLocation.coordinate,
+															  maxDistanceFromUser * 2,
+															  maxDistanceFromUser * 2)
+				  animated:YES];
+		
+		[mapView addAnnotations:checkpoints];
+	}	
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-	if (newHeading.headingAccuracy < 0)
+- (void)raceTracer:(RaceTracer *)tracer reachedCheckpointAtIndex:(NSUInteger)checkpointReachedIdx;
+{
+	MKPointAnnotation   * startAnnotation   = [checkpoints objectAtIndex:checkpointReachedIdx];
+	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
+	
+	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
+}
+
+- (void)raceTracerReachedStartPoint:(RaceTracer *)tracer;
+{
+	MKPointAnnotation   * startAnnotation   = [checkpoints objectAtIndex:0];
+	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
+	
+	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
+	
+	[UIView animateWithDuration:1
+					 animations:^{
+						 startButton.alpha = 1;
+						 startLabel.alpha = 0;
+					 }];
+}
+
+- (void)raceTracerReachedEndPoint:(RaceTracer *)tracer;
+{
+	[[[[UIAlertView alloc] initWithTitle:@"Race completed!" 
+								 message:@"You did it!"
+								delegate:nil
+					   cancelButtonTitle:@"Yes, I'm cool"
+					   otherButtonTitles:nil] autorelease] show];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
+{
+	if (object != raceTracer)
 		return;
 	
+	if ([keyPath isEqualToString:@"checkpointsLeft"])
+		checkpointsLabel.text = [NSString stringWithFormat:@"%d Checkpoints to go", raceTracer.checkpointsLeft];
 	
-	arrowImageView.transform = CGAffineTransformMakeRotation(-newHeading.trueHeading * M_PI / 180);
+	if ([keyPath isEqualToString:@"headingToNextCheckpoint"])
+		arrowImageView.transform = CGAffineTransformMakeRotation(raceTracer.headingToNextCheckpoint);
 }
 
 #pragma mark -
 #pragma mark IBAction
 
-- (IBAction)startRace:(id)sender {
-	racing = YES;
+- (IBAction)startRace:(id)sender;
+{
+	[raceTracer startRace];
+	
 	[self startStopwatch];
-	[self updateCheckpointsLabel];
 	
 	raceStatsView.frame = startRaceView.frame;
 	raceStatsView.transform = CGAffineTransformMakeTranslation(raceStatsView.frame.size.width, 0);
 	[self.view addSubview:raceStatsView];
-	[UIView animateWithDuration:0.5 animations:^(void) {
-		raceStatsView.transform = CGAffineTransformIdentity;
-		startRaceView.transform = CGAffineTransformMakeTranslation(-startRaceView.frame.size.width, 0);
-	} completion:^(BOOL finished) {
-		[startRaceView removeFromSuperview];
-	}];
+	
+	[UIView animateWithDuration:0.5
+					 animations:^(void) {
+									raceStatsView.transform = CGAffineTransformIdentity;
+									startRaceView.transform = CGAffineTransformMakeTranslation(-startRaceView.frame.size.width, 0);
+								}
+					 completion:^(BOOL finished) {
+									[startRaceView removeFromSuperview];
+								}];
+	
+	[raceTracer addObserver:self
+				 forKeyPath:@"checkpointsLeft"
+					options:NSKeyValueObservingOptionInitial
+					context:nil];
+
+	[raceTracer addObserver:self
+				 forKeyPath:@"headingToNextCheckpoint"
+					options:NSKeyValueObservingOptionInitial
+					context:nil];
 }
 
 #pragma mark -
@@ -202,7 +214,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
 	
-	if (annotation == self.ghostAnnotation)
+	if (annotation == raceTracer.annotationForDebugTrace)
 	{
 		static NSString * ghostid = @"ghostid";
 		MKPinAnnotationView * ghostView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:ghostid];
@@ -240,47 +252,6 @@ static NSUInteger CheckpointMetersThreshold = 15;
 #pragma mark -
 #pragma mark Private
 
-- (void)userLocationDetected:(CLLocation *)newLocation {
-	userLocated = YES;
-	[progressHUD hide:YES];
-	CLLocationDistance maxDistanceFromUser = 0;
-	for (MKPointAnnotation *checkpoint in checkpoints) {
-		CLLocation *checkpointLocation = [[[CLLocation alloc] initWithLatitude:checkpoint.coordinate.latitude
-																	 longitude:checkpoint.coordinate.longitude] autorelease];
-		maxDistanceFromUser = MAX(maxDistanceFromUser, [newLocation distanceFromLocation:checkpointLocation]);
-	}
-	
-	[mapView setRegion:MKCoordinateRegionMakeWithDistance(newLocation.coordinate,
-														  maxDistanceFromUser * 2,
-														  maxDistanceFromUser * 2)
-			  animated:YES];
-	[mapView addAnnotations:checkpoints];
-	
-//	self.currentTrace     = [[[Trace alloc] init] autorelease];
-//	self.currentTraceView = [[[TraceOverlayView alloc] initWithOverlay:self.currentTrace] autorelease];
-//	
-//	[mapView addOverlay:self.currentTrace];
-	
-	[UIView animateWithDuration:1 animations:^(void) {
-		startRaceView.alpha = 1;
-	}];	
-}
-
-- (void)userIsAtStartCheckPoint {
-	MKPointAnnotation *startAnnotation = [checkpoints objectAtIndex:0];
-	MKPinAnnotationView *checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
-	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
-	[UIView animateWithDuration:1 animations:^(void) {
-		startButton.alpha = 1;
-		startLabel.alpha = 0;
-	}];
-	[self updateNextCheckpoint];
-}
-
-- (void)updateNextCheckpoint {
-	nextCheckpoint = [checkpoints objectAtIndex:([checkpoints indexOfObject:nextCheckpoint] + 1)];
-}
-
 - (void)startStopwatch {
 	[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(stopwatchTimerFired) userInfo:nil repeats:YES];
 }
@@ -292,10 +263,6 @@ static NSUInteger CheckpointMetersThreshold = 15;
 						   (stopwatchTime / 600) % 60,
 						   (stopwatchTime / 10) % 60,
 						   stopwatchTime % 10];
-}
-
-- (void)updateCheckpointsLabel {
-	checkpointsLabel.text = [NSString stringWithFormat:@"%d Checkpoints to go", [checkpoints count] - [checkpoints indexOfObject:nextCheckpoint]];
 }
 
 
@@ -310,24 +277,8 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (IBAction)playTrace:(id)sender;
 {
-	[locationManager release];
-	
-	locationManager = [self.tracePlayer.playerAsLocationManager retain];
-	locationManager.delegate = self;
-	
-	self.tracePlayer.trace = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"default-trace" ofType:nil]];
-	
-	{	
-		self.currentTrace = self.tracePlayer.trace;
-		self.currentTraceView = [[[TraceOverlayView alloc] initWithOverlay:self.currentTrace] autorelease];
-		
-		[mapView addOverlay:self.currentTrace];
-	}
-	
-	[self.tracePlayer startPlayingTrace];
-	
-	self.ghostAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
-	[mapView addAnnotation:self.ghostAnnotation];
+	[raceTracer playDebugTrace];
+	[mapView addAnnotation:raceTracer.annotationForDebugTrace];
 }
 
 @end

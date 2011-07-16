@@ -3,11 +3,30 @@
 //  The Race App
 //
 //  Created by Sergey Novitsky on 7/16/11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
+#import "FBConnect.h"
 
-@interface LoginViewController : UIViewController
+@class FBRequest;
+@class Facebook;
+@class RaceAppUser;
+
+@interface LoginViewController : UIViewController <FBSessionDelegate, FBRequestDelegate>
+{
+    RaceAppUser*        loggedInUser;
+    
+    UIBarButtonItem*    loginBarButtonItem;
+    UIBarButtonItem*    logoutBarButtonItem;
+    Facebook*           faceBookApi;
+    FBRequest*          fbGetUserInfoRequest;
+    
+    IBOutlet UILabel*   loginStatusLabel;
+    IBOutlet UILabel*   loggedInUserInfoLabel;
+}
+
+@property(nonatomic, retain) RaceAppUser* loggedInUser;
+@property(nonatomic, retain) UILabel*     loggedInUserInfoLabel;
+@property(nonatomic, retain) UILabel*     loginStatusLabel;
 
 @end
