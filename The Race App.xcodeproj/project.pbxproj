@@ -45,6 +45,8 @@
 		A5F6179513C8984B00B2953D /* RefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F6179413C8984B00B2953D /* RefreshTableHeaderView.m */; };
 		A5FACFD613C8C09100522E43 /* RaceTrackTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */; };
 		A5FACFD913C8C44B00522E43 /* RaceTrackTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */; };
+		D4512D0A13D1E1BC008CCDDF /* GameKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = D4512D0913D1E1BC008CCDDF /* GameKitHelper.m */; };
+		D496A0F313D1B4BA00EE18B1 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D496A0F213D1B4BA00EE18B1 /* GameKit.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F4DB931413C8C14600CBB7B5 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB92FC13C8C14600CBB7B5 /* NSObject+SBJson.m */; };
 		F4DB931513C8C14600CBB7B5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB92FF13C8C14600CBB7B5 /* SBJsonParser.m */; };
 		F4DB931613C8C14600CBB7B5 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB930113C8C14600CBB7B5 /* SBJsonStreamParser.m */; };
@@ -131,6 +133,9 @@
 		A5FACFD413C8C09100522E43 /* RaceTrackTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceTrackTableViewCell.h; sourceTree = "<group>"; };
 		A5FACFD513C8C09100522E43 /* RaceTrackTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceTrackTableViewCell.m; sourceTree = "<group>"; };
 		A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RaceTrackTableViewCell.xib; sourceTree = "<group>"; };
+		D4512D0813D1E1BC008CCDDF /* GameKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameKitHelper.h; path = GameKitHelpers/GameKitHelper.h; sourceTree = "<group>"; };
+		D4512D0913D1E1BC008CCDDF /* GameKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameKitHelper.m; path = GameKitHelpers/GameKitHelper.m; sourceTree = "<group>"; };
+		D496A0F213D1B4BA00EE18B1 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		F4DB92FA13C8C14600CBB7B5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		F4DB92FB13C8C14600CBB7B5 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		F4DB92FC13C8C14600CBB7B5 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D496A0F313D1B4BA00EE18B1 /* GameKit.framework in Frameworks */,
 				A5D83CC413D18E6500B68EC1 /* MessageUI.framework in Frameworks */,
 				9560312413C84D0C003204F9 /* CoreGraphics.framework in Frameworks */,
 				F4DB935413C8C59E00CBB7B5 /* libz.dylib in Frameworks */,
@@ -240,6 +246,7 @@
 		9560311E13C84D0C003204F9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D496A0F213D1B4BA00EE18B1 /* GameKit.framework */,
 				A5D83CC313D18E6500B68EC1 /* MessageUI.framework */,
 				A53B849913D18B6A0033BAB2 /* Security.framework */,
 				F4DB935513C8C5A400CBB7B5 /* CoreGraphics.framework */,
@@ -260,6 +267,7 @@
 		9560312513C84D0C003204F9 /* The Race App */ = {
 			isa = PBXGroup;
 			children = (
+				D4512D0713D1E10C008CCDDF /* GameKitHelpers */,
 				F4DB935913C8CCD700CBB7B5 /* Model */,
 				F4DB932013C8C26900CBB7B5 /* APIz */,
 				A594898713C88115009D932E /* Controllers */,
@@ -357,6 +365,15 @@
 				A5D83D4C13D19CAE00B68EC1 /* FBRequest.m */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		D4512D0713D1E10C008CCDDF /* GameKitHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				D4512D0813D1E1BC008CCDDF /* GameKitHelper.h */,
+				D4512D0913D1E1BC008CCDDF /* GameKitHelper.m */,
+			);
+			name = GameKitHelpers;
 			sourceTree = "<group>";
 		};
 		F4DB92F713C8C13000CBB7B5 /* External codez */ = {
@@ -561,6 +578,7 @@
 				A5D83D5713D19CAE00B68EC1 /* FBDialog.m in Sources */,
 				A5D83D5813D19CAE00B68EC1 /* FBLoginDialog.m in Sources */,
 				A5D83D5913D19CAE00B68EC1 /* FBRequest.m in Sources */,
+				D4512D0A13D1E1BC008CCDDF /* GameKitHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

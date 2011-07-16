@@ -12,3 +12,7 @@
 	#import <UIKit/UIKit.h>
 	#import <Foundation/Foundation.h>
 #endif
+
+#ifdef __IPHONE_4_1
+    #import <GameKit/GameKit.h>
+#endif

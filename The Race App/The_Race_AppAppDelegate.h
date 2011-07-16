@@ -12,9 +12,16 @@
 {
     UIWindow*               window;
     UITabBarController*     tabBarController;
+    GKPlayer*               localPlayer;
+    NSArray*                gameCenterFriends;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow*  window;
 @property (nonatomic, retain) UITabBarController* tabBarController;
+@property (nonatomic, retain) GKPlayer* localPlayer;
+@property (nonatomic, retain) NSArray* gameCenterFriends;
+
+- (void)authenticateLocalPlayer;
+- (void)handleGKPlayerAuthenticationDidCangeNofication:(NSNotification *)notifcation;
 
 @end

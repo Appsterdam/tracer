@@ -10,23 +10,31 @@
 #import "The_Race_AppAppDelegate.h"
 #import "RaceTracksViewController.h"
 #import "ResultsViewController.h"
+#import "GameKitHelpers/GameKitHelper.h"
+
 
 @implementation The_Race_AppAppDelegate
 
 
 @synthesize window=_window;
 @synthesize tabBarController;
+@synthesize localPlayer;
+@synthesize gameCenterFriends;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
     
+    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:2];
+    
     RaceTracksViewController* raceTrackViewController =
        [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-
+    
 	UINavigationController* raceTrackNavigationController = [[[UINavigationController alloc] initWithRootViewController:raceTrackViewController] autorelease];
 
     raceTrackNavigationController.tabBarItem = 
         raceTrackViewController.tabBarItem;
+
+    [viewControllers addObject:raceTrackNavigationController];    
     
     ResultsViewController* resultsViewController =
         [[[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil] autorelease];
@@ -34,13 +42,22 @@
     UINavigationController* resultsNavigationController =
         [[[UINavigationController alloc] initWithRootViewController:resultsViewController] autorelease];
     
+    [viewControllers addObject:resultsNavigationController];
+    
     resultsNavigationController.tabBarItem =
         resultsViewController.tabBarItem;
     
-    NSArray* viewControllers = [NSArray arrayWithObjects:raceTrackNavigationController, 
-                                resultsNavigationController, nil];
-
-    tabBarController.viewControllers = viewControllers;
+    if ([GameKitHelper isGameCenterAPIAvailable]) {
+        [self authenticateLocalPlayer];
+        UIViewController* gameCenterViewController = [[[UIViewController alloc] init] autorelease];
+        UITabBarItem *gameCenterTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Game Center" image:nil tag:3];
+        [gameCenterViewController setTabBarItem:gameCenterTabBarItem];
+        [gameCenterTabBarItem release];
+        [viewControllers addObject:gameCenterViewController];
+    }
+    
+    tabBarController.viewControllers = [NSArray arrayWithArray:viewControllers];
+    [viewControllers release];
     
 	self.window.rootViewController = tabBarController;
 	[self.window makeKeyAndVisible];
@@ -84,6 +101,22 @@
 	 Save data if appropriate.
 	 See also applicationDidEnterBackground:.
 	 */
+}
+
+
+
+- (void)authenticateLocalPlayer{
+    GKLocalPlayer* currentPlayer = [GameKitHelper authenticatedGKLocalPlayer];
+    if (nil == currentPlayer) {
+        [[self localPlayer] release], localPlayer = nil;
+        [GameKitHelper removeGKNotificationObserver:self];
+    }
+    [self setLocalPlayer:currentPlayer];
+    [GameKitHelper addGKNotificationObserver:self selector:@selector(handleGKPlayerAuthenticationDidCangeNofication:)];
+}
+
+- (void)handleGKPlayerAuthenticationDidCangeNofication:(NSNotification *)notifcation {
+    [self authenticateLocalPlayer];
 }
 
 - (void)dealloc
