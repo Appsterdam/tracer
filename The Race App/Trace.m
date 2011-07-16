@@ -26,8 +26,8 @@
 	
 	self.trace = [NSMutableArray array];
 	
-	self.coordinate = (CLLocationCoordinate2D) { .latitude = 0, .longitude = 0 };
-	self.boundingMapRect = (MKMapRect) { .origin = { .x = 0, .y = 0 }, .size = { .width = 0, .height = 0 } };
+	self.coordinate      = (CLLocationCoordinate2D) { .latitude = 0, .longitude = 0 };
+	self.boundingMapRect = MKMapRectNull;
 	
     return self;
 }
@@ -61,9 +61,26 @@
 }
 
 - (void)addPoint:(CLLocation *)point;
-{
+{	
 	[self.trace addObject:point];
 	//[self.delegate trace:self didAddPoint:point withTimestamp:timestamp];
+	
+	{
+		MKMapPoint mapPoint  = MKMapPointForCoordinate(point.coordinate);
+		MKMapRect  pointRect = MKMapRectMake(mapPoint.x, mapPoint.y, 0, 0);
+		
+		if (MKMapRectIsNull(self.boundingMapRect) == YES)
+		{
+			self.boundingMapRect = pointRect;
+		}
+		else
+		{
+			MKMapRect extended   = MKMapRectUnion(self.boundingMapRect, pointRect);
+			self.boundingMapRect = extended;
+		}
+		
+		self.coordinate = point.coordinate;
+	}
 }
 
 - (CLLocation *)pointAtIndex:(NSUInteger)i;
@@ -87,5 +104,9 @@
 	return [[self pointAtIndex:self.trace.count - 1].timestamp copy];
 }
 
+- (MKMapRect)boundingMapRect;
+{
+	return boundingMapRect;
+}
 
 @end

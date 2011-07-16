@@ -125,7 +125,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	
-	[self.currentTrace addPoint:newLocation];
+	//[self.currentTrace addPoint:newLocation];
 	
 	self.ghostAnnotation.coordinate = newLocation.coordinate;
 	
@@ -256,10 +256,10 @@ static NSUInteger CheckpointMetersThreshold = 15;
 			  animated:YES];
 	[mapView addAnnotations:checkpoints];
 	
-	self.currentTrace     = [[[Trace alloc] init] autorelease];
-	self.currentTraceView = [[[TraceOverlayView alloc] initWithOverlay:self.currentTrace] autorelease];
-	
-	[mapView addOverlay:self.currentTrace];
+//	self.currentTrace     = [[[Trace alloc] init] autorelease];
+//	self.currentTraceView = [[[TraceOverlayView alloc] initWithOverlay:self.currentTrace] autorelease];
+//	
+//	[mapView addOverlay:self.currentTrace];
 	
 	[UIView animateWithDuration:1 animations:^(void) {
 		startRaceView.alpha = 1;
@@ -316,6 +316,13 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	locationManager.delegate = self;
 	
 	self.tracePlayer.trace = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"default-trace" ofType:nil]];
+	
+	{	
+		self.currentTrace = self.tracePlayer.trace;
+		self.currentTraceView = [[[TraceOverlayView alloc] initWithOverlay:self.currentTrace] autorelease];
+		
+		[mapView addOverlay:self.currentTrace];
+	}
 	
 	[self.tracePlayer startPlayingTrace];
 	
