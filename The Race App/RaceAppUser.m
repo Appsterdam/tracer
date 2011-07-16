@@ -10,6 +10,13 @@
 
 @implementation RaceAppUser
 
+@synthesize faceBookUID;
+@synthesize firstName;
+@synthesize lastName;
+@synthesize gender;
+@synthesize middleName;
+@synthesize homeTown;
+
 - (id)init
 {
     self = [super init];
@@ -19,5 +26,18 @@
     
     return self;
 }
+
+-(void)dealloc
+{
+    [faceBookUID release];
+    [firstName release];
+    [lastName release];
+    [gender release];
+    [middleName release];
+    [homeTown release];
+    
+    [super dealloc];
+}
+
 
 @end
