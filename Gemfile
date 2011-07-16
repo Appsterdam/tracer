@@ -16,12 +16,15 @@ gem 'dm-timestamps'
 gem 'dm-migrations'
 gem 'dm-constraints'
 gem 'dm-aggregates'
+gem 'dm-serializer'
 gem 'dm-core'
+gem 'uuid'
 
 # Test requirements
 gem 'mocha', :group => "test"
 gem 'rspec', :group => "test"
 gem 'rack-test', :require => "rack/test", :group => "test"
+gem 'dm-sweatshop', :group => "test"
 
 
 # Padrino
