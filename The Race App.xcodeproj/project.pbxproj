@@ -36,11 +36,6 @@
 		A5D83CC413D18E6500B68EC1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D83CC313D18E6500B68EC1 /* MessageUI.framework */; };
 		A5D83D0113D1976C00B68EC1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D83D0013D1976C00B68EC1 /* LoginViewController.m */; };
 		A5D83D3313D1999000B68EC1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D83D3213D1999000B68EC1 /* Reachability.m */; };
-		A5D83D5013D19CAE00B68EC1 /* facebook_ios_sdk-all-target-headers.hmap in Resources */ = {isa = PBXBuildFile; fileRef = A5D83D3A13D19CAE00B68EC1 /* facebook_ios_sdk-all-target-headers.hmap */; };
-		A5D83D5113D19CAE00B68EC1 /* facebook_ios_sdk-generated-files.hmap in Resources */ = {isa = PBXBuildFile; fileRef = A5D83D3B13D19CAE00B68EC1 /* facebook_ios_sdk-generated-files.hmap */; };
-		A5D83D5213D19CAE00B68EC1 /* facebook_ios_sdk-own-target-headers.hmap in Resources */ = {isa = PBXBuildFile; fileRef = A5D83D3C13D19CAE00B68EC1 /* facebook_ios_sdk-own-target-headers.hmap */; };
-		A5D83D5313D19CAE00B68EC1 /* facebook_ios_sdk-project-headers.hmap in Resources */ = {isa = PBXBuildFile; fileRef = A5D83D3D13D19CAE00B68EC1 /* facebook_ios_sdk-project-headers.hmap */; };
-		A5D83D5413D19CAE00B68EC1 /* facebook_ios_sdk.hmap in Resources */ = {isa = PBXBuildFile; fileRef = A5D83D3E13D19CAE00B68EC1 /* facebook_ios_sdk.hmap */; };
 		A5D83D5513D19CAE00B68EC1 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D83D4313D19CAE00B68EC1 /* Facebook.m */; };
 		A5D83D5613D19CAE00B68EC1 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A5D83D4613D19CAE00B68EC1 /* FBDialog.bundle */; };
 		A5D83D5713D19CAE00B68EC1 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D83D4813D19CAE00B68EC1 /* FBDialog.m */; };
@@ -77,16 +72,6 @@
 		F4DB935413C8C59E00CBB7B5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F4DB935313C8C59E00CBB7B5 /* libz.dylib */; };
 		F4DB935C13C8CCEE00CBB7B5 /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB935B13C8CCEE00CBB7B5 /* Track.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		A5D83D5B13D19CAF00B68EC1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = A5D83D3F13D19CAE00B68EC1 /* facebook-ios-sdk.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = "facebook-ios-sdk";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		950CE1D613C8BE09009BC002 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -129,12 +114,6 @@
 		A5D83D0013D1976C00B68EC1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		A5D83D3113D1999000B68EC1 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		A5D83D3213D1999000B68EC1 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
-		A5D83D3A13D19CAE00B68EC1 /* facebook_ios_sdk-all-target-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "facebook_ios_sdk-all-target-headers.hmap"; sourceTree = "<group>"; };
-		A5D83D3B13D19CAE00B68EC1 /* facebook_ios_sdk-generated-files.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "facebook_ios_sdk-generated-files.hmap"; sourceTree = "<group>"; };
-		A5D83D3C13D19CAE00B68EC1 /* facebook_ios_sdk-own-target-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "facebook_ios_sdk-own-target-headers.hmap"; sourceTree = "<group>"; };
-		A5D83D3D13D19CAE00B68EC1 /* facebook_ios_sdk-project-headers.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = "facebook_ios_sdk-project-headers.hmap"; sourceTree = "<group>"; };
-		A5D83D3E13D19CAE00B68EC1 /* facebook_ios_sdk.hmap */ = {isa = PBXFileReference; lastKnownFileType = file; path = facebook_ios_sdk.hmap; sourceTree = "<group>"; };
-		A5D83D3F13D19CAE00B68EC1 /* facebook-ios-sdk.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "facebook-ios-sdk.xcodeproj"; sourceTree = "<group>"; };
 		A5D83D4213D19CAE00B68EC1 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Facebook.h; sourceTree = "<group>"; };
 		A5D83D4313D19CAE00B68EC1 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook.m; sourceTree = "<group>"; };
 		A5D83D4413D19CAE00B68EC1 /* facebook_ios_sdk_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = facebook_ios_sdk_Prefix.pch; sourceTree = "<group>"; };
@@ -365,8 +344,6 @@
 		A5D83D3513D19CAE00B68EC1 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				A5D83D3613D19CAE00B68EC1 /* build */,
-				A5D83D3F13D19CAE00B68EC1 /* facebook-ios-sdk.xcodeproj */,
 				A5D83D4213D19CAE00B68EC1 /* Facebook.h */,
 				A5D83D4313D19CAE00B68EC1 /* Facebook.m */,
 				A5D83D4413D19CAE00B68EC1 /* facebook_ios_sdk_Prefix.pch */,
@@ -380,50 +357,6 @@
 				A5D83D4C13D19CAE00B68EC1 /* FBRequest.m */,
 			);
 			path = src;
-			sourceTree = "<group>";
-		};
-		A5D83D3613D19CAE00B68EC1 /* build */ = {
-			isa = PBXGroup;
-			children = (
-				A5D83D3713D19CAE00B68EC1 /* facebook-ios-sdk.build */,
-			);
-			path = build;
-			sourceTree = "<group>";
-		};
-		A5D83D3713D19CAE00B68EC1 /* facebook-ios-sdk.build */ = {
-			isa = PBXGroup;
-			children = (
-				A5D83D3813D19CAE00B68EC1 /* Debug-iphoneos */,
-			);
-			path = "facebook-ios-sdk.build";
-			sourceTree = "<group>";
-		};
-		A5D83D3813D19CAE00B68EC1 /* Debug-iphoneos */ = {
-			isa = PBXGroup;
-			children = (
-				A5D83D3913D19CAE00B68EC1 /* facebook-ios-sdk.build */,
-			);
-			path = "Debug-iphoneos";
-			sourceTree = "<group>";
-		};
-		A5D83D3913D19CAE00B68EC1 /* facebook-ios-sdk.build */ = {
-			isa = PBXGroup;
-			children = (
-				A5D83D3A13D19CAE00B68EC1 /* facebook_ios_sdk-all-target-headers.hmap */,
-				A5D83D3B13D19CAE00B68EC1 /* facebook_ios_sdk-generated-files.hmap */,
-				A5D83D3C13D19CAE00B68EC1 /* facebook_ios_sdk-own-target-headers.hmap */,
-				A5D83D3D13D19CAE00B68EC1 /* facebook_ios_sdk-project-headers.hmap */,
-				A5D83D3E13D19CAE00B68EC1 /* facebook_ios_sdk.hmap */,
-			);
-			path = "facebook-ios-sdk.build";
-			sourceTree = "<group>";
-		};
-		A5D83D4013D19CAE00B68EC1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A5D83D5C13D19CAF00B68EC1 /* libfacebook_ios_sdk.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		F4DB92F713C8C13000CBB7B5 /* External codez */ = {
@@ -554,28 +487,12 @@
 			mainGroup = 9560311013C84D0C003204F9;
 			productRefGroup = 9560311C13C84D0C003204F9 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = A5D83D4013D19CAE00B68EC1 /* Products */;
-					ProjectRef = A5D83D3F13D19CAE00B68EC1 /* facebook-ios-sdk.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				9560311A13C84D0C003204F9 /* The Race App */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		A5D83D5C13D19CAF00B68EC1 /* libfacebook_ios_sdk.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libfacebook_ios_sdk.a;
-			remoteRef = A5D83D5B13D19CAF00B68EC1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		9560311913C84D0C003204F9 /* Resources */ = {
@@ -596,11 +513,6 @@
 				A53197B213C9B68000E02F81 /* racemap@2x.png in Resources */,
 				A53197B313C9B68000E02F81 /* trophy.png in Resources */,
 				A53197B413C9B68000E02F81 /* trophy@2x.png in Resources */,
-				A5D83D5013D19CAE00B68EC1 /* facebook_ios_sdk-all-target-headers.hmap in Resources */,
-				A5D83D5113D19CAE00B68EC1 /* facebook_ios_sdk-generated-files.hmap in Resources */,
-				A5D83D5213D19CAE00B68EC1 /* facebook_ios_sdk-own-target-headers.hmap in Resources */,
-				A5D83D5313D19CAE00B68EC1 /* facebook_ios_sdk-project-headers.hmap in Resources */,
-				A5D83D5413D19CAE00B68EC1 /* facebook_ios_sdk.hmap in Resources */,
 				A5D83D5613D19CAE00B68EC1 /* FBDialog.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
