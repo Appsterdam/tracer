@@ -23,11 +23,14 @@ describe "Track Model" do
 
   describe "#best_race" do
     it 'only returns races not in progress' do
-      r1 = track.start("emma")
-      r2 = track.start("judy")
-      r3 = track.start("jerrol")
+      r1 = track.start_race("emma")
+      r2 = track.start_race("judy")
+      r3 = track.start_race("jerrol")
 
       track.best_race.should be_nil
+
+      r2.stop(200)
+      track.best_race.should == r2
     end
   end
 

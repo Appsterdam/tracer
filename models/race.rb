@@ -18,6 +18,6 @@ class Race
   end
 
   def self.best
-    first(:order => [:duration.asc])
+    first(:order => [:duration.asc], :in_progress => false)
   end
 end
