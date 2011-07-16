@@ -24,5 +24,6 @@
 
 - (IBAction)segmentValueChanged:(id)sender;
 - (IBAction)addPin:(id)sender;
+- (IBAction)saveTrack:(id)sender;
 
 @end

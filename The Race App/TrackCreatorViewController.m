@@ -20,8 +20,9 @@
         // Custom initialization
         self.coordinates = [NSMutableArray array];
         
-        UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveTrack:)];
+        UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTrack:)];
         [self.navigationItem setRightBarButtonItem:saveItem];
+        [self.navigationItem rightBarButtonItem].enabled = NO;
         [saveItem release];
     }
     return self;
@@ -33,17 +34,49 @@
         case 0:{
             [self.tableView setHidden:YES];
             [self.mapView setHidden:NO];
+            [self.navigationItem rightBarButtonItem].enabled = NO;
         }
             break;
         case 1:{
             [self.mapView setHidden:YES];
             [self.tableView setHidden:NO];
             [self.tableView reloadData];
+            [self.navigationItem rightBarButtonItem].enabled = YES;
         }
             break;
         default:
             break;
     }
+}
+
+- (void)saveTrack:(id)sender {
+    if ([self.coordinates count]<2) {
+        UIAlertView *errorAlert = [[[UIAlertView alloc] initWithTitle:@"Not enough checkpoints!" 
+																		  message:@"Please create at least 2 checkpoints to proceed."
+																		 delegate:nil
+																cancelButtonTitle:@"Dismiss"
+																otherButtonTitles:nil] autorelease];
+		[errorAlert show];
+		return;
+    } else {
+        //Save track and pass it on to some object.
+    }
+}
+
+- (void)editTrack:(id)sender {
+    [tableView setEditing: YES animated: YES];
+    
+    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneEditing:)];
+    [self.navigationItem setRightBarButtonItem:saveItem];
+    [saveItem release];
+}
+
+- (void)doneEditing:(id)sender {
+    [tableView setEditing: NO animated: YES];
+    
+    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTrack:)];
+    [self.navigationItem setRightBarButtonItem:saveItem];
+    [saveItem release];
 }
 
 - (IBAction)addPin:(id)sender {
@@ -97,17 +130,31 @@
     UITableViewCell *cell = [theTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+        cell.showsReorderControl = YES;
     }
     
     // Configure the cell...
     
     CLLocationCoordinate2D coordinate = ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).coordinate;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%f %f", coordinate.latitude, coordinate.longitude];
-    cell.textLabel.text = ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).title;
+    cell.textLabel.text = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
+    ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).title = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
     
     return cell;
 }
 
+- (BOOL)tableView:(UITableView *)tableview canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
+	return YES;	
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+    DDAnnotation *object = [[self.coordinates objectAtIndex:[fromIndexPath row]] retain];
+    [self.coordinates removeObject:object];
+	[self.coordinates insertObject:object atIndex:[toIndexPath row]];
+    [object release];
+    
+    [self.tableView reloadData];
+}
 
 #pragma mark -
 #pragma mark DDAnnotationCoordinateDidChangeNotification
@@ -160,7 +207,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     [self.mapView setDelegate:self];
     [self.mapView setCenterCoordinate:[[self.mapView userLocation]location].coordinate];
     
