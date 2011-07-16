@@ -11,6 +11,11 @@
 #import "The_Race_AppAppDelegate.h"
 #import "RaceTracksViewController.h"
 #import "ResultsViewController.h"
+#import "LoginViewController.h"
+#import "FBConnect.h"
+
+#define RACE_APP_FACEBOOK_APP_ID @"198763226840194"
+
 
 #if USEGAMEKIT
     #import "GameKitHelpers/GameKitHelper.h"
@@ -20,9 +25,19 @@
 
 @synthesize window=_window;
 @synthesize tabBarController;
+@synthesize faceBookApi;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+{
     tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+    faceBookApi = [[Facebook alloc] initWithAppId:RACE_APP_FACEBOOK_APP_ID];
+    
+    NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
+    NSString* accessToken = [userDefaults objectForKey:@"FBAccessToken"];
+    NSDate* expirationDate = [userDefaults objectForKey:@"FBExpirationDate"];
+
+    faceBookApi.accessToken = accessToken;
+    faceBookApi.expirationDate = expirationDate;
     
     NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:2];
     
@@ -46,7 +61,18 @@
     
     resultsNavigationController.tabBarItem =
         resultsViewController.tabBarItem;
+        
+    // -------------------------- Login
+    LoginViewController* loginViewController =
+        [[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] autorelease];
     
+    UINavigationController* loginNavigationController =
+        [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
+    
+    loginNavigationController.tabBarItem = loginViewController.tabBarItem;
+    
+    [viewControllers addObject:loginNavigationController];
+
 #if USEGAMEKIT
     
     if ([GameKitHelper isGameCenterAPIAvailable]) {
@@ -60,8 +86,7 @@
 #endif
     
     tabBarController.viewControllers = [NSArray arrayWithArray:viewControllers];
-    [viewControllers release];
-    
+    [viewControllers release];    
 	self.window.rootViewController = tabBarController;
 	[self.window makeKeyAndVisible];
     return YES;
@@ -110,10 +135,21 @@
 {
 	[_window release];
     [tabBarController release];
+    [faceBookApi release];
     
     [super dealloc];
 }
 
+#pragma mark -
+#pragma mark FaceBook
+
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    BOOL handled = [faceBookApi handleOpenURL:url];
+    return handled;
+}
+
+#pragma mark -
 #pragma mark Optional GameKit Integration
 
 #if USEGAMEKIT
@@ -125,7 +161,7 @@
     GKLocalPlayer* currentPlayer = [GameKitHelper authenticatedGKLocalPlayer];
     if (nil == currentPlayer) {
         [[self localPlayer] release], localPlayer = nil;
-//      [GameKitHelper removeGKNotificationObserver:self];
+        //      [GameKitHelper removeGKNotificationObserver:self];
     }
     [self setLocalPlayer:currentPlayer];
     [GameKitHelper addGKNotificationObserver:self selector:@selector(handleGKPlayerAuthenticationDidCangeNofication:)];
