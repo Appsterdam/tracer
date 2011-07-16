@@ -60,6 +60,9 @@
 		return;
     } else {
         //Save track and pass it on to some object.
+        for (int i = 0; i<[self.coordinates count]; i++) {
+            
+        }
     }
 }
 
@@ -140,6 +143,9 @@
     cell.textLabel.text = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
     ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).title = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
     
+    DDAnnotation *startAnnotation = [self.coordinates objectAtIndex:[indexPath row]];
+	MKPinAnnotationView *checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
+	//checkPointPinView.image = [UIImage imageNamed:@"race-arrow.png"];    
     return cell;
 }
 
