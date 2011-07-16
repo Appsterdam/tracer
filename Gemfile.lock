@@ -1,0 +1,121 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (3.0.9)
+    addressable (2.2.6)
+    chunky_png (1.2.0)
+    compass (0.11.5)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+    data_objects (0.10.6)
+      addressable (~> 2.1)
+    diff-lcs (1.1.2)
+    dm-aggregates (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-constraints (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-core (1.1.0)
+      addressable (~> 2.2.4)
+    dm-do-adapter (1.1.0)
+      data_objects (~> 0.10.2)
+      dm-core (~> 1.1.0)
+    dm-migrations (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-sqlite-adapter (1.1.0)
+      dm-do-adapter (~> 1.1.0)
+      do_sqlite3 (~> 0.10.2)
+    dm-timestamps (1.1.0)
+      dm-core (~> 1.1.0)
+    dm-validations (1.1.0)
+      dm-core (~> 1.1.0)
+    do_sqlite3 (0.10.6)
+      data_objects (= 0.10.6)
+    fssm (0.2.7)
+    grit (2.4.1)
+      diff-lcs (~> 1.1)
+      mime-types (~> 1.15)
+    haml (3.1.2)
+    http_router (0.8.11)
+      rack (>= 1.0.0)
+      url_mount (~> 0.2.1)
+    i18n (0.5.0)
+    mail (2.3.0)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.16)
+    mocha (0.9.12)
+    padrino (0.10.0)
+      padrino-admin (= 0.10.0)
+      padrino-cache (= 0.10.0)
+      padrino-core (= 0.10.0)
+      padrino-gen (= 0.10.0)
+      padrino-helpers (= 0.10.0)
+      padrino-mailer (= 0.10.0)
+    padrino-admin (0.10.0)
+      padrino-core (= 0.10.0)
+      padrino-helpers (= 0.10.0)
+    padrino-cache (0.10.0)
+      padrino-core (= 0.10.0)
+    padrino-core (0.10.0)
+      activesupport (~> 3.0.0)
+      http_router (~> 0.8.10)
+      sinatra (~> 1.2.6)
+      thor (~> 0.14.3)
+      tilt (~> 1.3.0)
+    padrino-gen (0.10.0)
+      bundler (~> 1.0.2)
+      grit (~> 2.4.1)
+      padrino-core (= 0.10.0)
+    padrino-helpers (0.10.0)
+      i18n (~> 0.5.0)
+      padrino-core (= 0.10.0)
+    padrino-mailer (0.10.0)
+      mail (~> 2.3.0)
+      padrino-core (= 0.10.0)
+    polyglot (0.3.1)
+    rack (1.3.1)
+    rack-flash (0.1.2)
+      rack
+    rack-test (0.6.0)
+      rack (>= 1.0)
+    rake (0.9.2)
+    rspec (2.6.0)
+      rspec-core (~> 2.6.0)
+      rspec-expectations (~> 2.6.0)
+      rspec-mocks (~> 2.6.0)
+    rspec-core (2.6.4)
+    rspec-expectations (2.6.0)
+      diff-lcs (~> 1.1.2)
+    rspec-mocks (2.6.0)
+    sass (3.1.4)
+    sinatra (1.2.6)
+      rack (~> 1.1)
+      tilt (>= 1.2.2, < 2.0)
+    thor (0.14.6)
+    tilt (1.3.2)
+    treetop (1.4.9)
+      polyglot (>= 0.3.1)
+    url_mount (0.2.1)
+      rack
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  compass
+  dm-aggregates
+  dm-constraints
+  dm-core
+  dm-migrations
+  dm-sqlite-adapter
+  dm-timestamps
+  dm-validations
+  haml
+  mocha
+  padrino (= 0.10.0)
+  rack-flash
+  rack-test
+  rake
+  rspec
