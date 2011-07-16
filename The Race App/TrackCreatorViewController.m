@@ -79,13 +79,10 @@
             [locationArray addObject:loc];
             [loc release];
         }
-        NSLog(@"\r\n Track wit name: %@ \r\n Coordinates: %@",self.title, locationArray);
     }
 }
 
 - (void)handleLongPress:(id)sender {
-    NSLog(@"sender: %@", sender);
-
     UILongPressGestureRecognizer *gestureRecognizer = (UILongPressGestureRecognizer*)sender;
     if ([gestureRecognizer state]==UIGestureRecognizerStateBegan) {
         CGPoint point = [gestureRecognizer locationInView:[gestureRecognizer view]];
