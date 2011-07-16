@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FB0AA0F13D1BC8300C2FDE1 /* GPSTracePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB0AA0E13D1BC8300C2FDE1 /* GPSTracePlayer.m */; };
+		3FB0AA1113D1D6F800C2FDE1 /* default-trace in Resources */ = {isa = PBXBuildFile; fileRef = 3FB0AA1013D1D6F800C2FDE1 /* default-trace */; };
+		3FDE189513D1A7DD0035498C /* TraceOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE189413D1A7DD0035498C /* TraceOverlayView.m */; };
+		3FDE189913D1A8EC0035498C /* Trace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDE189813D1A8EC0035498C /* Trace.m */; };
 		950CE1D813C8BE09009BC002 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 950CE1D713C8BE09009BC002 /* MBProgressHUD.m */; };
 		9560312013C84D0C003204F9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560311F13C84D0C003204F9 /* UIKit.framework */; };
 		9560312213C84D0C003204F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9560312113C84D0C003204F9 /* Foundation.framework */; };
@@ -89,6 +93,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FB0AA0D13D1BC8300C2FDE1 /* GPSTracePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GPSTracePlayer.h; path = "The Race App/GPSTracePlayer.h"; sourceTree = "<group>"; };
+		3FB0AA0E13D1BC8300C2FDE1 /* GPSTracePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GPSTracePlayer.m; path = "The Race App/GPSTracePlayer.m"; sourceTree = "<group>"; };
+		3FB0AA1013D1D6F800C2FDE1 /* default-trace */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = "default-trace"; sourceTree = "<group>"; };
+		3FDE189313D1A7DD0035498C /* TraceOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceOverlayView.h; sourceTree = "<group>"; };
+		3FDE189413D1A7DD0035498C /* TraceOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceOverlayView.m; sourceTree = "<group>"; };
+		3FDE189713D1A8EC0035498C /* Trace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trace.h; sourceTree = "<group>"; };
+		3FDE189813D1A8EC0035498C /* Trace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trace.m; sourceTree = "<group>"; };
 		950CE1D613C8BE09009BC002 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		950CE1D713C8BE09009BC002 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		9560311B13C84D0C003204F9 /* The Race App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Race App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -246,6 +257,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FB0AA0B13D1BC3A00C2FDE1 /* Utilz */ = {
+			isa = PBXGroup;
+			children = (
+				3FB0AA0D13D1BC8300C2FDE1 /* GPSTracePlayer.h */,
+				3FB0AA0E13D1BC8300C2FDE1 /* GPSTracePlayer.m */,
+			);
+			name = Utilz;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		950CE1D213C8BD89009BC002 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +317,7 @@
 		9560312513C84D0C003204F9 /* The Race App */ = {
 			isa = PBXGroup;
 			children = (
+				3FB0AA0B13D1BC3A00C2FDE1 /* Utilz */,
 				F4DB935913C8CCD700CBB7B5 /* Model */,
 				F4DB932013C8C26900CBB7B5 /* APIz */,
 				A594898713C88115009D932E /* Controllers */,
@@ -315,6 +337,7 @@
 				9560312813C84D0C003204F9 /* InfoPlist.strings */,
 				9560312B13C84D0C003204F9 /* The Race App-Prefix.pch */,
 				9560312C13C84D0C003204F9 /* main.m */,
+				3FB0AA1013D1D6F800C2FDE1 /* default-trace */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -371,6 +394,8 @@
 				A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */,
 				A5D83CFF13D1976C00B68EC1 /* LoginViewController.h */,
 				A5D83D0013D1976C00B68EC1 /* LoginViewController.m */,
+				3FDE189313D1A7DD0035498C /* TraceOverlayView.h */,
+				3FDE189413D1A7DD0035498C /* TraceOverlayView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -504,6 +529,8 @@
 			children = (
 				F4DB935A13C8CCEE00CBB7B5 /* Track.h */,
 				F4DB935B13C8CCEE00CBB7B5 /* Track.m */,
+				3FDE189713D1A8EC0035498C /* Trace.h */,
+				3FDE189813D1A8EC0035498C /* Trace.m */,
 				A56E335913D1DAAF0019BA73 /* RaceAppUser.h */,
 				A56E335A13D1DAAF0019BA73 /* RaceAppUser.m */,
 				959C55F913D1C5F100A7AA93 /* RaceTracer.h */,
@@ -577,6 +604,7 @@
 				A53197B313C9B68000E02F81 /* trophy.png in Resources */,
 				A53197B413C9B68000E02F81 /* trophy@2x.png in Resources */,
 				A5D83D5613D19CAE00B68EC1 /* FBDialog.bundle in Resources */,
+				3FB0AA1113D1D6F800C2FDE1 /* default-trace in Resources */,
 				A56E339D13D1EB5D0019BA73 /* login_user@2x.png in Resources */,
 				A56E339E13D1EB5D0019BA73 /* login_user.png in Resources */,
 				A56E33A013D1EBB60019BA73 /* LoginViewController.xib in Resources */,
@@ -634,6 +662,9 @@
 				A5D83D5713D19CAE00B68EC1 /* FBDialog.m in Sources */,
 				A5D83D5813D19CAE00B68EC1 /* FBLoginDialog.m in Sources */,
 				A5D83D5913D19CAE00B68EC1 /* FBRequest.m in Sources */,
+				3FDE189513D1A7DD0035498C /* TraceOverlayView.m in Sources */,
+				3FDE189913D1A8EC0035498C /* Trace.m in Sources */,
+				3FB0AA0F13D1BC8300C2FDE1 /* GPSTracePlayer.m in Sources */,
 				A56E335B13D1DAAF0019BA73 /* RaceAppUser.m in Sources */,
 				F23F584913D1B94200DD4672 /* DDAnnotation.m in Sources */,
 				F23F584A13D1B94200DD4672 /* DDAnnotationView.m in Sources */,
@@ -673,7 +704,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
@@ -687,7 +718,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
