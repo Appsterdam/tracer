@@ -66,6 +66,10 @@ describe "TracksController" do
       it 'stores the name of the track' do
         data["name"].should == track.name
       end
+      
+      it 'stores the start uri of the track' do
+        data["start"].should == TheRaceApp.url(:tracks, :start, :id => track.id)
+      end
     end
   end
 

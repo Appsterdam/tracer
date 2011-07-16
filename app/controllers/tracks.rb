@@ -12,6 +12,7 @@ TheRaceApp.controllers :tracks do
       :ok => true,
       :data => {
         :name => track.name,
+        :start => url(:tracks, :start, :id => track.id),
         :data => track.data
       }
     }.to_json
