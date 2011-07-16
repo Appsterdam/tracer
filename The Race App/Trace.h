@@ -7,20 +7,26 @@
 //
 
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
 @protocol TraceDelegate;
 
-@interface Trace : NSObject
+@interface Trace : NSObject <MKOverlay>
 
 @property(nonatomic, assign) id<TraceDelegate> delegate;
 
 @property(nonatomic, readonly) NSDate * startTime;
 @property(nonatomic, readonly) NSDate * endTime;
 
+@property (nonatomic, assign)  CLLocationCoordinate2D coordinate;
+@property (nonatomic, assign)  MKMapRect              boundingMapRect;
+
 - (void)addPoint:(CLLocation *)point withTimestamp:(NSDate *)timestamp;
 
 @end
 
+
+// Maybe not needed...
 @protocol TraceDelegate <NSObject>
 
 - (void)trace:(Trace *)trace didAddPoint:(CLLocation *) point withTimestamp:(NSDate *)timestamp;

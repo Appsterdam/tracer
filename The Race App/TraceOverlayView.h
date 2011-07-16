@@ -8,8 +8,8 @@
 
 #import <Mapkit/Mapkit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "Trace.h"
 
 @interface TraceOverlayView : MKOverlayView
-
 
 @end

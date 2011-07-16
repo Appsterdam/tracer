@@ -18,12 +18,16 @@
 @synthesize trace;
 @synthesize timestamps;
 @synthesize delegate;
+@synthesize coordinate;
+@synthesize boundingMapRect;
 
 - (id)init;
 {
 	if ((self = [super init]) == nil)
 		return nil;
 	
+	self.coordinate = (CLLocationCoordinate2D) { .latitude = 0, .longitude = 0 };
+	self.boundingMapRect = (MKMapRect) { .origin = { .x = 0, .y = 0 }, .size = { .width = 0, .height = 0 } };
 	
     return self;
 }
@@ -58,5 +62,6 @@
 	
 	return [[self.timestamps lastObject] copy];
 }
+
 
 @end

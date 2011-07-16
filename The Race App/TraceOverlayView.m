@@ -7,9 +7,8 @@
 //
 
 #import "TraceOverlayView.h"
-#import "Trace.h"
 
-@interface TraceOverlayView()
+@interface TraceOverlayView() <TraceDelegate>
 @property(nonatomic, retain) Trace * trace;
 @end
 
@@ -17,11 +16,13 @@
 
 @synthesize trace;
 
-- (id)init;
+- (id)initForTrace:(Trace *)theTrace;
 {
 	if ((self = [super init]) == nil)
 		return nil;
 	
+	self.trace = theTrace;
+	theTrace.delegate = self;
 	
     return self;
 }
@@ -32,9 +33,10 @@
 	[super dealloc];
 }
 
-- (void)addPoint:(CLLocation *)location;
+// maybe not needed...
+- (void)trace:(Trace *)trace didAddPoint:(CLLocation *)point withTimestamp:(NSDate *)timestamp;
 {
-	
+
 }
 
 @end

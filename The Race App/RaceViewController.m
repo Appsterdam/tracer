@@ -7,9 +7,14 @@
 //
 
 #import "RaceViewController.h"
+#import "Trace.h"
+#import "TraceOverlayView.h"
 
+@interface RaceViewController ()
 
-@interface RaceViewController (Private)
+@property(nonatomic, retain) Trace            * currentTrace;
+@property(nonatomic, retain) TraceOverlayView * currentTraceView;
+
 
 - (void)userLocationDetected:(CLLocation *)newLocation;
 - (void)userIsAtStartCheckPoint;
@@ -23,6 +28,9 @@
 static NSUInteger CheckpointMetersThreshold = 15;
 
 @implementation RaceViewController
+
+@synthesize currentTrace;
+@synthesize currentTraceView;
 @synthesize mapView;
 @synthesize startRaceView;
 @synthesize startButton;
@@ -41,6 +49,9 @@ static NSUInteger CheckpointMetersThreshold = 15;
 }
 
 - (void)dealloc {
+	self.currentTrace = nil;
+	self.currentTraceView = nil;
+	
 	[locationManager release];
 	[mapView release];
 	[startRaceView release];
@@ -174,6 +185,13 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	return checkpointView;
 }
 
+- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
+{
+	if (overlay == self.currentTrace) return self.currentTraceView;
+	return nil;
+}
+
+
 #pragma mark -
 #pragma mark Private
 
@@ -192,6 +210,12 @@ static NSUInteger CheckpointMetersThreshold = 15;
 														  maxDistanceFromUser * 2)
 			  animated:YES];
 	[mapView addAnnotations:checkpoints];
+	
+	self.currentTrace     = [[[Trace alloc] init] autorelease];
+	self.currentTraceView = [[[TraceOverlayView alloc] initWithOverlay:self.currentTrace] autorelease];
+	
+	[mapView addOverlay:self.currentTrace];
+	
 	[UIView animateWithDuration:1 animations:^(void) {
 		startRaceView.alpha = 1;
 	}];	
