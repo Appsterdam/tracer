@@ -6,20 +6,20 @@
 //  Copyright 2011 Pawn Company Ltd. All rights reserved.
 //
 
+
 #import <MapKit/MapKit.h>
 #import "The_Race_AppAppDelegate.h"
 #import "RaceTracksViewController.h"
 #import "ResultsViewController.h"
-#import "GameKitHelpers/GameKitHelper.h"
 
+#if USEGAMEKIT
+    #import "GameKitHelpers/GameKitHelper.h"
+#endif
 
 @implementation The_Race_AppAppDelegate
 
-
 @synthesize window=_window;
 @synthesize tabBarController;
-@synthesize localPlayer;
-@synthesize gameCenterFriends;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
@@ -47,6 +47,8 @@
     resultsNavigationController.tabBarItem =
         resultsViewController.tabBarItem;
     
+#if USEGAMEKIT
+    
     if ([GameKitHelper isGameCenterAPIAvailable]) {
         [self authenticateLocalPlayer];
         UIViewController* gameCenterViewController = [[[UIViewController alloc] init] autorelease];
@@ -55,6 +57,7 @@
         [gameCenterTabBarItem release];
         [viewControllers addObject:gameCenterViewController];
     }
+#endif
     
     tabBarController.viewControllers = [NSArray arrayWithArray:viewControllers];
     [viewControllers release];
@@ -103,22 +106,6 @@
 	 */
 }
 
-
-
-- (void)authenticateLocalPlayer{
-    GKLocalPlayer* currentPlayer = [GameKitHelper authenticatedGKLocalPlayer];
-    if (nil == currentPlayer) {
-        [[self localPlayer] release], localPlayer = nil;
-        [GameKitHelper removeGKNotificationObserver:self];
-    }
-    [self setLocalPlayer:currentPlayer];
-    [GameKitHelper addGKNotificationObserver:self selector:@selector(handleGKPlayerAuthenticationDidCangeNofication:)];
-}
-
-- (void)handleGKPlayerAuthenticationDidCangeNofication:(NSNotification *)notifcation {
-    [self authenticateLocalPlayer];
-}
-
 - (void)dealloc
 {
 	[_window release];
@@ -126,5 +113,29 @@
     
     [super dealloc];
 }
+
+#pragma mark Optional GameKit Integration
+
+#if USEGAMEKIT
+
+@synthesize localPlayer;
+@synthesize gameCenterFriends;
+
+- (void)authenticateLocalPlayer{
+    GKLocalPlayer* currentPlayer = [GameKitHelper authenticatedGKLocalPlayer];
+    if (nil == currentPlayer) {
+        [[self localPlayer] release], localPlayer = nil;
+//      [GameKitHelper removeGKNotificationObserver:self];
+    }
+    [self setLocalPlayer:currentPlayer];
+    [GameKitHelper addGKNotificationObserver:self selector:@selector(handleGKPlayerAuthenticationDidCangeNofication:)];
+}
+
+
+- (void)handleGKPlayerAuthenticationDidCangeNofication:(NSNotification *)notifcation {
+    NSLog(@"Received %@", GKPlayerDidChangeNotificationName);
+    [self authenticateLocalPlayer];
+}
+#endif
 
 @end
