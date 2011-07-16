@@ -13,9 +13,7 @@
 
 @interface RaceViewController ()
 
-@property(nonatomic, retain) Trace             * currentTrace;
 @property(nonatomic, retain) TraceOverlayView  * currentTraceView;
-
 @property(nonatomic, retain) MKPointAnnotation * ghostAnnotation;
 
 - (void)startStopwatch;
@@ -24,7 +22,6 @@
 
 @implementation RaceViewController
 
-@synthesize currentTrace;
 @synthesize currentTraceView;
 @synthesize mapView;
 @synthesize startRaceView;
@@ -52,7 +49,6 @@
 }
 
 - (void)dealloc {
-	self.currentTrace = nil;
 	self.currentTraceView = nil;
 
 	self.saveTraceButton = nil;
@@ -263,16 +259,6 @@
 						   (stopwatchTime / 600) % 60,
 						   (stopwatchTime / 10) % 60,
 						   stopwatchTime % 10];
-}
-
-
-- (IBAction)saveTrace:(id)sender;
-{
-	NSArray  * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString * path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"trace"];
-					   
-	[NSKeyedArchiver archiveRootObject:self.currentTrace
-								toFile:path];
 }
 
 - (IBAction)playTrace:(id)sender;
