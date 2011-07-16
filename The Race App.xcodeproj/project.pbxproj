@@ -34,6 +34,10 @@
 		A537E3E813C8ED6800D3BDE1 /* ResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */; };
 		A537E3EA13C8EFA200D3BDE1 /* ResultsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A537E3E913C8EFA200D3BDE1 /* ResultsViewController.xib */; };
 		A53B849A13D18B6A0033BAB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53B849913D18B6A0033BAB2 /* Security.framework */; };
+		A56E335B13D1DAAF0019BA73 /* RaceAppUser.m in Sources */ = {isa = PBXBuildFile; fileRef = A56E335A13D1DAAF0019BA73 /* RaceAppUser.m */; };
+		A56E339D13D1EB5D0019BA73 /* login_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A56E339B13D1EB5D0019BA73 /* login_user@2x.png */; };
+		A56E339E13D1EB5D0019BA73 /* login_user.png in Resources */ = {isa = PBXBuildFile; fileRef = A56E339C13D1EB5D0019BA73 /* login_user.png */; };
+		A56E33A013D1EBB60019BA73 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A56E339F13D1EBB60019BA73 /* LoginViewController.xib */; };
 		A5D83CC413D18E6500B68EC1 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5D83CC313D18E6500B68EC1 /* MessageUI.framework */; };
 		A5D83D0113D1976C00B68EC1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D83D0013D1976C00B68EC1 /* LoginViewController.m */; };
 		A5D83D3313D1999000B68EC1 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D83D3213D1999000B68EC1 /* Reachability.m */; };
@@ -122,6 +126,11 @@
 		A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultsViewController.m; sourceTree = "<group>"; };
 		A537E3E913C8EFA200D3BDE1 /* ResultsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultsViewController.xib; sourceTree = "<group>"; };
 		A53B849913D18B6A0033BAB2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A56E335913D1DAAF0019BA73 /* RaceAppUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RaceAppUser.h; sourceTree = "<group>"; };
+		A56E335A13D1DAAF0019BA73 /* RaceAppUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RaceAppUser.m; sourceTree = "<group>"; };
+		A56E339B13D1EB5D0019BA73 /* login_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_user@2x.png"; sourceTree = "<group>"; };
+		A56E339C13D1EB5D0019BA73 /* login_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_user.png; sourceTree = "<group>"; };
+		A56E339F13D1EBB60019BA73 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		A5D83CC313D18E6500B68EC1 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A5D83CFF13D1976C00B68EC1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		A5D83D0013D1976C00B68EC1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -318,6 +327,7 @@
 				9560314D13C88030003204F9 /* RaceViewController.xib */,
 				A5FACFD813C8C44B00522E43 /* RaceTrackTableViewCell.xib */,
 				A537E3E913C8EFA200D3BDE1 /* ResultsViewController.xib */,
+				A56E339F13D1EBB60019BA73 /* LoginViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -325,6 +335,8 @@
 		A537E3DD13C8DFBD00D3BDE1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A56E339B13D1EB5D0019BA73 /* login_user@2x.png */,
+				A56E339C13D1EB5D0019BA73 /* login_user.png */,
 				95B5192B13C9904400E4DB3E /* race-arrow.png */,
 				A53197A913C9B68000E02F81 /* flags.png */,
 				A53197AA13C9B68000E02F81 /* flags@2x.png */,
@@ -492,6 +504,8 @@
 			children = (
 				F4DB935A13C8CCEE00CBB7B5 /* Track.h */,
 				F4DB935B13C8CCEE00CBB7B5 /* Track.m */,
+				A56E335913D1DAAF0019BA73 /* RaceAppUser.h */,
+				A56E335A13D1DAAF0019BA73 /* RaceAppUser.m */,
 				959C55F913D1C5F100A7AA93 /* RaceTracer.h */,
 				959C55FA13D1C5F100A7AA93 /* RaceTracer.m */,
 			);
@@ -563,6 +577,9 @@
 				A53197B313C9B68000E02F81 /* trophy.png in Resources */,
 				A53197B413C9B68000E02F81 /* trophy@2x.png in Resources */,
 				A5D83D5613D19CAE00B68EC1 /* FBDialog.bundle in Resources */,
+				A56E339D13D1EB5D0019BA73 /* login_user@2x.png in Resources */,
+				A56E339E13D1EB5D0019BA73 /* login_user.png in Resources */,
+				A56E33A013D1EBB60019BA73 /* LoginViewController.xib in Resources */,
 				F23F584B13D1B94200DD4672 /* Pin.png in Resources */,
 				F23F584C13D1B94200DD4672 /* PinDown1.png in Resources */,
 				F23F584D13D1B94200DD4672 /* PinDown2.png in Resources */,
@@ -617,6 +634,7 @@
 				A5D83D5713D19CAE00B68EC1 /* FBDialog.m in Sources */,
 				A5D83D5813D19CAE00B68EC1 /* FBLoginDialog.m in Sources */,
 				A5D83D5913D19CAE00B68EC1 /* FBRequest.m in Sources */,
+				A56E335B13D1DAAF0019BA73 /* RaceAppUser.m in Sources */,
 				F23F584913D1B94200DD4672 /* DDAnnotation.m in Sources */,
 				F23F584A13D1B94200DD4672 /* DDAnnotationView.m in Sources */,
 				F23F585713D1B97400DD4672 /* TrackCreatorViewController.m in Sources */,

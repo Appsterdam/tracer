@@ -8,13 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class Facebook;
+
 @interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate> 
 {
     UIWindow*               window;
     UITabBarController*     tabBarController;
+    Facebook*               faceBookApi;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow*  window;
 @property (nonatomic, retain) UITabBarController* tabBarController;
+@property (nonatomic, retain) Facebook*           faceBookApi;
 
 @end

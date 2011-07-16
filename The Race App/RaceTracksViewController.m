@@ -66,7 +66,8 @@
     ownView.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
     
     self.view = ownView;
-    
+    [ownView release];
+
     tableView = [[UITableView alloc] initWithFrame:self.view.bounds 
                                              style:UITableViewStylePlain];
     
