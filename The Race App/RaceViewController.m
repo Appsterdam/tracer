@@ -64,11 +64,6 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	[self.view addSubview:progressHUD];
 	[progressHUD show:YES];
 	
-	locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = 1;
-    [locationManager startUpdatingLocation];
 	[locationManager startUpdatingHeading];
 }
 
@@ -85,10 +80,28 @@ static NSUInteger CheckpointMetersThreshold = 15;
 }
 
 #pragma mark -
-#pragma mark CLLocationManagerDelegate
+#pragma mark LocationTracerDelegate
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {	
+- (void)userFirstLocationDetected:(CLLocation *)newLocation {
+	[progressHUD hide:YES];
+	CLLocationDistance maxDistanceFromUser = 0;
+	for (MKPointAnnotation *checkpoint in checkpoints) {
+		CLLocation *checkpointLocation = [[[CLLocation alloc] initWithLatitude:checkpoint.coordinate.latitude
+																	 longitude:checkpoint.coordinate.longitude] autorelease];
+		maxDistanceFromUser = MAX(maxDistanceFromUser, [newLocation distanceFromLocation:checkpointLocation]);
+	}
 	
+	[mapView setRegion:MKCoordinateRegionMakeWithDistance(newLocation.coordinate,
+														  maxDistanceFromUser * 2,
+														  maxDistanceFromUser * 2)
+			  animated:YES];
+	[mapView addAnnotations:checkpoints];
+	[UIView animateWithDuration:1 animations:^(void) {
+		startRaceView.alpha = 1;
+	}];	
+}
+
+- (void)userMovedToNewLocation:(CLLocation *)newLocation {
 	CLLocation *nextCheckpointLocation = [[[CLLocation alloc] initWithLatitude:nextCheckpoint.coordinate.latitude
 																	 longitude:nextCheckpoint.coordinate.longitude] autorelease];
 	distanceFromNextCheckpoint = [newLocation distanceFromLocation:nextCheckpointLocation];
@@ -119,12 +132,8 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	[self updateNextCheckpoint];
 	[self updateCheckpointsLabel];
 }
-
-- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-	if (newHeading.headingAccuracy < 0)
-		return;
 	
-	
+- (void)usedChangedHeading:(CLHeading *)newHeading {	
 	arrowImageView.transform = CGAffineTransformMakeRotation(-newHeading.trueHeading * M_PI / 180);
 }
 
@@ -170,25 +179,6 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 #pragma mark -
 #pragma mark Private
-
-- (void)userLocationDetected:(CLLocation *)newLocation {
-	[progressHUD hide:YES];
-	CLLocationDistance maxDistanceFromUser = 0;
-	for (MKPointAnnotation *checkpoint in checkpoints) {
-		CLLocation *checkpointLocation = [[[CLLocation alloc] initWithLatitude:checkpoint.coordinate.latitude
-																	 longitude:checkpoint.coordinate.longitude] autorelease];
-		maxDistanceFromUser = MAX(maxDistanceFromUser, [newLocation distanceFromLocation:checkpointLocation]);
-	}
-	
-	[mapView setRegion:MKCoordinateRegionMakeWithDistance(newLocation.coordinate,
-														  maxDistanceFromUser * 2,
-														  maxDistanceFromUser * 2)
-			  animated:YES];
-	[mapView addAnnotations:checkpoints];
-	[UIView animateWithDuration:1 animations:^(void) {
-		startRaceView.alpha = 1;
-	}];	
-}
 
 - (void)userIsAtStartCheckPoint {
 	MKPointAnnotation *startAnnotation = [checkpoints objectAtIndex:0];

@@ -10,9 +10,10 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
+#import "LocationTracer.h"
 
 
-@interface RaceViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
+@interface RaceViewController : UIViewController <MKMapViewDelegate, LocationTracerDelegate> {
 	BOOL racing;
 	NSUInteger stopwatchTime;
 	NSArray *checkpoints;

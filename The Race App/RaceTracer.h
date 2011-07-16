@@ -12,17 +12,21 @@
 
 @protocol LocationTracerDelegate <NSObject>
 
-- (void)userLocationDetected:(CLLocation *)userLocation;
+- (void)userFirstLocationDetected:(CLLocation *)userLocation;
+- (void)userMovedToNewLocation:(CLLocation *)newLocation;
+- (void)usedChangedHeading:(CLHeading *)newHeading;
 
 @end
 
 
-@interface LocationTracer : NSObject <CLLocationManagerDelegate> {
+@interface RaceTracer : NSObject <CLLocationManagerDelegate> {
 	BOOL userLocated;
 	id<LocationTracerDelegate> delegate;
 	CLLocationManager *locationManager;
+	NSMutableArray *trace;
 }
 
 - (void)startTrackingUserLocation;
+- (void)startTrackingUserHeading;
 
 @end
