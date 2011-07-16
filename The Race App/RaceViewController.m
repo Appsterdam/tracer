@@ -87,13 +87,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 #pragma mark -
 #pragma mark CLLocationManagerDelegate
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	if (!userLocated) {
-		if ([newLocation.timestamp timeIntervalSinceNow] > 15)
-			return;
-		[self userLocationDetected:newLocation];
-		return;
-	}
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {	
 	
 	CLLocation *nextCheckpointLocation = [[[CLLocation alloc] initWithLatitude:nextCheckpoint.coordinate.latitude
 																	 longitude:nextCheckpoint.coordinate.longitude] autorelease];
@@ -178,7 +172,6 @@ static NSUInteger CheckpointMetersThreshold = 15;
 #pragma mark Private
 
 - (void)userLocationDetected:(CLLocation *)newLocation {
-	userLocated = YES;
 	[progressHUD hide:YES];
 	CLLocationDistance maxDistanceFromUser = 0;
 	for (MKPointAnnotation *checkpoint in checkpoints) {

@@ -13,7 +13,6 @@
 
 
 @interface RaceViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
-	BOOL userLocated;
 	BOOL racing;
 	NSUInteger stopwatchTime;
 	NSArray *checkpoints;
