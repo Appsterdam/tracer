@@ -4,6 +4,7 @@
 
 module CompassInitializer
   def self.registered(app)
+    return unless app.development?
     require 'sass/plugin/rack'
 
     Compass.configuration do |config|
