@@ -164,8 +164,12 @@ describe "TracksController" do
     end
 
     it 'redirects to the created resource' do
-      put TheRaceApp.url(:tracks, :create), { :name => "A new track name" }
+      put TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => "[{'lat':123, 'long': '456'}]" }
       last_response.location.should == "http://example.org" + TheRaceApp.url(:tracks, :show, :id => Track.last.id, :format => :json)
+    end
+
+    it 'stores the data on the track' do
+      pending
     end
 
     context "invalid data" do
