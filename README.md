@@ -21,8 +21,13 @@ cd ./TheRaceAppServer
 git checkout server
 
 gem install heroku
+
 heroku create --stack cedar
+heroku addons:add shared-database
+
 git push heroku server:master
+
+heroku run rake dm:auto:migrate
 
 heroku scale web=1
 ```
