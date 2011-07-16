@@ -10,7 +10,8 @@ gem 'rack-flash'
 # Component requirements
 gem 'compass'
 gem 'haml'
-gem 'dm-sqlite-adapter'
+gem 'dm-sqlite-adapter', :group => [:test, :development]
+gem 'dm-postgres-adapter', :group => :production
 gem 'dm-validations'
 gem 'dm-timestamps'
 gem 'dm-migrations'

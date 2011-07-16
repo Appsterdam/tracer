@@ -4,6 +4,7 @@ class Track
   # property <name>, <type>
   property :id, Serial
   property :name, Text, :required => true, :lazy => false
+  property :data, Text, :required => false, :default => "[]", :lazy => false
 
   has n, :races
 

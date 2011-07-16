@@ -7,6 +7,7 @@ class TheRaceApp < Padrino::Application
 
   enable :sessions
 
+
   ##
   # Caching support
   #

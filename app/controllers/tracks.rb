@@ -2,7 +2,7 @@ TheRaceApp.controllers :tracks do
   get :index, :provides => :json do
     { 
       :ok => true,
-      :data => Track.all
+      :data => Track.all.map { |t| { :name => t.name, :id => t.id, :uri => url(:tracks, :show, :id => t.id) } }
     }.to_json
   end
 
@@ -10,12 +10,15 @@ TheRaceApp.controllers :tracks do
     track = Track.get(params[:id])
     {
       :ok => true,
-      :data => track
+      :data => {
+        :name => track.name,
+        :data => track.data
+      }
     }.to_json
   end
 
   put :create, :provides => :json do
-    track = Track.new(params)
+    track = Track.new({ :name => params[:name], :data => params[:data]})
     if track.save
       redirect url(:tracks, :show, :id => track.id, :format => content_type)
     else
@@ -27,7 +30,7 @@ TheRaceApp.controllers :tracks do
     end
   end
 
-  post :start, :map => ":id/start", :provides => :json do
+  post :start, :map => "/tracks/:id/start", :provides => :json do
     track = Track.get(params[:id])
     race = track.start_race(params[:username])
     {
@@ -41,7 +44,7 @@ TheRaceApp.controllers :tracks do
     }.to_json
   end
 
-  post :stop, :map => ":id/races/:race/stop", :provides => :json do
+  post :stop, :map => "/tracks/:id/races/:race/stop", :provides => :json do
     track = Track.get(params[:id])
     race = track.races.first(:id => params[:race])
     race.stop(params[:time])

@@ -11,6 +11,8 @@ class Race
   alias_method :started, :created_at
   alias_method :progress?, :in_progress
 
+  belongs_to :track
+
   def stop(time)
     self.in_progress = false
     self.duration = time

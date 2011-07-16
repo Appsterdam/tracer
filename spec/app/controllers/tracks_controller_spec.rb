@@ -28,10 +28,11 @@ describe "TracksController" do
       json['data'].size.should == 3
     end
 
-    it 'returns the tracks names and ids' do
+    it 'returns the tracks names and ids and uri' do
       json['data'].first['name'].should_not be_nil
       json['data'].first['id'].should_not be_nil
-      json['data'].first.keys.size.should == 2
+      json['data'].first['uri'].should_not be_nil
+      json['data'].first.keys.size.should == 3
     end
 
     it 'returns true in the "ok" key' do
@@ -61,10 +62,6 @@ describe "TracksController" do
 
     context '"data" key' do
       let(:data) { json["data"] }
-
-      it 'stores the id of the track' do
-        data["id"].should == track.id
-      end
 
       it 'stores the name of the track' do
         data["name"].should == track.name
@@ -166,10 +163,6 @@ describe "TracksController" do
     it 'redirects to the created resource' do
       put TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => "[{'lat':123, 'long': '456'}]" }
       last_response.location.should == "http://example.org" + TheRaceApp.url(:tracks, :show, :id => Track.last.id, :format => :json)
-    end
-
-    it 'stores the data on the track' do
-      pending
     end
 
     context "invalid data" do
