@@ -158,7 +158,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	{
 		if (self.checkpointToPass == [checkpoints lastObject])
 		{
-			[self.delegate raceTracerReachedStartPoint:self];
+			[self.delegate raceTracerReachedEndPoint:self];
 			[self stopRace];
 		}
 		else

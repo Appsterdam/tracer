@@ -77,8 +77,16 @@
 																otherButtonTitles:nil] autorelease];
 		[errorAlert show];
 		return;
+    } else  if ([self.coordinates count]>25) {
+        UIAlertView *errorAlert = [[[UIAlertView alloc] initWithTitle:@"Too much checkpoints!" 
+                                                              message:@"Please remove some checkpoints. The maximum number of checkpoints is 25"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"Dismiss"
+                                                    otherButtonTitles:nil] autorelease];
+		[errorAlert show];
+		return;
     } else {
-        //Save track and pass it on to some object.
+        //Save track and pass it on to the server
         NSMutableArray *locationArray = [[NSMutableArray alloc] init];
         for (int i = 0; i<[self.coordinates count]; i++) {
             DDAnnotation *ann = [self.coordinates objectAtIndex:i];
