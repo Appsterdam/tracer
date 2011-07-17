@@ -69,6 +69,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (void)dealloc;
 {
+    [self stopRace];
 	self.currentTrace = nil;
 	self.locationManager = nil;
 	self.tracePlayer = nil;

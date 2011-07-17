@@ -19,12 +19,10 @@
 @interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate, GameCenterManagerDelegate> 
 {
     UIWindow*               window;
-    UITabBarController*     tabBarController;
     Facebook*               faceBookApi;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow*  window;
-@property (nonatomic, retain) UITabBarController* tabBarController;
 @property (nonatomic, retain) Facebook*           faceBookApi;
 @property (nonatomic, retain) GameCenterManager* gameCenterManager;
 

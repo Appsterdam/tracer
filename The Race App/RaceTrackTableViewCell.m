@@ -13,9 +13,9 @@
 
 @synthesize trackNameLabel;
 @synthesize winnerNameLabel;
+@synthesize trackThumbnail;
 @synthesize winnerTimeLabel;
 @synthesize checkPointCountLabel;
-
 
 -(void)loadFromNib
 {
@@ -26,6 +26,7 @@
     [self.contentView addSubview:winnerNameLabel];
     [self.contentView addSubview:winnerTimeLabel];
     [self.contentView addSubview:checkPointCountLabel];
+	[self.contentView addSubview:trackThumbnail];
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -51,7 +52,7 @@
     [winnerTimeLabel release];
     [winnerNameLabel release];
     [checkPointCountLabel release];
-    
+    [trackThumbnail release];
     [super dealloc];
 }
 

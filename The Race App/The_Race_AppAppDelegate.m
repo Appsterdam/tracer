@@ -23,13 +23,11 @@
 @implementation The_Race_AppAppDelegate
 
 @synthesize window=_window;
-@synthesize tabBarController;
 @synthesize faceBookApi;
 @synthesize gameCenterManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
-    tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
     faceBookApi = [[Facebook alloc] initWithAppId:RACE_APP_FACEBOOK_APP_ID];
     
     NSUserDefaults* userDefaults = [NSUserDefaults standardUserDefaults];
@@ -63,33 +61,21 @@
     raceTrackNavigationController.tabBarItem = 
         raceTrackViewController.tabBarItem;
     
-    ResultsViewController* resultsViewController =
-        [[[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil] autorelease];
+    UIImageView *topView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashScreenFinal2Top.png"]];
+    UIImageView *bottomView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"SplashScreenTransitionFinal2Bottom.png"]];
+    [topView setFrame:CGRectMake(0, 15, 320, 226)];
+    [bottomView setFrame:CGRectMake(0, 176, 320, 312)];
     
-    UINavigationController* resultsNavigationController =
-        [[[UINavigationController alloc] initWithRootViewController:resultsViewController] autorelease];
-        
-    resultsNavigationController.tabBarItem =
-        resultsViewController.tabBarItem;
-        
-    // -------------------------- Login
-    LoginViewController* loginViewController =
-        [[[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil] autorelease];
+    [raceTrackNavigationController.view addSubview:bottomView];
+    [raceTrackNavigationController.view addSubview:topView];
     
-    UINavigationController* loginNavigationController =
-        [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
+    [UIView beginAnimations:@"open" context:nil];
+    [UIView setAnimationDuration:1];
+    topView.transform = CGAffineTransformMakeTranslation(0, -300);
+    bottomView.transform = CGAffineTransformMakeTranslation(0, 300);
+    [UIView commitAnimations];
     
-    loginNavigationController.tabBarItem = loginViewController.tabBarItem;
-    
-	NSArray* viewControllers = 
-	[NSArray arrayWithObjects:raceTrackNavigationController, 
-	 resultsNavigationController, 
-	 loginNavigationController,
-	 nil];
-	
-    tabBarController.viewControllers = viewControllers;
-	
-	self.window.rootViewController = tabBarController;
+	self.window.rootViewController = raceTrackNavigationController;
 	[self.window makeKeyAndVisible];
     return YES;
 }
@@ -136,7 +122,6 @@
 - (void)dealloc
 {
 	[_window release];
-    [tabBarController release];
     [faceBookApi release];
     
     [super dealloc];
