@@ -14,7 +14,7 @@ TheRaceApp.controllers do
   end
 
   get :clear, :provides => :json do
-    Track.all.destroy!
+    DataMapper.auto_migrate!
     {
       :ok => true,
       :message => "Cleared database"
