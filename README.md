@@ -34,3 +34,8 @@ heroku run rake dm:auto:migrate
 
 heroku scale web=1
 ```
+
+## Copyright
+
+Copyright (c) 2011 Appsterdam. See LICENSE for details.
+
