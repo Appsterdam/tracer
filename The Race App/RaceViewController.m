@@ -11,6 +11,7 @@
 #import "Trace.h"
 #import "TraceOverlayView.h"
 #import "GPSTracePlayer.h"
+#import "AppSpecificValues.h"
 
 #define kPinNumberTag 343
 
@@ -178,6 +179,8 @@
 - (void)raceTracerReachedEndPoint:(RaceTracer *)tracer;
 {
     [api finishRaceWithTime:[NSNumber numberWithInt:stopwatchTime] andTrackURI:track.trackURI];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName: kDidFinshTrackNotifiction object:nil];
     
 	[[[[UIAlertView alloc] initWithTitle:@"Race completed!" 
 								 message:@"You did it!"

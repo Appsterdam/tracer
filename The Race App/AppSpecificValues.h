@@ -23,4 +23,6 @@
 #define kAchievementTenTracksLaid @"com.raceapp.TenTracksLaid"
 
 //Notifications for GameCenterManager
-#define kDidCreateTrackNotifcation @"didCreateTrackNotification"
+#define kDidCreateTrackNotification @"didCreateTrackNotification"
+#define kDidFinshTrackNotifiction @"didFinishTrackNotification"
+#define kDidWinRaceWithBestTime @"didWinRaceWithBestTime"

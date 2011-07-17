@@ -16,7 +16,7 @@
 	if(self!= NULL)
 	{
 		earnedAchievementCache= NULL;
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidCreateTrackNotification) name:kDidCreateTrackNotifcation object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidCreateTrackNotification) name:kDidCreateTrackNotification object:nil];
 	}
 	return self;
 }
@@ -24,7 +24,7 @@
 - (void) dealloc
 {
 	self.earnedAchievementCache= NULL;
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:kDidCreateTrackNotifcation object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kDidCreateTrackNotification object:nil];
 	[super dealloc];
 }
 
@@ -216,5 +216,9 @@
 
 - (void) handleDidCreateTrackNotification {
     [self submitAchievement:kAchievementFirstTrackLaid percentComplete:100.0];
+}
+
+- (void) handleDidFinishRaceNotification {
+    [self submitAchievement:kAchievementFirstTrackCompleted percentComplete:100.0];
 }
 @end

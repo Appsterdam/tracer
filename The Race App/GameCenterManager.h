@@ -40,4 +40,5 @@
 - (void) mapPlayerIDtoPlayer: (NSString*) playerID;
 
 - (void) handleDidCreateTrackNotification;
+- (void) handleDidFinishRaceNotification;
 @end

@@ -149,7 +149,7 @@
 }
 
 - (void)popViewController {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kDidCreateTrackNotifcation object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDidCreateTrackNotification object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
