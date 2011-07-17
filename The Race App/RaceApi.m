@@ -92,7 +92,7 @@
                 }
                 
                 Track *track = [[Track alloc] initWithTrackName:[dict objectForKey:@"name"] 
-                                                     trackScore:[dict objectForKey:@"best_time"] 
+                                                     trackScore:[[dict objectForKey:@"best_time"] stringValue]
                                                     trackWinner:[dict objectForKey:@"winner"]  
                                                       trackData:checkpoints
                                                        trackURI:[dict objectForKey:@"uri"] ];
