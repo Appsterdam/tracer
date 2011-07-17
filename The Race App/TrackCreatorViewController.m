@@ -9,6 +9,8 @@
 #import "TrackCreatorViewController.h"
 #import "DDAnnotation.h"
 #import "DDAnnotationView.h"
+#import "JSON.h"
+#import "MBProgressHUD.h"
 
 @implementation TrackCreatorViewController
 @synthesize mapView, tableView, coordinates, name;
@@ -81,9 +83,61 @@
             [locationArray addObject:loc];
             [loc release];
         }
-#warning Incomplete implementation! Still have to upload the LocationArray to server.
+        
+        
+        NSMutableArray *coordinateArray = [NSMutableArray array];
+        for (int i = 0; i <[locationArray count]; i++) {
+            CLLocation *loc = [locationArray objectAtIndex:i];
+            NSDictionary *dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f",loc.coordinate.latitude],[NSString stringWithFormat:@"%f",loc.coordinate.longitude],nil]
+                                                             forKeys:[NSArray arrayWithObjects:@"lat",@"lon",nil]];
+            [coordinateArray addObject:dict];
+        }
+        
+        NSString *dump = [coordinateArray JSONRepresentation];
+    
+        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+        hud.labelText = @"Saving track...";
+        hud.animationType = MBProgressHUDAnimationZoom;
+        [self.view addSubview:hud];
+        [hud showWhileExecuting:@selector(postData:) onTarget:self withObject:dump animated:YES];
+        [hud release];
         [locationArray release];
     }
+}
+
+- (void)postData:(NSString*)jsonDump {
+    NSString *urlString = @"http://appsterdam-iosdevcamp.herokuapp.com/tracks/create.json";
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"name=%@&data=",self.title] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[jsonDump dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    NSDictionary  *returnDict = [returnString JSONValue];
+    if ([[returnDict objectForKey:@"ok"] intValue]==1) {
+        //success!
+        [self performSelectorOnMainThread:@selector(popViewController) withObject:nil waitUntilDone:NO];
+    } else {
+        //fail
+        NSString  *error = [[[returnDict objectForKey:@"messages"] objectForKey:@"name"] objectAtIndex:0];
+        UIAlertView *errorAlert = [[[UIAlertView alloc] initWithTitle:@"Unable to save track" 
+                                                              message:error
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"Dismiss"
+                                                    otherButtonTitles:nil] autorelease];
+		[errorAlert show];
+    }
+    [returnString release];
+}
+
+- (void)popViewController {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)handleLongPress:(id)sender {
@@ -105,7 +159,6 @@
         }
     }
 }
-
 //Tableview enter editmode
 - (void)editTrack:(id)sender {
     [tableView setEditing: YES animated: YES];

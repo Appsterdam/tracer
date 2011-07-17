@@ -168,6 +168,7 @@
     
     [textField becomeFirstResponder];
     [alert addSubview:textField];
+    [textField release];
     [alert show];
     [alert setTransform:CGAffineTransformMakeTranslation(0,99)];
     [alert setDelegate:creationController];
