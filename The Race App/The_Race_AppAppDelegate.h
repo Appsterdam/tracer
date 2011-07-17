@@ -8,10 +8,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
+
+#import "AppSpecificValues.h"
+#import "GameCenterManager.h"
 
 @class Facebook;
+@class GameCenterManager;
 
-@interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate> 
+@interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate, GameCenterManagerDelegate> 
 {
     UIWindow*               window;
     UITabBarController*     tabBarController;
@@ -21,5 +26,6 @@
 @property (nonatomic, retain) IBOutlet UIWindow*  window;
 @property (nonatomic, retain) UITabBarController* tabBarController;
 @property (nonatomic, retain) Facebook*           faceBookApi;
+@property (nonatomic, retain) GameCenterManager* gameCenterManager;
 
 @end
