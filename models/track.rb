@@ -53,14 +53,15 @@ class Track
     races.create(:username => username)
   end
 
-  def self.near(location)
+  def self.near(location, opts = {})
     loc = Geokit::Geocoders::GoogleGeocoder.geocode location
     # SELECT "id", "name", "start_lat", "start_lng", "city", "street", "country" FROM "tracks" WHERE ("start_lat" <= 52.8730556 AND "start_lng" <= 5.3922222 AND "start_lat" >= 51.8730556 AND "start_lng" >= 4.3922222) ORDER BY "id""
+    range = opts[:range] || 0.0
 
-    all(:start_lat.lte => loc.suggested_bounds.ne.lat + 0.5) &
-    all(:start_lng.lte => loc.suggested_bounds.ne.lng + 0.5) &
-    all(:start_lat.gte => loc.suggested_bounds.sw.lat - 0.5) &
-    all(:start_lng.gte => loc.suggested_bounds.sw.lng - 0.5)
+    all(:start_lat.lte => loc.suggested_bounds.ne.lat + range) &
+    all(:start_lng.lte => loc.suggested_bounds.ne.lng + range) &
+    all(:start_lat.gte => loc.suggested_bounds.sw.lat - range) &
+    all(:start_lng.gte => loc.suggested_bounds.sw.lng - range)
   end
 
   alias_method :old_as_json, :as_json
