@@ -140,7 +140,9 @@
 	
 	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
     UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
-    [imgView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"PinNumberGreen%d.png", checkpointReachedIdx+1]]];
+    UIImage *newImage = [UIImage imageNamed:[NSString stringWithFormat:@"PinNumberGreen%d.png", checkpointReachedIdx+1]];
+    [imgView setImage:newImage];
+    NSLog(@"NewImage = %@ \r\nimgView = %@ \r\n index: %d",newImage, imgView, checkpointReachedIdx+1);
 }
 
 - (void)raceTracerReachedStartPoint:(RaceTracer *)tracer;
