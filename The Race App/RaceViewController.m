@@ -138,7 +138,6 @@
     UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
     UIImage *newImage = [UIImage imageNamed:[NSString stringWithFormat:@"PinNumberGreen%d.png", checkpointReachedIdx+1]];
     [imgView setImage:newImage];
-    NSLog(@"NewImage = %@ \r\nimgView = %@ \r\n index: %d",newImage, imgView, checkpointReachedIdx+1);
 }
 
 - (void)raceTracerReachedStartPoint:(RaceTracer *)tracer;
@@ -159,6 +158,14 @@
 
 - (void)raceTracerReachedEndPoint:(RaceTracer *)tracer;
 {
+    MKPointAnnotation   * startAnnotation   = [checkpoints lastObject];
+	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
+	
+    NSUInteger checkpointReachedIdx = [checkpoints indexOfObject:startAnnotation];
+	UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
+    UIImage *newImage = [UIImage imageNamed:[NSString stringWithFormat:@"PinNumberGreen%d.png", checkpointReachedIdx+1]];
+    [imgView setImage:newImage];
+    
 	[[[[UIAlertView alloc] initWithTitle:@"Race completed!" 
 								 message:@"You did it!"
 								delegate:nil

@@ -113,6 +113,7 @@
 		F23F585013D1B94200DD4672 /* PinShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = F23F584813D1B94200DD4672 /* PinShadow.png */; };
 		F23F585413D1B96500DD4672 /* TrackCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23F585313D1B96500DD4672 /* TrackCreatorViewController.xib */; };
 		F23F585713D1B97400DD4672 /* TrackCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F23F585613D1B97400DD4672 /* TrackCreatorViewController.m */; };
+		F28F038B13D3391000D80643 /* PinNumberGreen2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F28F038A13D3391000D80643 /* PinNumberGreen2@2x.png */; };
 		F4DB931413C8C14600CBB7B5 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB92FC13C8C14600CBB7B5 /* NSObject+SBJson.m */; };
 		F4DB931513C8C14600CBB7B5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB92FF13C8C14600CBB7B5 /* SBJsonParser.m */; };
 		F4DB931613C8C14600CBB7B5 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB930113C8C14600CBB7B5 /* SBJsonStreamParser.m */; };
@@ -275,6 +276,7 @@
 		F23F585313D1B96500DD4672 /* TrackCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackCreatorViewController.xib; sourceTree = "<group>"; };
 		F23F585513D1B97400DD4672 /* TrackCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackCreatorViewController.h; sourceTree = "<group>"; };
 		F23F585613D1B97400DD4672 /* TrackCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackCreatorViewController.m; sourceTree = "<group>"; };
+		F28F038A13D3391000D80643 /* PinNumberGreen2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PinNumberGreen2@2x.png"; sourceTree = "<group>"; };
 		F4DB92FA13C8C14600CBB7B5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		F4DB92FB13C8C14600CBB7B5 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		F4DB92FC13C8C14600CBB7B5 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -571,6 +573,7 @@
 				959ABE9A13D2FAE500607CB7 /* PinNumber24@2x.png */,
 				959ABE9B13D2FAE500607CB7 /* PinNumber25@2x.png */,
 				959ABE9C13D2FAE500607CB7 /* PinNumberGreen1@2x.png */,
+				F28F038A13D3391000D80643 /* PinNumberGreen2@2x.png */,
 				959ABE9D13D2FAE500607CB7 /* PinNumberGreen3@2x.png */,
 				959ABE9E13D2FAE500607CB7 /* PinNumberGreen4@2x.png */,
 				959ABE9F13D2FAE500607CB7 /* PinNumberGreen5@2x.png */,
@@ -819,6 +822,7 @@
 				959ABEE213D2FAE600607CB7 /* PinNumberGreen23@2x.png in Resources */,
 				959ABEE313D2FAE600607CB7 /* PinNumberGreen24@2x.png in Resources */,
 				959ABEE413D2FAE600607CB7 /* PinNumberGreen25@2x.png in Resources */,
+				F28F038B13D3391000D80643 /* PinNumberGreen2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
