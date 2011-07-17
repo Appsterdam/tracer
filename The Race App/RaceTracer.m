@@ -10,7 +10,6 @@
 #import "RaceTracer.h"
 #import "GPSTracePlayer.h"
 #import <MapKit/MapKit.h>
-#import "TTTLocationFormatter.h"
 
 static NSUInteger CheckpointMetersThreshold = 15;
 
@@ -176,13 +175,24 @@ static NSUInteger CheckpointMetersThreshold = 15;
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
 	// Discard inaccurate headings.
 	if (newHeading.headingAccuracy < 0)
-		return;
+		return;	
 	
-	CLLocation *nextCheckpointLocation = [[[CLLocation alloc] initWithLatitude:self.checkpointToPass.coordinate.latitude
-																	 longitude:self.checkpointToPass.coordinate.longitude] autorelease]
-	float verticalDistance = nextCheckpointLocation.coordinate.latitude - currentLocation.coordinate.latitude;
-	float nextCheckpointAngleFromNorth = asin(verticalDistance / [currentLocation distanceFromLocation:nextCheckpointLocation]);
-	self.headingToNextCheckpoint = (-newHeading.trueHeading * M_PI / 180) + nextCheckpointAngleFromNorth;
+	CLLocationCoordinate2D nextCheckpoint = self.checkpointToPass.coordinate;
+	CLLocationCoordinate2D curLocation    = currentLocation.coordinate;
+	
+	float compass = newHeading.trueHeading;
+	float bearing;
+	
+	{
+		float dLon = nextCheckpoint.longitude - curLocation.longitude;
+		
+		float y = sinf(dLon) * cosf(nextCheckpoint.latitude);
+		float x = cosf(curLocation.latitude) * sinf(nextCheckpoint.latitude) -
+        sinf(curLocation.latitude) * cosf(nextCheckpoint.latitude) * cosf(dLon);
+		bearing = atan2f(y, x);
+	}
+	
+	self.headingToNextCheckpoint = bearing - (compass * M_PI / 180);
 }
 
 - (MKPointAnnotation *)checkpointToPass;
