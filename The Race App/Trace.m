@@ -8,17 +8,20 @@
 //
 
 #import "Trace.h"
+#import <pthread.h>
 
 @interface Trace()
-@property(nonatomic, retain) NSMutableArray * trace;
+@property(nonatomic, retain)   NSMutableArray   * trace;
+@property(nonatomic, assign)   pthread_rwlock_t   _rwLock;
+@property(nonatomic, readonly) pthread_rwlock_t * lock;
 @end
 
 @implementation Trace
 
 @synthesize trace;
-@synthesize delegate;
 @synthesize coordinate;
 @synthesize boundingMapRect;
+@synthesize _rwLock;
 
 - (id)init;
 {
@@ -29,6 +32,7 @@
 	
 	self.coordinate      = (CLLocationCoordinate2D) { .latitude = 0, .longitude = 0 };
 	self.boundingMapRect = MKMapRectNull;
+	pthread_rwlock_init(self.lock, NULL);
 	
     return self;
 }
@@ -63,9 +67,11 @@
 
 - (void)addPoint:(CLLocation *)point;
 {	
+	[self lockForReading];
+
 	[self.trace addObject:point];
-	//[self.delegate trace:self didAddPoint:point withTimestamp:timestamp];
 	
+	if (0)
 	{
 		MKMapPoint mapPoint  = MKMapPointForCoordinate(point.coordinate);
 		MKMapRect  pointRect = MKMapRectMake(mapPoint.x, mapPoint.y, 0, 0);
@@ -82,6 +88,25 @@
 		
 		self.coordinate = point.coordinate;
 	}
+	
+	if (MKMapRectIsNull(self.boundingMapRect) == YES)
+	{
+		// bite off up to 1/4 of the world to draw into.
+		
+        MKMapPoint origin = MKMapPointForCoordinate(point.coordinate);
+		
+        origin.x -= MKMapSizeWorld.width / 8.0;
+        origin.y -= MKMapSizeWorld.height / 8.0;
+        MKMapSize size = MKMapSizeWorld;
+        size.width /= 4.0;
+        size.height /= 4.0;
+		
+        self.boundingMapRect = (MKMapRect) { origin, size };
+        MKMapRect worldRect = MKMapRectMake(0, 0, MKMapSizeWorld.width, MKMapSizeWorld.height);
+        self.boundingMapRect = MKMapRectIntersection(self.boundingMapRect, worldRect);
+	}
+	
+	[self unlockForReading];
 }
 
 - (CLLocation *)pointAtIndex:(NSUInteger)i;
@@ -108,6 +133,21 @@
 - (MKMapRect)boundingMapRect;
 {
 	return boundingMapRect;
+}
+
+- (void)lockForReading
+{
+    pthread_rwlock_rdlock(self.lock);
+}
+
+- (void)unlockForReading
+{
+    pthread_rwlock_unlock(self.lock);
+}
+
+- (pthread_rwlock_t *)lock;
+{
+	return &(_rwLock);
 }
 
 @end

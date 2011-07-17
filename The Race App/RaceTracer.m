@@ -8,7 +8,6 @@
 //
 
 #import "RaceTracer.h"
-#import "Trace.h"
 #import "GPSTracePlayer.h"
 #import <MapKit/MapKit.h>
 
@@ -21,7 +20,6 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 @property(nonatomic, assign) id<RaceTracerDelegate>   delegate;
 @property(nonatomic, retain) CLLocationManager      * locationManager;
-@property(nonatomic, retain) Trace                  * currentTrace;
 @property(nonatomic, retain) GPSTracePlayer         * tracePlayer;
 
 @property(nonatomic, assign)   NSUInteger             checkpointToPassIndex;
@@ -71,6 +69,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 
 - (void)dealloc;
 {
+	self.currentTrace = nil;
 	self.locationManager = nil;
 	self.tracePlayer = nil;
     [super dealloc];
@@ -92,6 +91,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 {
 	self.racing = YES;
 	self.checkpointsLeft = self.checkpoints.count;
+	self.currentTrace = [[[Trace alloc] init] autorelease];
 	[self incrementCheckpointToPass];
 }
 
@@ -134,6 +134,13 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	
 	// -------
 	
+	if (self.racing == YES)
+		[self.currentTrace addPoint:newLocation];
+	
+	[self.delegate raceTracer:self didUpdateToLocation:newLocation fromLocation:oldLocation];
+	
+	// -------
+	
 	CLLocation * checkpointLocation = [[[CLLocation alloc] initWithLatitude:self.checkpointToPass.coordinate.latitude
 																  longitude:self.checkpointToPass.coordinate.longitude] autorelease];
 	
@@ -159,7 +166,7 @@ static NSUInteger CheckpointMetersThreshold = 15;
 			[self.delegate raceTracer:self reachedCheckpointAtIndex:self.checkpointToPassIndex];
 			[self incrementCheckpointToPass];
 		}
-	}
+	}	
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {

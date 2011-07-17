@@ -16,9 +16,7 @@
 
 @interface RaceViewController ()
 
-@property(nonatomic, retain) Trace             * currentTrace;
 @property(nonatomic, retain) TraceOverlayView  * currentTraceView;
-
 @property(nonatomic, retain) MKPointAnnotation * ghostAnnotation;
 
 - (void)startStopwatch;
@@ -27,7 +25,6 @@
 
 @implementation RaceViewController
 
-@synthesize currentTrace;
 @synthesize currentTraceView;
 @synthesize mapView;
 @synthesize startRaceView;
@@ -55,7 +52,6 @@
 }
 
 - (void)dealloc {
-	self.currentTrace = nil;
 	self.currentTraceView = nil;
 
 	self.saveTraceButton = nil;
@@ -170,6 +166,33 @@
 					   otherButtonTitles:nil] autorelease] show];
 }
 
+- (void)raceTracer:(RaceTracer *)tracer didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
+{
+	MKMapRect dirtyMapRect = MKMapRectNull;
+	
+	{
+		MKMapPoint newPoint = MKMapPointForCoordinate(newLocation.coordinate);
+		MKMapPoint oldPoint = MKMapPointForCoordinate(oldLocation.coordinate);
+		
+		MKMapRect  oldRect  = MKMapRectMake(oldPoint.x, oldPoint.y, 0, 0);
+		MKMapRect  newRect  = MKMapRectMake(newPoint.x, newPoint.y, 0, 0);
+		
+		dirtyMapRect = MKMapRectUnion(dirtyMapRect, oldRect);
+		dirtyMapRect = MKMapRectUnion(dirtyMapRect, newRect);
+	}
+	
+	{
+		// There is a non null update rect.
+		// Compute the currently visible map zoom scale
+		MKZoomScale currentZoomScale = (CGFloat)(mapView.bounds.size.width / mapView.visibleMapRect.size.width);
+		// Find out the line width at this zoom scale and outset the updateRect by that amount
+		CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
+		dirtyMapRect = MKMapRectInset(dirtyMapRect, -lineWidth, -lineWidth);
+	}
+	 
+	[self.currentTraceView setNeedsDisplayInMapRect:dirtyMapRect];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
 {
 	if (object != raceTracer)
@@ -213,6 +236,8 @@
 				 forKeyPath:@"headingToNextCheckpoint"
 					options:NSKeyValueObservingOptionInitial
 					context:nil];
+	
+	[self.mapView addOverlay:raceTracer.currentTrace];
 }
 
 #pragma mark -
@@ -261,7 +286,14 @@
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 {
-	if (overlay == self.currentTrace) return self.currentTraceView;
+	if (overlay == raceTracer.currentTrace)
+	{
+		if (self.currentTraceView == nil)
+			self.currentTraceView = [[[TraceOverlayView alloc] initWithOverlay:overlay] autorelease];
+		
+		return self.currentTraceView;
+	}
+	
 	return nil;
 }
 
@@ -280,16 +312,6 @@
 						   (stopwatchTime / 600) % 60,
 						   (stopwatchTime / 10) % 60,
 						   stopwatchTime % 10];
-}
-
-
-- (IBAction)saveTrace:(id)sender;
-{
-	NSArray  * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString * path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"trace"];
-					   
-	[NSKeyedArchiver archiveRootObject:self.currentTrace
-								toFile:path];
 }
 
 - (IBAction)playTrace:(id)sender;

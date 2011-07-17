@@ -8,12 +8,15 @@
 //
 
 #import <CoreLocation/CoreLocation.h>
+#import "Trace.h"
 
 @class MKPointAnnotation;
 
 @protocol RaceTracerDelegate;
 
 @interface RaceTracer : NSObject <CLLocationManagerDelegate>
+
+@property(nonatomic, retain) Trace      * currentTrace;
 
 @property(nonatomic, retain) NSArray    * checkpoints;
 @property(nonatomic, assign) NSUInteger   checkpointsLeft;
@@ -38,5 +41,7 @@
 
 - (void)raceTracerReachedStartPoint:(RaceTracer *)tracer;
 - (void)raceTracerReachedEndPoint:(RaceTracer *)tracer;
+
+- (void)raceTracer:(RaceTracer *)tracer didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 
 @end

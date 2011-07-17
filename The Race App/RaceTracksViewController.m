@@ -137,6 +137,7 @@
     [self.navigationItem setRightBarButtonItem:addItem];
     [addItem release];
     
+		
     //create a pretty hud
     hud = [[MBProgressHUD alloc] initWithView:self.view];
     hud.labelText = @"Loading tracks...";
