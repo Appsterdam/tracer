@@ -45,7 +45,6 @@
 #pragma mark - instance methods
 -(void)getTracksFromAPI
 {
-   // [api getTracks];
     [api getTracksAsynchronousAround:@"Amsterdam"];
 }
 #pragma mark - api delegate
@@ -282,7 +281,7 @@
 
 - (void)reloadTableViewDataSource
 {
-    [api getTracksAsynchronous];
+    [api getTracksAsynchronousAround:@"Amsterdam"];
 }
 
 

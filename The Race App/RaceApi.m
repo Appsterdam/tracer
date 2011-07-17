@@ -9,6 +9,7 @@
 #import "RaceApi.h"
 #import "NSObject+SBJson.h"
 #import "Track.h"
+#import <CoreLocation/CoreLocation.h>
 
 @implementation RaceApi
 
@@ -22,7 +23,7 @@
     requestType = RaceGetTracks;
     ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL:
                                [NSURL URLWithString:url]];
-
+    
     [req setDelegate:self];
     [req startSynchronous];
 }
@@ -80,10 +81,20 @@
             NSLog(@"%@", [request responseString]);
             NSMutableArray *result = [[NSMutableArray alloc] init];
             for (NSDictionary *dict in [[[request responseString] JSONValue] objectForKey:@"data"]) {
+                NSMutableArray *checkpoints = [[NSMutableArray alloc] init];
+                
+                for (NSDictionary *loc in [dict objectForKey:@"data"]) {
+                    CLLocation *location = [[CLLocation alloc] initWithLatitude:[[loc objectForKey:@"lat"] doubleValue] 
+                                                                       longitude:[[loc objectForKey:@"lon"] doubleValue]];
+                    [checkpoints addObject:location];
+                    [location release];
+                    location = nil;         
+                }
+                
                 Track *track = [[Track alloc] initWithTrackName:[dict objectForKey:@"name"] 
                                                      trackScore:[dict objectForKey:@"best_time"] 
                                                     trackWinner:[dict objectForKey:@"winner"]  
-                                                      trackData:[dict objectForKey:@"data"]  
+                                                      trackData:checkpoints
                                                        trackURI:[dict objectForKey:@"uri"] ];
                 [result addObject:track];
                 [track release];
