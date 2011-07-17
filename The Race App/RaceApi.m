@@ -41,7 +41,7 @@
     [req startAsynchronous];
 }
 -(void)startRaceWithTrackURI:(NSString *)_ident andUsername:(NSString *)_username{
-    NSString *url = [NSString stringWithFormat:@"%@%@/start.json", API_URL, _ident];
+    NSString *url = [NSString stringWithFormat:@"%@%@", API_URL, _ident];
     requestType = RaceStartRace;
     ASIFormDataRequest *req = [[ASIFormDataRequest alloc] initWithURL:
                                [NSURL URLWithString:url]];
@@ -94,9 +94,12 @@
                 
                 Track *track = [[Track alloc] initWithTrackName:[dict objectForKey:@"name"] 
                                                      trackScore:[[dict objectForKey:@"best_time"] stringValue]
-                                                    trackWinner:[dict objectForKey:@"winner"]  
-                                                      trackData:checkpoints
-                                                       trackURI:[dict objectForKey:@"uri"] ];
+                                                    trackWinner:[dict objectForKey:@"winner"] 
+                                                      trackData:checkpoints 
+                                                  trackStartURI:[dict objectForKey:@"start_uri"] 
+                                                       trackURI:[dict objectForKey:@"uri"]];
+
+                
                 [result addObject:track];
                 [track release];
                 track = nil;

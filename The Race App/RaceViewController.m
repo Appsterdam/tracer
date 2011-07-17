@@ -40,6 +40,8 @@
 
 @synthesize ghostAnnotation;
 
+@synthesize track;
+
 - (id)initWithCheckpoints:(NSArray *)points {
 	if (![super init])
 		return nil;
@@ -66,6 +68,8 @@
 	[stopwatchLabel release];
 	[checkpointsLabel release];
 	[arrowImageView release];
+    [track release];
+    
 	[super dealloc];
 }
 
@@ -98,6 +102,21 @@
 	[self setCheckpointsLabel:nil];
 	[self setArrowImageView:nil];
 	[super viewDidUnload];
+}
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    api = [[RaceApi alloc] init];
+    [api setDelegate:self];
+    
+}
+
+#pragma mark RaceAPI delegate
+-(void)finishedRace:(NSDictionary *)_dict{
+    NSLog(@"%@", _dict);
+}
+-(void)startedRace:(NSDictionary *)_dict{
+    NSLog(@"%@", _dict);
 }
 
 #pragma mark -
@@ -146,7 +165,7 @@
 	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
 	
 	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
-    UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
+    UIImageView * imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
     [imgView setImage:[UIImage imageNamed:@"PinNumberGreen1.png"]];
 	
 	[UIView animateWithDuration:1
@@ -158,13 +177,7 @@
 
 - (void)raceTracerReachedEndPoint:(RaceTracer *)tracer;
 {
-    MKPointAnnotation   * startAnnotation   = [checkpoints lastObject];
-	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
-	
-    NSUInteger checkpointReachedIdx = [checkpoints indexOfObject:startAnnotation];
-	UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
-    UIImage *newImage = [UIImage imageNamed:[NSString stringWithFormat:@"PinNumberGreen%d.png", checkpointReachedIdx+1]];
-    [imgView setImage:newImage];
+    [api finishRaceWithTime:[NSNumber numberWithInt:stopwatchTime] andTrackURI:track.trackURI];
     
 	[[[[UIAlertView alloc] initWithTitle:@"Race completed!" 
 								 message:@"You did it!"
@@ -176,18 +189,18 @@
 - (void)raceTracer:(RaceTracer *)tracer didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 {
 	MKMapRect dirtyMapRect = MKMapRectNull;
-	
+    
 	{
 		MKMapPoint newPoint = MKMapPointForCoordinate(newLocation.coordinate);
 		MKMapPoint oldPoint = MKMapPointForCoordinate(oldLocation.coordinate);
-		
+        
 		MKMapRect  oldRect  = MKMapRectMake(oldPoint.x, oldPoint.y, 0, 0);
 		MKMapRect  newRect  = MKMapRectMake(newPoint.x, newPoint.y, 0, 0);
-		
+        
 		dirtyMapRect = MKMapRectUnion(dirtyMapRect, oldRect);
 		dirtyMapRect = MKMapRectUnion(dirtyMapRect, newRect);
 	}
-	
+    
 	{
 		// There is a non null update rect.
 		// Compute the currently visible map zoom scale
@@ -196,7 +209,7 @@
 		CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
 		dirtyMapRect = MKMapRectInset(dirtyMapRect, -lineWidth, -lineWidth);
 	}
-	 
+    
 	[self.currentTraceView setNeedsDisplayInMapRect:dirtyMapRect];
 }
 
@@ -219,6 +232,11 @@
 {
 	[raceTracer startRace];
 	
+    
+    [api startRaceWithTrackURI:track.trackStartURI andUsername:@"USERNAME"];
+    
+    
+    
 	[self startStopwatch];
 	
 	raceStatsView.frame = startRaceView.frame;
