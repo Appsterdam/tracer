@@ -13,6 +13,7 @@
 #import "ResultsViewController.h"
 #import "LoginViewController.h"
 #import "FBConnect.h"
+#import "GameCenterManager.h"
 
 #define RACE_APP_FACEBOOK_APP_ID @"198763226840194"
 
@@ -23,6 +24,7 @@
 @synthesize window=_window;
 @synthesize tabBarController;
 @synthesize faceBookApi;
+@synthesize gameCenterManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
@@ -35,6 +37,22 @@
 
     faceBookApi.accessToken = accessToken;
     faceBookApi.expirationDate = expirationDate;
+    
+    if([GameCenterManager isGameCenterAvailable])
+	{
+		self.gameCenterManager= [[[GameCenterManager alloc] init] autorelease];
+		[self.gameCenterManager setDelegate: self];
+		[self.gameCenterManager authenticateLocalUser];
+		
+	}
+	else
+	{
+		//[self showAlertWithTitle: @"Game Center Support Required!"
+		//				 message: @"The current device does not support Game Center, which this game requires."];
+        UIAlertView* alert= [[[UIAlertView alloc] initWithTitle: @"Game Center Support Required!" message: @"The current device does not support Game Center, which this game requires." 
+                                                       delegate: NULL cancelButtonTitle: @"OK" otherButtonTitles: NULL] autorelease];
+        [alert show];
+	}
     
     RaceTracksViewController* raceTrackViewController =
        [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];

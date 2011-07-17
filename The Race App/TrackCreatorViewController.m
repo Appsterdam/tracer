@@ -13,6 +13,9 @@
 #import "JSON.h"
 #import "MBProgressHUD.h"
 
+#import "AppSpecificValues.h"
+#import "GameCenterManager.h"
+
 @implementation TrackCreatorViewController
 @synthesize mapView, tableView, coordinates, name;
 
@@ -138,6 +141,7 @@
 }
 
 - (void)popViewController {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kDidCreateTrackNotifcation object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
