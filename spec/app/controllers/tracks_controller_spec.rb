@@ -37,7 +37,7 @@ describe "TracksController" do
     end
 
     describe "track data" do
-      let(:data) { json["data"] }
+      let(:data) { json["data"].first }
 
       it 'has "data.name"' do
         data["name"].should be_a String
@@ -93,7 +93,7 @@ describe "TracksController" do
       end
       
       it 'stores the start uri of the track' do
-        data["start"].should == TheRaceApp.url(:tracks, :start, :id => track.id)
+        data["start_uri"].should == TheRaceApp.url(:tracks, :start, :id => track.id, :format => :json)
       end
     end
   end

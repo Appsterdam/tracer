@@ -1,7 +1,9 @@
-# Helper methods defined here can be accessed in any controller or view in the application
-
 TheRaceApp.helpers do
-  # def simple_helper_method
-  #  ...
-  # end
+  def search_locations(q)
+    tracks = Track.near(params[:q])
+    {
+      :ok => true,
+      :data => tracks.map { |t| prepare_track(t) }
+    }.to_json
+  end
 end
