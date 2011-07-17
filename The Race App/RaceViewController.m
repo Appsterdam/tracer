@@ -165,7 +165,7 @@
 	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
 	
 	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
-    UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
+    UIImageView * imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
     [imgView setImage:[UIImage imageNamed:@"PinNumberGreen1.png"]];
 	
 	[UIView animateWithDuration:1
@@ -184,6 +184,33 @@
 								delegate:nil
 					   cancelButtonTitle:@"Yes, I'm cool"
 					   otherButtonTitles:nil] autorelease] show];
+}
+
+- (void)raceTracer:(RaceTracer *)tracer didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
+{
+	MKMapRect dirtyMapRect = MKMapRectNull;
+    
+	{
+		MKMapPoint newPoint = MKMapPointForCoordinate(newLocation.coordinate);
+		MKMapPoint oldPoint = MKMapPointForCoordinate(oldLocation.coordinate);
+        
+		MKMapRect  oldRect  = MKMapRectMake(oldPoint.x, oldPoint.y, 0, 0);
+		MKMapRect  newRect  = MKMapRectMake(newPoint.x, newPoint.y, 0, 0);
+        
+		dirtyMapRect = MKMapRectUnion(dirtyMapRect, oldRect);
+		dirtyMapRect = MKMapRectUnion(dirtyMapRect, newRect);
+	}
+    
+	{
+		// There is a non null update rect.
+		// Compute the currently visible map zoom scale
+		MKZoomScale currentZoomScale = (CGFloat)(mapView.bounds.size.width / mapView.visibleMapRect.size.width);
+		// Find out the line width at this zoom scale and outset the updateRect by that amount
+		CGFloat lineWidth = MKRoadWidthAtZoomScale(currentZoomScale);
+		dirtyMapRect = MKMapRectInset(dirtyMapRect, -lineWidth, -lineWidth);
+	}
+    
+	[self.currentTraceView setNeedsDisplayInMapRect:dirtyMapRect];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context;
