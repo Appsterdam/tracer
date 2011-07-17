@@ -1,7 +1,8 @@
 class Track
   include DataMapper::Resource
 
-  # property <name>, <type>
+  attr_accessor :uri, :start_uri
+
   property :id, Serial
   property :name, Text, :required => true, :lazy => false
   property :data, Json, :required => true
@@ -40,7 +41,27 @@ class Track
     races.best
   end
 
+  def winner
+    best_race.username rescue ""
+  end
+  
+  def best_time
+    best_race.duration rescue 0
+  end
+
   def start_race(username)
     races.create(:username => username)
+  end
+
+  def self.near(location)
+    loc = Geokit::Geocoders::GoogleGeocoder.geocode location
+    all(:city => loc.city)
+  end
+
+  alias_method :old_as_json, :as_json
+
+  def as_json(options={})
+    options.merge!(:exclude => [:id], :methods => [:start_uri, :uri, :winner, :best_time])
+    old_as_json(options)
   end
 end

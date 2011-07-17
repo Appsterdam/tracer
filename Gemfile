@@ -23,7 +23,7 @@ gem 'dm-aggregates'
 gem 'dm-serializer'
 gem 'dm-core'
 gem 'dm-types'
-gem 'dm-geokit'
+gem 'geokit'
 
 
 # Test requirements

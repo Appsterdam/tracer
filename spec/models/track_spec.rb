@@ -168,4 +168,41 @@ describe "Track Model" do
       track.errors[:data].should_not be_empty
     end
   end
+
+  describe "#winner" do
+    it 'returns the winner' do
+      track.start_race("johnny").stop(600)
+      track.start_race("emma").stop(500)
+      track.start_race("judy").stop(700)
+      
+      track.winner.should == "emma"
+    end
+
+    it 'returns an empty string of there is no winner' do
+      track.winner.should == ""
+    end
+  end
+  
+  describe "#best_time" do
+    it 'returns the best time' do
+      track.start_race("johnny").stop(600)
+      track.start_race("emma").stop(500)
+      track.start_race("judy").stop(700)
+      
+      track.best_time.should == 500
+    end
+    
+    it 'returns 0 of there is no best time' do
+      track.best_time.should == 0
+    end
+  end
+
+  describe ".near" do
+    before { seed_tracks }
+
+    it 'returns the tracks near the location' do
+      pending
+      Track.near("Amsterdam").to_a.size.should == 3
+    end
+  end
 end

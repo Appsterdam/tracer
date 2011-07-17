@@ -1,20 +1,16 @@
 TheRaceApp.controllers :tracks do
+  helpers do
+    def prepare_track(t)
+      t.uri = url(:tracks, :show, :id => t.id, :format => content_type)
+      t.start_uri = url(:tracks, :start, :id => t.id, :format => content_type)
+      t
+    end
+  end
+
   get :index, :provides => :json do
     { 
       :ok => true,
-      :data => Track.all.map { |t| { :name => t.name, :id => t.id, :uri => url(:tracks, :show, :id => t.id) } }
-    }.to_json
-  end
-
-  get :show, :map => "/tracks/:id", :provides => :json do
-    track = Track.get(params[:id])
-    {
-      :ok => true,
-      :data => {
-        :name => track.name,
-        :start => url(:tracks, :start, :id => track.id),
-        :data => track.data
-      }
+      :data => Track.all.map { |t| prepare_track(t) }
     }.to_json
   end
 
@@ -70,6 +66,14 @@ TheRaceApp.controllers :tracks do
         :won => (track.best_race == race),
         :winner => track.best_race.username
       }
+    }.to_json
+  end
+
+  get :show, :map => "/tracks/:id", :provides => :json do
+    track = Track.get(params[:id])
+    {
+      :ok => true,
+      :data => prepare_track(track)
     }.to_json
   end
 end

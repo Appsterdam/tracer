@@ -13,6 +13,8 @@ describe "TracksController" do
   end
 
   describe "GET /tracks.json" do
+    before(:all) { stub_google_map_api }
+
     before do
       3.times { Track.gen }
       get TheRaceApp.url(:tracks, :index)
@@ -30,15 +32,36 @@ describe "TracksController" do
       json['data'].size.should == 3
     end
 
-    it 'returns the tracks names and ids and uri' do
-      json['data'].first['name'].should_not be_nil
-      json['data'].first['id'].should_not be_nil
-      json['data'].first['uri'].should_not be_nil
-      json['data'].first.keys.size.should == 3
-    end
-
     it 'returns true in the "ok" key' do
       json['ok'].should == true
+    end
+
+    describe "track data" do
+      let(:data) { json["data"] }
+
+      it 'has "data.name"' do
+        data["name"].should be_a String
+      end
+      
+      it 'has "data.best_time"' do
+        data["best_time"].should be_a Fixnum
+      end
+
+      it 'has "data.winner"' do
+        data["winner"].should be_a String
+      end
+      
+      it 'has "data.data"' do
+        data["data"].should be_a Array
+      end
+
+      it 'has "data.start_uri"' do
+        data["start_uri"].should be_a String
+      end
+
+      it 'has "data.uri"' do
+        data["uri"].should be_a String
+      end
     end
   end
 
@@ -189,4 +212,5 @@ describe "TracksController" do
       end
     end
   end
+
 end
