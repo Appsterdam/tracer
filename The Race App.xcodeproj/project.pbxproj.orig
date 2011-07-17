@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3F912ACC13D33BDD0081FDCD /* Trace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F912ACB13D33BDD0081FDCD /* Trace.m */; };
 		3F912AD013D33BEF0081FDCD /* TraceOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F912ACF13D33BEF0081FDCD /* TraceOverlayView.m */; };
-		3FE13F9913D34FE700747975 /* TrackThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE13F9813D34FE700747975 /* TrackThumbView.m */; };
 		950CE1D813C8BE09009BC002 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 950CE1D713C8BE09009BC002 /* MBProgressHUD.m */; };
 		95167BA413D34B630074181B /* BackgroundTextureLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95167B9A13D34B630074181B /* BackgroundTextureLight@2x.png */; };
 		95167BA513D34B630074181B /* MainScreenMapButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95167B9B13D34B630074181B /* MainScreenMapButton@2x.png */; };
@@ -177,9 +176,6 @@
 		F23F585013D1B94200DD4672 /* PinShadow.png in Resources */ = {isa = PBXBuildFile; fileRef = F23F584813D1B94200DD4672 /* PinShadow.png */; };
 		F23F585413D1B96500DD4672 /* TrackCreatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F23F585313D1B96500DD4672 /* TrackCreatorViewController.xib */; };
 		F23F585713D1B97400DD4672 /* TrackCreatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F23F585613D1B97400DD4672 /* TrackCreatorViewController.m */; };
-		F2C74E7913D36173003C04FC /* SplashScreenFinal2Top.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C74E7813D36173003C04FC /* SplashScreenFinal2Top.png */; };
-		F2C74E7C13D36183003C04FC /* SplashScreenTransitionFinal2Bottom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C74E7B13D36182003C04FC /* SplashScreenTransitionFinal2Bottom@2x.png */; };
-		F2C74E7E13D362EF003C04FC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2C74E7D13D362EE003C04FC /* Default@2x.png */; };
 		F4DB931413C8C14600CBB7B5 /* NSObject+SBJson.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB92FC13C8C14600CBB7B5 /* NSObject+SBJson.m */; };
 		F4DB931513C8C14600CBB7B5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB92FF13C8C14600CBB7B5 /* SBJsonParser.m */; };
 		F4DB931613C8C14600CBB7B5 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DB930113C8C14600CBB7B5 /* SBJsonStreamParser.m */; };
@@ -213,8 +209,6 @@
 		3F912ACB13D33BDD0081FDCD /* Trace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trace.m; sourceTree = "<group>"; };
 		3F912ACE13D33BEF0081FDCD /* TraceOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceOverlayView.h; sourceTree = "<group>"; };
 		3F912ACF13D33BEF0081FDCD /* TraceOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceOverlayView.m; sourceTree = "<group>"; };
-		3FE13F9713D34FE700747975 /* TrackThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackThumbView.h; sourceTree = "<group>"; };
-		3FE13F9813D34FE700747975 /* TrackThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackThumbView.m; sourceTree = "<group>"; };
 		950CE1D613C8BE09009BC002 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		950CE1D713C8BE09009BC002 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		95167B9A13D34B630074181B /* BackgroundTextureLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundTextureLight@2x.png"; sourceTree = "<group>"; };
@@ -411,9 +405,6 @@
 		F23F585313D1B96500DD4672 /* TrackCreatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrackCreatorViewController.xib; sourceTree = "<group>"; };
 		F23F585513D1B97400DD4672 /* TrackCreatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackCreatorViewController.h; sourceTree = "<group>"; };
 		F23F585613D1B97400DD4672 /* TrackCreatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackCreatorViewController.m; sourceTree = "<group>"; };
-		F2C74E7813D36173003C04FC /* SplashScreenFinal2Top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreenFinal2Top.png; sourceTree = "<group>"; };
-		F2C74E7B13D36182003C04FC /* SplashScreenTransitionFinal2Bottom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SplashScreenTransitionFinal2Bottom@2x.png"; sourceTree = "<group>"; };
-		F2C74E7D13D362EE003C04FC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		F4DB92FA13C8C14600CBB7B5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		F4DB92FB13C8C14600CBB7B5 /* NSObject+SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJson.h"; sourceTree = "<group>"; };
 		F4DB92FC13C8C14600CBB7B5 /* NSObject+SBJson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJson.m"; sourceTree = "<group>"; };
@@ -508,7 +499,6 @@
 		9560311013C84D0C003204F9 = {
 			isa = PBXGroup;
 			children = (
-				F2C74E7D13D362EE003C04FC /* Default@2x.png */,
 				D461F1F713D23E4000C8C8CA /* GPSTracePlayer.h */,
 				D461F1F813D23E4000C8C8CA /* GPSTracePlayer.m */,
 				9560312513C84D0C003204F9 /* The Race App */,
@@ -592,8 +582,7 @@
 		A537E3DD13C8DFBD00D3BDE1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				F2C74E7B13D36182003C04FC /* SplashScreenTransitionFinal2Bottom@2x.png */,
-				F2C74E7813D36173003C04FC /* SplashScreenFinal2Top.png */,
+				F223D79E13D3525C00076D1D /* PinNumbers */,
 				95167B9A13D34B630074181B /* BackgroundTextureLight@2x.png */,
 				95167B9B13D34B630074181B /* MainScreenMapButton@2x.png */,
 				95167B9C13D34B630074181B /* BackgroundTextureDark@2x.png */,
@@ -604,7 +593,6 @@
 				95167BA113D34B630074181B /* MainScreenTextField.png */,
 				95167BA213D34B630074181B /* MainScreenTextField@2x.png */,
 				95167BA313D34B630074181B /* Icon.png */,
-				F223D79E13D3525C00076D1D /* PinNumbers */,
 				A56E339B13D1EB5D0019BA73 /* login_user@2x.png */,
 				A56E339C13D1EB5D0019BA73 /* login_user.png */,
 				95B5192B13C9904400E4DB3E /* race-arrow.png */,
@@ -643,8 +631,6 @@
 				A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */,
 				A5D83CFF13D1976C00B68EC1 /* LoginViewController.h */,
 				A5D83D0013D1976C00B68EC1 /* LoginViewController.m */,
-				3FE13F9713D34FE700747975 /* TrackThumbView.h */,
-				3FE13F9813D34FE700747975 /* TrackThumbView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -988,56 +974,106 @@
 				F23F584F13D1B94200DD4672 /* PinFloating.png in Resources */,
 				F23F585013D1B94200DD4672 /* PinShadow.png in Resources */,
 				F23F585413D1B96500DD4672 /* TrackCreatorViewController.xib in Resources */,
-				959ABEB413D2FAE600607CB7 /* PinNumber1@2x.png in Resources */,
-				959ABEB513D2FAE600607CB7 /* PinNumber2@2x.png in Resources */,
-				959ABEB613D2FAE600607CB7 /* PinNumber3@2x.png in Resources */,
-				959ABEB713D2FAE600607CB7 /* PinNumber4@2x.png in Resources */,
-				959ABEB813D2FAE600607CB7 /* PinNumber5@2x.png in Resources */,
-				959ABEB913D2FAE600607CB7 /* PinNumber6@2x.png in Resources */,
-				959ABEBA13D2FAE600607CB7 /* PinNumber7@2x.png in Resources */,
-				959ABEBB13D2FAE600607CB7 /* PinNumber8@2x.png in Resources */,
-				959ABEBC13D2FAE600607CB7 /* PinNumber9@2x.png in Resources */,
-				959ABEBD13D2FAE600607CB7 /* PinNumber10@2x.png in Resources */,
-				959ABEBE13D2FAE600607CB7 /* PinNumber11@2x.png in Resources */,
-				959ABEBF13D2FAE600607CB7 /* PinNumber12@2x.png in Resources */,
-				959ABEC013D2FAE600607CB7 /* PinNumber13@2x.png in Resources */,
-				959ABEC113D2FAE600607CB7 /* PinNumber14@2x.png in Resources */,
-				959ABEC213D2FAE600607CB7 /* PinNumber15@2x.png in Resources */,
-				959ABEC313D2FAE600607CB7 /* PinNumber16@2x.png in Resources */,
-				959ABEC413D2FAE600607CB7 /* PinNumber17@2x.png in Resources */,
-				959ABEC513D2FAE600607CB7 /* PinNumber18@2x.png in Resources */,
-				959ABEC613D2FAE600607CB7 /* PinNumber19@2x.png in Resources */,
-				959ABEC713D2FAE600607CB7 /* PinNumber20@2x.png in Resources */,
-				959ABEC813D2FAE600607CB7 /* PinNumber21@2x.png in Resources */,
-				959ABEC913D2FAE600607CB7 /* PinNumber22@2x.png in Resources */,
-				959ABECA13D2FAE600607CB7 /* PinNumber23@2x.png in Resources */,
-				959ABECB13D2FAE600607CB7 /* PinNumber24@2x.png in Resources */,
-				959ABECC13D2FAE600607CB7 /* PinNumber25@2x.png in Resources */,
-				959ABECD13D2FAE600607CB7 /* PinNumberGreen1@2x.png in Resources */,
-				959ABECE13D2FAE600607CB7 /* PinNumberGreen3@2x.png in Resources */,
-				959ABECF13D2FAE600607CB7 /* PinNumberGreen4@2x.png in Resources */,
-				959ABED013D2FAE600607CB7 /* PinNumberGreen5@2x.png in Resources */,
-				959ABED113D2FAE600607CB7 /* PinNumberGreen6@2x.png in Resources */,
-				959ABED213D2FAE600607CB7 /* PinNumberGreen7@2x.png in Resources */,
-				959ABED313D2FAE600607CB7 /* PinNumberGreen8@2x.png in Resources */,
-				959ABED413D2FAE600607CB7 /* PinNumberGreen9@2x.png in Resources */,
-				959ABED513D2FAE600607CB7 /* PinNumberGreen10@2x.png in Resources */,
-				959ABED613D2FAE600607CB7 /* PinNumberGreen11@2x.png in Resources */,
-				959ABED713D2FAE600607CB7 /* PinNumberGreen12@2x.png in Resources */,
-				959ABED813D2FAE600607CB7 /* PinNumberGreen13@2x.png in Resources */,
-				959ABED913D2FAE600607CB7 /* PinNumberGreen14@2x.png in Resources */,
-				959ABEDA13D2FAE600607CB7 /* PinNumberGreen15@2x.png in Resources */,
-				959ABEDB13D2FAE600607CB7 /* PinNumberGreen16@2x.png in Resources */,
-				959ABEDC13D2FAE600607CB7 /* PinNumberGreen17@2x.png in Resources */,
-				959ABEDD13D2FAE600607CB7 /* PinNumberGreen18@2x.png in Resources */,
-				959ABEDE13D2FAE600607CB7 /* PinNumberGreen19@2x.png in Resources */,
-				959ABEDF13D2FAE600607CB7 /* PinNumberGreen20@2x.png in Resources */,
-				959ABEE013D2FAE600607CB7 /* PinNumberGreen21@2x.png in Resources */,
-				959ABEE113D2FAE600607CB7 /* PinNumberGreen22@2x.png in Resources */,
-				959ABEE213D2FAE600607CB7 /* PinNumberGreen23@2x.png in Resources */,
-				959ABEE313D2FAE600607CB7 /* PinNumberGreen24@2x.png in Resources */,
-				959ABEE413D2FAE600607CB7 /* PinNumberGreen25@2x.png in Resources */,
-				F28F038B13D3391000D80643 /* PinNumberGreen2@2x.png in Resources */,
+				F223D80313D3525C00076D1D /* PinNumber1.png in Resources */,
+				F223D80413D3525C00076D1D /* PinNumber10.png in Resources */,
+				F223D80513D3525C00076D1D /* PinNumber10@2x.png in Resources */,
+				F223D80613D3525C00076D1D /* PinNumber11.png in Resources */,
+				F223D80713D3525C00076D1D /* PinNumber11@2x.png in Resources */,
+				F223D80813D3525C00076D1D /* PinNumber12.png in Resources */,
+				F223D80913D3525C00076D1D /* PinNumber12@2x.png in Resources */,
+				F223D80A13D3525C00076D1D /* PinNumber13.png in Resources */,
+				F223D80B13D3525C00076D1D /* PinNumber13@2x.png in Resources */,
+				F223D80C13D3525C00076D1D /* PinNumber14.png in Resources */,
+				F223D80D13D3525C00076D1D /* PinNumber14@2x.png in Resources */,
+				F223D80E13D3525C00076D1D /* PinNumber15.png in Resources */,
+				F223D80F13D3525C00076D1D /* PinNumber15@2x.png in Resources */,
+				F223D81013D3525C00076D1D /* PinNumber16.png in Resources */,
+				F223D81113D3525C00076D1D /* PinNumber16@2x.png in Resources */,
+				F223D81213D3525C00076D1D /* PinNumber17.png in Resources */,
+				F223D81313D3525C00076D1D /* PinNumber17@2x.png in Resources */,
+				F223D81413D3525C00076D1D /* PinNumber18.png in Resources */,
+				F223D81513D3525C00076D1D /* PinNumber18@2x.png in Resources */,
+				F223D81613D3525C00076D1D /* PinNumber19.png in Resources */,
+				F223D81713D3525C00076D1D /* PinNumber19@2x.png in Resources */,
+				F223D81813D3525C00076D1D /* PinNumber1@2x.png in Resources */,
+				F223D81913D3525C00076D1D /* PinNumber2.png in Resources */,
+				F223D81A13D3525C00076D1D /* PinNumber20.png in Resources */,
+				F223D81B13D3525C00076D1D /* PinNumber20@2x.png in Resources */,
+				F223D81C13D3525C00076D1D /* PinNumber21.png in Resources */,
+				F223D81D13D3525C00076D1D /* PinNumber21@2x.png in Resources */,
+				F223D81E13D3525C00076D1D /* PinNumber22.png in Resources */,
+				F223D81F13D3525C00076D1D /* PinNumber22@2x.png in Resources */,
+				F223D82013D3525C00076D1D /* PinNumber23.png in Resources */,
+				F223D82113D3525C00076D1D /* PinNumber23@2x.png in Resources */,
+				F223D82213D3525C00076D1D /* PinNumber24.png in Resources */,
+				F223D82313D3525C00076D1D /* PinNumber24@2x.png in Resources */,
+				F223D82413D3525C00076D1D /* PinNumber25.png in Resources */,
+				F223D82513D3525C00076D1D /* PinNumber25@2x.png in Resources */,
+				F223D82613D3525C00076D1D /* PinNumber2@2x.png in Resources */,
+				F223D82713D3525C00076D1D /* PinNumber3.png in Resources */,
+				F223D82813D3525C00076D1D /* PinNumber3@2x.png in Resources */,
+				F223D82913D3525C00076D1D /* PinNumber4.png in Resources */,
+				F223D82A13D3525C00076D1D /* PinNumber4@2x.png in Resources */,
+				F223D82B13D3525C00076D1D /* PinNumber5.png in Resources */,
+				F223D82C13D3525C00076D1D /* PinNumber5@2x.png in Resources */,
+				F223D82D13D3525C00076D1D /* PinNumber6.png in Resources */,
+				F223D82E13D3525C00076D1D /* PinNumber6@2x.png in Resources */,
+				F223D82F13D3525C00076D1D /* PinNumber7.png in Resources */,
+				F223D83013D3525C00076D1D /* PinNumber7@2x.png in Resources */,
+				F223D83113D3525C00076D1D /* PinNumber8.png in Resources */,
+				F223D83213D3525C00076D1D /* PinNumber8@2x.png in Resources */,
+				F223D83313D3525C00076D1D /* PinNumber9.png in Resources */,
+				F223D83413D3525C00076D1D /* PinNumber9@2x.png in Resources */,
+				F223D83513D3525C00076D1D /* PinNumberGreen1.png in Resources */,
+				F223D83613D3525C00076D1D /* PinNumberGreen10.png in Resources */,
+				F223D83713D3525C00076D1D /* PinNumberGreen10@2x.png in Resources */,
+				F223D83813D3525C00076D1D /* PinNumberGreen11.png in Resources */,
+				F223D83913D3525C00076D1D /* PinNumberGreen11@2x.png in Resources */,
+				F223D83A13D3525C00076D1D /* PinNumberGreen12.png in Resources */,
+				F223D83B13D3525C00076D1D /* PinNumberGreen12@2x.png in Resources */,
+				F223D83C13D3525C00076D1D /* PinNumberGreen13.png in Resources */,
+				F223D83D13D3525C00076D1D /* PinNumberGreen13@2x.png in Resources */,
+				F223D83E13D3525C00076D1D /* PinNumberGreen14.png in Resources */,
+				F223D83F13D3525C00076D1D /* PinNumberGreen14@2x.png in Resources */,
+				F223D84013D3525C00076D1D /* PinNumberGreen15.png in Resources */,
+				F223D84113D3525C00076D1D /* PinNumberGreen15@2x.png in Resources */,
+				F223D84213D3525C00076D1D /* PinNumberGreen16.png in Resources */,
+				F223D84313D3525C00076D1D /* PinNumberGreen16@2x.png in Resources */,
+				F223D84413D3525C00076D1D /* PinNumberGreen17.png in Resources */,
+				F223D84513D3525C00076D1D /* PinNumberGreen17@2x.png in Resources */,
+				F223D84613D3525C00076D1D /* PinNumberGreen18.png in Resources */,
+				F223D84713D3525C00076D1D /* PinNumberGreen18@2x.png in Resources */,
+				F223D84813D3525C00076D1D /* PinNumberGreen19.png in Resources */,
+				F223D84913D3525C00076D1D /* PinNumberGreen19@2x.png in Resources */,
+				F223D84A13D3525C00076D1D /* PinNumberGreen1@2x.png in Resources */,
+				F223D84B13D3525C00076D1D /* PinNumberGreen2.png in Resources */,
+				F223D84C13D3525C00076D1D /* PinNumberGreen20.png in Resources */,
+				F223D84D13D3525C00076D1D /* PinNumberGreen20@2x.png in Resources */,
+				F223D84E13D3525C00076D1D /* PinNumberGreen21.png in Resources */,
+				F223D84F13D3525C00076D1D /* PinNumberGreen21@2x.png in Resources */,
+				F223D85013D3525C00076D1D /* PinNumberGreen22.png in Resources */,
+				F223D85113D3525C00076D1D /* PinNumberGreen22@2x.png in Resources */,
+				F223D85213D3525C00076D1D /* PinNumberGreen23.png in Resources */,
+				F223D85313D3525C00076D1D /* PinNumberGreen23@2x.png in Resources */,
+				F223D85413D3525C00076D1D /* PinNumberGreen24.png in Resources */,
+				F223D85513D3525C00076D1D /* PinNumberGreen24@2x.png in Resources */,
+				F223D85613D3525C00076D1D /* PinNumberGreen25.png in Resources */,
+				F223D85713D3525C00076D1D /* PinNumberGreen25@2x.png in Resources */,
+				F223D85813D3525C00076D1D /* PinNumberGreen2@2x.png in Resources */,
+				F223D85913D3525C00076D1D /* PinNumberGreen3.png in Resources */,
+				F223D85A13D3525C00076D1D /* PinNumberGreen3@2x.png in Resources */,
+				F223D85B13D3525C00076D1D /* PinNumberGreen4.png in Resources */,
+				F223D85C13D3525C00076D1D /* PinNumberGreen4@2x.png in Resources */,
+				F223D85D13D3525C00076D1D /* PinNumberGreen5.png in Resources */,
+				F223D85E13D3525C00076D1D /* PinNumberGreen5@2x.png in Resources */,
+				F223D85F13D3525C00076D1D /* PinNumberGreen6.png in Resources */,
+				F223D86013D3525C00076D1D /* PinNumberGreen6@2x.png in Resources */,
+				F223D86113D3525C00076D1D /* PinNumberGreen7.png in Resources */,
+				F223D86213D3525C00076D1D /* PinNumberGreen7@2x.png in Resources */,
+				F223D86313D3525C00076D1D /* PinNumberGreen8.png in Resources */,
+				F223D86413D3525C00076D1D /* PinNumberGreen8@2x.png in Resources */,
+				F223D86513D3525C00076D1D /* PinNumberGreen9.png in Resources */,
+				F223D86613D3525C00076D1D /* PinNumberGreen9@2x.png in Resources */,
 				95167BA413D34B630074181B /* BackgroundTextureLight@2x.png in Resources */,
 				95167BA513D34B630074181B /* MainScreenMapButton@2x.png in Resources */,
 				95167BA613D34B630074181B /* BackgroundTextureDark@2x.png in Resources */,
@@ -1048,9 +1084,6 @@
 				95167BAB13D34B630074181B /* MainScreenTextField.png in Resources */,
 				95167BAC13D34B630074181B /* MainScreenTextField@2x.png in Resources */,
 				95167BAD13D34B630074181B /* Icon.png in Resources */,
-				F2C74E7913D36173003C04FC /* SplashScreenFinal2Top.png in Resources */,
-				F2C74E7C13D36183003C04FC /* SplashScreenTransitionFinal2Bottom@2x.png in Resources */,
-				F2C74E7E13D362EF003C04FC /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1108,7 +1141,6 @@
 				D4DA546413D31B5500E1FF7A /* GameCenterManager.m in Sources */,
 				3F912ACC13D33BDD0081FDCD /* Trace.m in Sources */,
 				3F912AD013D33BEF0081FDCD /* TraceOverlayView.m in Sources */,
-				3FE13F9913D34FE700747975 /* TrackThumbView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
