@@ -10,6 +10,7 @@
 #import "RaceTracer.h"
 #import "GPSTracePlayer.h"
 #import <MapKit/MapKit.h>
+#import "TTTLocationFormatter.h"
 
 static NSUInteger CheckpointMetersThreshold = 15;
 
@@ -127,12 +128,15 @@ static NSUInteger CheckpointMetersThreshold = 15;
 			return;
 		
 		[self.delegate raceTracer:self gotFirstFix:newLocation];
+		currentLocation = [newLocation retain];
 		self.userLocated = YES;
 		
 		return;
 	}
 	
 	// -------
+	[currentLocation release];
+	currentLocation = [newLocation retain];
 	
 	if (self.racing == YES)
 		[self.currentTrace addPoint:newLocation];
@@ -174,7 +178,11 @@ static NSUInteger CheckpointMetersThreshold = 15;
 	if (newHeading.headingAccuracy < 0)
 		return;
 	
-	self.headingToNextCheckpoint = -newHeading.trueHeading * M_PI / 180;
+	CLLocation *nextCheckpointLocation = [[[CLLocation alloc] initWithLatitude:self.checkpointToPass.coordinate.latitude
+																	 longitude:self.checkpointToPass.coordinate.longitude] autorelease]
+	float verticalDistance = nextCheckpointLocation.coordinate.latitude - currentLocation.coordinate.latitude;
+	float nextCheckpointAngleFromNorth = asin(verticalDistance / [currentLocation distanceFromLocation:nextCheckpointLocation]);
+	self.headingToNextCheckpoint = (-newHeading.trueHeading * M_PI / 180) + nextCheckpointAngleFromNorth;
 }
 
 - (MKPointAnnotation *)checkpointToPass;
