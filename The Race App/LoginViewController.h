@@ -2,7 +2,9 @@
 //  LoginViewController.h
 //  The Race App
 //
-//  Created by Sergey Novitsky on 7/16/11.
+//  Created by Appsterdam on 7/16/11.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
 
 #import <UIKit/UIKit.h>

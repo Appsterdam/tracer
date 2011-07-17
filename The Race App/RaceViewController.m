@@ -2,6 +2,9 @@
 //  RaceViewController.m
 //  The Race App
 //
+//  Created by Appsterdam on 09/07/11.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
 
 #import "RaceViewController.h"
@@ -9,11 +12,11 @@
 #import "TraceOverlayView.h"
 #import "GPSTracePlayer.h"
 
+#define kPinNumberTag 343
+
 @interface RaceViewController ()
 
-@property(nonatomic, retain) Trace             * currentTrace;
 @property(nonatomic, retain) TraceOverlayView  * currentTraceView;
-
 @property(nonatomic, retain) MKPointAnnotation * ghostAnnotation;
 
 - (void)startStopwatch;
@@ -22,7 +25,6 @@
 
 @implementation RaceViewController
 
-@synthesize currentTrace;
 @synthesize currentTraceView;
 @synthesize mapView;
 @synthesize startRaceView;
@@ -52,7 +54,6 @@
 }
 
 - (void)dealloc {
-	self.currentTrace = nil;
 	self.currentTraceView = nil;
 
 	self.saveTraceButton = nil;
@@ -153,6 +154,9 @@
 	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
 	
 	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
+    UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
+    UIImage *newImage = [UIImage imageNamed:[NSString stringWithFormat:@"PinNumberGreen%d.png", checkpointReachedIdx+1]];
+    [imgView setImage:newImage];
 }
 
 - (void)raceTracerReachedStartPoint:(RaceTracer *)tracer;
@@ -161,6 +165,8 @@
 	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
 	
 	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
+    UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
+    [imgView setImage:[UIImage imageNamed:@"PinNumberGreen1.png"]];
 	
 	[UIView animateWithDuration:1
 					 animations:^{
@@ -228,6 +234,8 @@
 				 forKeyPath:@"headingToNextCheckpoint"
 					options:NSKeyValueObservingOptionInitial
 					context:nil];
+	
+	[self.mapView addOverlay:raceTracer.currentTrace];
 }
 
 #pragma mark -
@@ -257,6 +265,14 @@
 	MKPinAnnotationView *checkpointView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:checkpointViewIdentifier];
 	if (!checkpointView) {
 		checkpointView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:checkpointViewIdentifier] autorelease];
+        
+        NSUInteger index = [checkpoints indexOfObject:annotation];
+        
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"PinNumber%d.png", index+1]]];
+        [image setFrame:CGRectMake(-1, -1, 17, 17)];
+        [image setTag:kPinNumberTag];
+        [checkpointView addSubview:image];
+        [image release];
 		checkpointView.pinColor = MKPinAnnotationColorRed;
 		checkpointView.animatesDrop = YES;
 	}
@@ -268,7 +284,14 @@
 
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay;
 {
-	if (overlay == self.currentTrace) return self.currentTraceView;
+	if (overlay == raceTracer.currentTrace)
+	{
+		if (self.currentTraceView == nil)
+			self.currentTraceView = [[[TraceOverlayView alloc] initWithOverlay:overlay] autorelease];
+		
+		return self.currentTraceView;
+	}
+	
 	return nil;
 }
 
@@ -287,16 +310,6 @@
 						   (stopwatchTime / 600) % 60,
 						   (stopwatchTime / 10) % 60,
 						   stopwatchTime % 10];
-}
-
-
-- (IBAction)saveTrace:(id)sender;
-{
-	NSArray  * paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-	NSString * path = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"trace"];
-					   
-	[NSKeyedArchiver archiveRootObject:self.currentTrace
-								toFile:path];
 }
 
 - (IBAction)playTrace:(id)sender;

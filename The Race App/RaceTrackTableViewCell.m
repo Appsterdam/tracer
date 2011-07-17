@@ -2,8 +2,9 @@
 //  RaceTrackTableViewCell.m
 //  The Race App
 //
-//  Created by Sergey Novitsky on 7/9/11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
+//  Created by Appsterdam on 7/9/11.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
 
 #import "RaceTrackTableViewCell.h"

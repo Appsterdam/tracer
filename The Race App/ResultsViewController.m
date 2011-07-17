@@ -2,8 +2,9 @@
 //  ResultViewController.m
 //  The Race App
 //
-//  Created by Sergey Novitsky on 7/9/11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
+//  Created by Appsterdam on 7/9/11.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
 
 #import "ResultsViewController.h"
@@ -25,7 +26,7 @@
     [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Peter", @"racerName", @"5:25", @"racerTime", nil]];
     [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Matteo", @"racerName", @"5:51", @"racerTime", nil]];
     [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Kate", @"racerName", @"6:04", @"racerTime", nil]];
-    [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Sergey", @"racerName", @"6:07", @"racerTime", nil]];
+    [resultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Appsterdam", @"racerName", @"6:07", @"racerTime", nil]];
     
     return resultArray;
 }

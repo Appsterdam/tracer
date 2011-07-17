@@ -2,10 +2,10 @@
 //  The_Race_AppAppDelegate.m
 //  The Race App
 //
-//  Created by Matteo Manferdini on 09/07/11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
+//  Created by Appsterdam on 09/07/11.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
-
 
 #import <MapKit/MapKit.h>
 #import "The_Race_AppAppDelegate.h"
@@ -13,21 +13,19 @@
 #import "ResultsViewController.h"
 #import "LoginViewController.h"
 #import "FBConnect.h"
+#import "GameCenterManager.h"
 
 #import "RaceApi.h"
 
 #define RACE_APP_FACEBOOK_APP_ID @"198763226840194"
 
 
-#if USEGAMEKIT
-    #import "GameKitHelpers/GameKitHelper.h"
-#endif
-
 @implementation The_Race_AppAppDelegate
 
 @synthesize window=_window;
 @synthesize tabBarController;
 @synthesize faceBookApi;
+@synthesize gameCenterManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
@@ -41,7 +39,21 @@
     faceBookApi.accessToken = accessToken;
     faceBookApi.expirationDate = expirationDate;
     
-    NSMutableArray *viewControllers = [[NSMutableArray alloc] initWithCapacity:2];
+    if([GameCenterManager isGameCenterAvailable])
+	{
+		self.gameCenterManager= [[[GameCenterManager alloc] init] autorelease];
+		[self.gameCenterManager setDelegate: self];
+		[self.gameCenterManager authenticateLocalUser];
+		
+	}
+	else
+	{
+		//[self showAlertWithTitle: @"Game Center Support Required!"
+		//				 message: @"The current device does not support Game Center, which this game requires."];
+        UIAlertView* alert= [[[UIAlertView alloc] initWithTitle: @"Game Center Support Required!" message: @"The current device does not support Game Center, which this game requires." 
+                                                       delegate: NULL cancelButtonTitle: @"OK" otherButtonTitles: NULL] autorelease];
+        [alert show];
+	}
     
     RaceTracksViewController* raceTrackViewController =
        [[[RaceTracksViewController alloc] initWithNibName:nil bundle:nil] autorelease];
@@ -50,17 +62,13 @@
 
     raceTrackNavigationController.tabBarItem = 
         raceTrackViewController.tabBarItem;
-
-    [viewControllers addObject:raceTrackNavigationController];    
     
     ResultsViewController* resultsViewController =
         [[[ResultsViewController alloc] initWithNibName:@"ResultsViewController" bundle:nil] autorelease];
     
     UINavigationController* resultsNavigationController =
         [[[UINavigationController alloc] initWithRootViewController:resultsViewController] autorelease];
-    
-    [viewControllers addObject:resultsNavigationController];
-    
+        
     resultsNavigationController.tabBarItem =
         resultsViewController.tabBarItem;
         
@@ -73,27 +81,18 @@
     
     loginNavigationController.tabBarItem = loginViewController.tabBarItem;
     
-    [viewControllers addObject:loginNavigationController];
-
-#if USEGAMEKIT
-    
-    if ([GameKitHelper isGameCenterAPIAvailable]) {
-        [self authenticateLocalPlayer];
-        UIViewController* gameCenterViewController = [[[UIViewController alloc] init] autorelease];
-        UITabBarItem *gameCenterTabBarItem = [[UITabBarItem alloc] initWithTitle:@"Game Center" image:nil tag:3];
-        [gameCenterViewController setTabBarItem:gameCenterTabBarItem];
-        [gameCenterTabBarItem release];
-        [viewControllers addObject:gameCenterViewController];
-    }
-#endif
-    
-    tabBarController.viewControllers = [NSArray arrayWithArray:viewControllers];
-    [viewControllers release];    
+	NSArray* viewControllers = 
+	[NSArray arrayWithObjects:raceTrackNavigationController, 
+	 resultsNavigationController, 
+	 loginNavigationController,
+	 nil];
+	
+    tabBarController.viewControllers = viewControllers;
+	
 	self.window.rootViewController = tabBarController;
 	[self.window makeKeyAndVisible];
     return YES;
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
@@ -151,30 +150,5 @@
     BOOL handled = [faceBookApi handleOpenURL:url];
     return handled;
 }
-
-#pragma mark -
-#pragma mark Optional GameKit Integration
-
-#if USEGAMEKIT
-
-@synthesize localPlayer;
-@synthesize gameCenterFriends;
-
-- (void)authenticateLocalPlayer{
-    GKLocalPlayer* currentPlayer = [GameKitHelper authenticatedGKLocalPlayer];
-    if (nil == currentPlayer) {
-        [[self localPlayer] release], localPlayer = nil;
-        //      [GameKitHelper removeGKNotificationObserver:self];
-    }
-    [self setLocalPlayer:currentPlayer];
-    [GameKitHelper addGKNotificationObserver:self selector:@selector(handleGKPlayerAuthenticationDidCangeNofication:)];
-}
-
-
-- (void)handleGKPlayerAuthenticationDidCangeNofication:(NSNotification *)notifcation {
-    NSLog(@"Received %@", GKPlayerDidChangeNotificationName);
-    [self authenticateLocalPlayer];
-}
-#endif
 
 @end
