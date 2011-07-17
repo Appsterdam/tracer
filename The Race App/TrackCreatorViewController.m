@@ -2,13 +2,16 @@
 //  TrackCreatorViewController.m
 //  The Race App
 //
-//  Created by Robbert van Ginkel on 16-07-11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
+//  Created by Appsterdam on 16-07-11.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
 
 #import "TrackCreatorViewController.h"
 #import "DDAnnotation.h"
 #import "DDAnnotationView.h"
+#import "JSON.h"
+#import "MBProgressHUD.h"
 
 @implementation TrackCreatorViewController
 @synthesize mapView, tableView, coordinates, name;
@@ -17,7 +20,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
         self.coordinates = [NSMutableArray array];
         
         UIBarButtonItem *saveItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editTrack:)];
@@ -28,8 +30,11 @@
     return self;
 }
 
+//Alertview is active when the view appears. If the user doesn't give in a track name pop the viewcontroller
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
     if (buttonIndex==0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    } else if ([((UITextField *)[alertView viewWithTag:99]).text length]==0) {
         [self.navigationController popViewControllerAnimated:YES];
     } else {
         UITextField *txt = (UITextField *)[alertView viewWithTag:99];
@@ -42,13 +47,13 @@
 - (IBAction)segmentValueChanged:(id)sender {
     UISegmentedControl *segment = (UISegmentedControl *)sender;
     switch (segment.selectedSegmentIndex) {
-        case 0:{
+        case 0:{ //show Map
             [self.tableView setHidden:YES];
             [self.mapView setHidden:NO];
             [self.navigationItem rightBarButtonItem].enabled = NO;
         }
             break;
-        case 1:{
+        case 1:{ //show Tableview
             [self.mapView setHidden:YES];
             [self.tableView setHidden:NO];
             [self.tableView reloadData];
@@ -79,7 +84,61 @@
             [locationArray addObject:loc];
             [loc release];
         }
+        
+        
+        NSMutableArray *coordinateArray = [NSMutableArray array];
+        for (int i = 0; i <[locationArray count]; i++) {
+            CLLocation *loc = [locationArray objectAtIndex:i];
+            NSDictionary *dict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%f",loc.coordinate.latitude],[NSString stringWithFormat:@"%f",loc.coordinate.longitude],nil]
+                                                             forKeys:[NSArray arrayWithObjects:@"lat",@"lon",nil]];
+            [coordinateArray addObject:dict];
+        }
+        
+        NSString *dump = [coordinateArray JSONRepresentation];
+    
+        MBProgressHUD *hud = [[MBProgressHUD alloc] initWithView:self.view];
+        hud.labelText = @"Saving track...";
+        hud.animationType = MBProgressHUDAnimationZoom;
+        [self.view addSubview:hud];
+        [hud showWhileExecuting:@selector(postData:) onTarget:self withObject:dump animated:YES];
+        [hud release];
+        [locationArray release];
     }
+}
+
+- (void)postData:(NSString*)jsonDump {
+    NSString *urlString = @"http://appsterdam-iosdevcamp.herokuapp.com/tracks/create.json";
+    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+    [request setURL:[NSURL URLWithString:urlString]];
+    [request setHTTPMethod:@"POST"];
+    
+    NSMutableData *body = [NSMutableData data];
+    [body appendData:[[NSString stringWithFormat:@"name=%@&data=",self.title] dataUsingEncoding:NSUTF8StringEncoding]];
+    [body appendData:[jsonDump dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPBody:body];
+    
+    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+    NSDictionary  *returnDict = [returnString JSONValue];
+    if ([[returnDict objectForKey:@"ok"] intValue]==1) {
+        //success!
+        [self performSelectorOnMainThread:@selector(popViewController) withObject:nil waitUntilDone:NO];
+    } else {
+        //fail
+        NSString  *error = [[[returnDict objectForKey:@"messages"] objectForKey:@"name"] objectAtIndex:0];
+        UIAlertView *errorAlert = [[[UIAlertView alloc] initWithTitle:@"Unable to save track" 
+                                                              message:error
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"Dismiss"
+                                                    otherButtonTitles:nil] autorelease];
+		[errorAlert show];
+    }
+    [returnString release];
+}
+
+- (void)popViewController {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)handleLongPress:(id)sender {
@@ -101,7 +160,7 @@
         }
     }
 }
-
+//Tableview enter editmode
 - (void)editTrack:(id)sender {
     [tableView setEditing: YES animated: YES];
     
@@ -136,29 +195,21 @@
     [self.mapView release];
     [self.tableView release];
     [self.coordinates release];
+    [self.name release];
     [super dealloc];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
 
 #pragma mark - 
 #pragma mark UITableView Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [self.coordinates count];
 }
 
@@ -172,16 +223,13 @@
         cell.showsReorderControl = YES;
     }
     
-    // Configure the cell...
-    
     CLLocationCoordinate2D coordinate = ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).coordinate;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%f %f", coordinate.latitude, coordinate.longitude];
     cell.textLabel.text = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
+    
+    //Update the checkpoint number of the pin.
     ((DDAnnotation*)[self.coordinates objectAtIndex:[indexPath row]]).title = [NSString stringWithFormat:@"Checkpoint: %d", [indexPath row]+1];
     
-    /*DDAnnotation *startAnnotation = [self.coordinates objectAtIndex:[indexPath row]];
-	MKPinAnnotationView *checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
-	checkPointPinView.image = [UIImage imageNamed:[NSString stringWithFormat:@"PinNumber%d.png", [indexPath row]+1]];*/    
     return cell;
 }
 
@@ -196,6 +244,15 @@
     [object release];
     
     [self.tableView reloadData];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self.mapView removeAnnotation:[self.coordinates objectAtIndex:[indexPath row]]];
+        [self.coordinates removeObjectAtIndex:[indexPath row]];
+        [self.tableView reloadData]; 
+    }
+
 }
 
 #pragma mark -
@@ -251,17 +308,11 @@
     [super viewDidLoad];
     [self.mapView setDelegate:self];
     
+    
+    //Add gesture recognizer to get notified when a user holds down his finger.
     UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
     [self.mapView addGestureRecognizer:longPress];
     [longPress release];
-    // Do any additional setup after loading the view from its nib.
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -274,7 +325,6 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
