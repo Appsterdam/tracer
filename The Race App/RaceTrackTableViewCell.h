@@ -8,6 +8,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrackThumbView.h"
 
 @interface RaceTrackTableViewCell : UITableViewCell
 {
@@ -21,6 +22,6 @@
 @property(nonatomic, retain) IBOutlet UILabel*    winnerTimeLabel;
 @property(nonatomic, retain) IBOutlet UILabel*    checkPointCountLabel;
 @property(nonatomic, retain) IBOutlet UILabel*    winnerNameLabel;
-
+@property(nonatomic, retain) IBOutlet TrackThumbView *trackThumbnail;
 
 @end

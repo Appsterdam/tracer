@@ -204,7 +204,8 @@
     cell.trackNameLabel.text = track.trackName;
     cell.winnerNameLabel.text = track.trackWinner;
     cell.winnerTimeLabel.text = track.trackScore;
-    
+    cell.trackThumbnail.track = track;
+	
 //#warning "Hardcoded!"
 //    cell.checkPointCountLabel.text = [NSString stringWithFormat:@"%d checkpoints",
 //                                      indexPath.row + 3/*[track.trackData count]*/];

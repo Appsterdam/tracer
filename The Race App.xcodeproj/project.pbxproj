@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3F912ACC13D33BDD0081FDCD /* Trace.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F912ACB13D33BDD0081FDCD /* Trace.m */; };
 		3F912AD013D33BEF0081FDCD /* TraceOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F912ACF13D33BEF0081FDCD /* TraceOverlayView.m */; };
+		3FE13F9913D34FE700747975 /* TrackThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FE13F9813D34FE700747975 /* TrackThumbView.m */; };
 		950CE1D813C8BE09009BC002 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 950CE1D713C8BE09009BC002 /* MBProgressHUD.m */; };
 		95167BA413D34B630074181B /* BackgroundTextureLight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95167B9A13D34B630074181B /* BackgroundTextureLight@2x.png */; };
 		95167BA513D34B630074181B /* MainScreenMapButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95167B9B13D34B630074181B /* MainScreenMapButton@2x.png */; };
@@ -159,6 +160,8 @@
 		3F912ACB13D33BDD0081FDCD /* Trace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trace.m; sourceTree = "<group>"; };
 		3F912ACE13D33BEF0081FDCD /* TraceOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TraceOverlayView.h; sourceTree = "<group>"; };
 		3F912ACF13D33BEF0081FDCD /* TraceOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TraceOverlayView.m; sourceTree = "<group>"; };
+		3FE13F9713D34FE700747975 /* TrackThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackThumbView.h; sourceTree = "<group>"; };
+		3FE13F9813D34FE700747975 /* TrackThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackThumbView.m; sourceTree = "<group>"; };
 		950CE1D613C8BE09009BC002 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		950CE1D713C8BE09009BC002 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		95167B9A13D34B630074181B /* BackgroundTextureLight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundTextureLight@2x.png"; sourceTree = "<group>"; };
@@ -531,6 +534,8 @@
 				A537E3E713C8ED6700D3BDE1 /* ResultsViewController.m */,
 				A5D83CFF13D1976C00B68EC1 /* LoginViewController.h */,
 				A5D83D0013D1976C00B68EC1 /* LoginViewController.m */,
+				3FE13F9713D34FE700747975 /* TrackThumbView.h */,
+				3FE13F9813D34FE700747975 /* TrackThumbView.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -941,6 +946,7 @@
 				D4DA546413D31B5500E1FF7A /* GameCenterManager.m in Sources */,
 				3F912ACC13D33BDD0081FDCD /* Trace.m in Sources */,
 				3F912AD013D33BEF0081FDCD /* TraceOverlayView.m in Sources */,
+				3FE13F9913D34FE700747975 /* TrackThumbView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
