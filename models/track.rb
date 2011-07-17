@@ -1,10 +1,3 @@
-# TODO: Move fix for json to initializer
-class Fixnum
- def to_json(options = nil)
-    to_s
-  end
-end
-
 class Track
   include DataMapper::Resource
 
