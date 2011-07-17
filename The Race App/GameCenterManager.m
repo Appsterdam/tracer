@@ -17,6 +17,7 @@
 	{
 		earnedAchievementCache= NULL;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidCreateTrackNotification) name:kDidCreateTrackNotification object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleDidFinishRaceNotification) name:kDidFinshTrackNotifiction object:nil];
 	}
 	return self;
 }
