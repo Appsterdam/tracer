@@ -1,2 +1,0 @@
-TheRaceApp.helpers do
-end
