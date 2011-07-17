@@ -14,7 +14,7 @@ class Track
   property :name, Text, :required => true, :lazy => false
   property :data, Json, :required => true
 
-  has_geographic_location :start
+  has_geographic_location :start, :finish
 
   has n, :races
 

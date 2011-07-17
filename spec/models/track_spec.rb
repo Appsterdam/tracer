@@ -98,7 +98,7 @@ describe "Track Model" do
     end
   end
 
-  describe "start point" do
+  describe "#start" do
     it 'sets the start point' do
       track.start_lat.should be_within(0.05).of(track.data.first["lat"].to_f)
       track.start_lng.should be_within(0.05).of(track.data.first["lon"].to_f)
@@ -106,6 +106,17 @@ describe "Track Model" do
 
     it 'resolves the location' do
       track.start_city.should == "Amsterdam"
+    end
+  end
+  
+  describe "#finish" do
+    it 'sets the finish point' do
+      track.start_lat.should be_within(0.05).of(track.data.last["lat"].to_f)
+      track.start_lng.should be_within(0.05).of(track.data.last["lon"].to_f)
+    end
+
+    it 'resolves the location' do
+      track.finish_city.should == "Amsterdam"
     end
   end
 end
