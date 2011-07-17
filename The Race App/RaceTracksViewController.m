@@ -136,6 +136,14 @@
     [self.navigationItem setRightBarButtonItem:addItem];
     [addItem release];
     
+	
+	// WIL -- REMOVE
+	
+	[self updateDataWithTracks:nil];
+	return;
+	
+	// END REMOVE
+	
     //create a pretty hud
     hud = [[MBProgressHUD alloc] initWithView:self.view];
     hud.labelText = @"Loading tracks...";

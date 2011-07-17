@@ -9,11 +9,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-@protocol TraceDelegate;
-
 @interface Trace : NSObject <NSCoding, MKOverlay>
-
-@property(nonatomic, assign) id<TraceDelegate> delegate;
 
 @property(nonatomic, readonly) NSUInteger count;
 
@@ -26,12 +22,7 @@
 - (void)addPoint:(CLLocation *)point;
 - (CLLocation *)pointAtIndex:(NSUInteger)i;
 
-@end
+- (void)lockForReading;
+- (void)unlockForReading;
 
-
-// Maybe not needed...
-@protocol TraceDelegate <NSObject>
-
-- (void)trace:(Trace *)trace didAddPoint:(CLLocation *) point withTimestamp:(NSDate *)timestamp;
-			   
 @end

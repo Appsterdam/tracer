@@ -34,12 +34,9 @@
 - (id)initWithCheckpoints:(NSArray *)points;
 - (IBAction)startRace:(id)sender;
 
-
-
 @property (nonatomic, retain) IBOutlet UIButton * saveTraceButton;
 @property (nonatomic, retain) IBOutlet UIButton * playTraceButton;
 
-- (IBAction)saveTrace:(id)sender;
 - (IBAction)playTrace:(id)sender;
 
 @end
