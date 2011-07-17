@@ -3,6 +3,7 @@ class TheRaceApp < Padrino::Application
   register Padrino::Mailer
   register Padrino::Helpers
   register CompassInitializer
+  register GeoInitializer
 
 
   enable :sessions

@@ -1,6 +1,6 @@
 Track.fixture {{
   :name => (name = /\w+/.gen),
-  :data => '{"lat":"52.372246","lon":"4.844971"}'
+  :data => %|[{"lat":"52.372246","lon":"4.844971"}]|
 }}
 
 # Square around infinite loop

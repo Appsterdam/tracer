@@ -7,17 +7,19 @@ end
 
 class Track
   include DataMapper::Resource
+  include DataMapper::GeoKit
 
   # property <name>, <type>
   property :id, Serial
   property :name, Text, :required => true, :lazy => false
   property :data, Json, :required => true
 
-  # has_geographic_location :start
+  has_geographic_location :start
 
   has n, :races
 
   before :save do |t|
+    t.start = "#{data.first["lat"]} #{data.first["lon"]}"
   end
 
   def best_race
