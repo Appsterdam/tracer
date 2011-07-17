@@ -11,6 +11,7 @@
 
 @interface Track : NSObject {
     NSString *trackStartURI;
+    NSString *trackURI;
     NSString *trackName;
     NSString *trackScore;
     NSString *trackWinner;
@@ -21,12 +22,14 @@
 @property (nonatomic, retain) NSString *trackWinner;
 @property (nonatomic, retain) NSArray *trackData;
 @property (nonatomic, retain) NSString *trackStartURI;
+@property (nonatomic, retain) NSString *trackURI;
 
 -(id)initWithTrackName:(NSString*)aTrackName 
             trackScore:(NSString*)aTrackScore
            trackWinner:(NSString*)aTrackWinner
              trackData:(NSArray*)aTrackData
-              trackURI:(NSString *)atrackStartURI;
+         trackStartURI:(NSString *)aStartTrackURI
+              trackURI:(NSString *)aTrackURI;
 
 -(id)initWithTrackName:(NSString*)aTrackName 
             trackScore:(NSString*)aTrackScore

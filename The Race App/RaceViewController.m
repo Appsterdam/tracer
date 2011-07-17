@@ -2,8 +2,6 @@
 //  RaceViewController.m
 //  The Race App
 //
-//  Created by Matteo Manferdini on 09/07/11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
 //
 
 #import "RaceViewController.h"
@@ -40,6 +38,8 @@
 
 @synthesize ghostAnnotation;
 
+@synthesize track;
+
 - (id)initWithCheckpoints:(NSArray *)points {
 	if (![super init])
 		return nil;
@@ -67,6 +67,8 @@
 	[stopwatchLabel release];
 	[checkpointsLabel release];
 	[arrowImageView release];
+    [track release];
+    
 	[super dealloc];
 }
 
@@ -99,6 +101,21 @@
 	[self setCheckpointsLabel:nil];
 	[self setArrowImageView:nil];
 	[super viewDidUnload];
+}
+-(void)viewDidLoad{
+    [super viewDidLoad];
+    
+    api = [[RaceApi alloc] init];
+    [api setDelegate:self];
+    
+}
+
+#pragma mark RaceAPI delegate
+-(void)finishedRace:(NSDictionary *)_dict{
+    NSLog(@"%@", _dict);
+}
+-(void)startedRace:(NSDictionary *)_dict{
+    NSLog(@"%@", _dict);
 }
 
 #pragma mark -
@@ -154,6 +171,8 @@
 
 - (void)raceTracerReachedEndPoint:(RaceTracer *)tracer;
 {
+    [api finishRaceWithTime:[NSNumber numberWithInt:stopwatchTime] andTrackURI:track.trackURI];
+    
 	[[[[UIAlertView alloc] initWithTitle:@"Race completed!" 
 								 message:@"You did it!"
 								delegate:nil
@@ -180,6 +199,11 @@
 {
 	[raceTracer startRace];
 	
+    
+    [api startRaceWithTrackURI:track.trackStartURI andUsername:@"USERNAME"];
+    
+    
+    
 	[self startStopwatch];
 	
 	raceStatsView.frame = startRaceView.frame;

@@ -2,21 +2,21 @@
 //  RaceViewController.h
 //  The Race App
 //
-//  Created by Matteo Manferdini on 09/07/11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
-//
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
 #import "RaceTracer.h"
+#import "Track.h"
+#import "RaceApi.h"
 
-
-@interface RaceViewController : UIViewController <MKMapViewDelegate, RaceTracerDelegate> {
+@interface RaceViewController : UIViewController <MKMapViewDelegate, RaceTracerDelegate, RaceDelegate> {
 	BOOL racing;
 	NSUInteger stopwatchTime;
 	NSArray *checkpoints;
+    Track *track;
+    RaceApi *api;
 	MBProgressHUD *progressHUD;
 	RaceTracer *raceTracer;
 	CLLocationDistance distanceFromNextCheckpoint;
@@ -30,6 +30,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *stopwatchLabel;
 @property (nonatomic, retain) IBOutlet UILabel *checkpointsLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *arrowImageView;
+@property (nonatomic, retain) Track *track;
 
 - (id)initWithCheckpoints:(NSArray *)points;
 - (IBAction)startRace:(id)sender;

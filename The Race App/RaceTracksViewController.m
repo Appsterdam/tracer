@@ -220,6 +220,7 @@
         annot = nil;
     }
 	RaceViewController *raceController = [[[RaceViewController alloc] initWithCheckpoints:checkpoints] autorelease];
+    raceController.track = [tracks objectAtIndex:indexPath.row];
 	[self.navigationController pushViewController:raceController animated:YES];
 }
 
