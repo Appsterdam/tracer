@@ -1,7 +1,7 @@
-# Helper methods defined here can be accessed in any controller or view in the application
-
 TheRaceApp.helpers do
-  # def simple_helper_method
-  #  ...
-  # end
+  def prepare_track(t)
+    t.uri = url(:tracks, :show, :id => t.id, :format => content_type)
+    t.start_uri = url(:tracks, :start, :id => t.id, :format => content_type)
+    t
+  end
 end

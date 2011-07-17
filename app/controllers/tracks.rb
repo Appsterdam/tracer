@@ -1,30 +1,9 @@
 TheRaceApp.controllers :tracks do
-  helpers do
-    def prepare_track(t)
-      t.uri = url(:tracks, :show, :id => t.id, :format => content_type)
-      t.start_uri = url(:tracks, :start, :id => t.id, :format => content_type)
-      t
-    end
-  end
-
   get :index, :provides => :json do
     { 
       :ok => true,
       :data => Track.all.map { |t| prepare_track(t) }
     }.to_json
-  end
-
-  put :create, :provides => :json do
-    track = Track.new({ :name => params[:name], :data => params[:data]})
-    if track.save
-      redirect url(:tracks, :show, :id => track.id, :format => content_type)
-    else
-      {
-        :ok => false,
-        :messages => track.errors,
-        :data => params
-      }.to_json
-    end
   end
 
   post :create, :provides => :json do

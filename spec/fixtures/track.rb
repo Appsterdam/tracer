@@ -42,7 +42,7 @@ Track.fixture(:loc6) {{
 
 def seed_tracks
   (1...6).each do |i|
-    Track.gen("loc#{1}")
+    Track.gen("loc#{i}")
   end
 end
 

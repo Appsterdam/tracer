@@ -201,8 +201,7 @@ describe "Track Model" do
     before { seed_tracks }
 
     it 'returns the tracks near the location' do
-      pending
-      Track.near("Amsterdam").to_a.size.should == 3
+      Track.near("Amsterdam").to_a.size.should == 2
     end
   end
 end

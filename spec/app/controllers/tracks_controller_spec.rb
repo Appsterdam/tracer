@@ -178,39 +178,38 @@ describe "TracksController" do
     end
   end
 
-  describe "PUT /tracks.json" do
+  describe "POST /tracks.json" do
     before do
       DataMapper.auto_migrate!
     end
 
     it 'creates a new track' do
       expect do
-        put TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => valid_data }
+        post TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => valid_data }
       end.to change(Track, :count).by(1)
     end
 
     it 'redirects to the created resource' do
-      put TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => valid_data }
+      post TheRaceApp.url(:tracks, :create), { :name => "A new track name", :data => valid_data }
       last_response.location.should == "http://example.org" + TheRaceApp.url(:tracks, :show, :id => Track.last.id, :format => :json)
     end
 
     context "invalid data" do
       it 'sets the "ok" key to false' do
-        put TheRaceApp.url(:tracks, :create), { :name => nil }
+        post TheRaceApp.url(:tracks, :create), { :name => nil }
         json["ok"].should == false
       end
 
       it 'sets the "messages" key to the error messages' do
-        put TheRaceApp.url(:tracks, :create), { :name => nil }
+        post TheRaceApp.url(:tracks, :create), { :name => nil }
         json["messages"].should_not be_nil
         json["messages"].should_not be_empty
       end
       
       it 'sets the "data" key to the putted data' do
-        put TheRaceApp.url(:tracks, :create), { :name => nil }
+        post TheRaceApp.url(:tracks, :create), { :name => nil }
         json["data"].should == { "name" => nil }
       end
     end
   end
-
 end

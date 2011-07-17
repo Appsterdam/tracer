@@ -6,7 +6,7 @@ describe "SearchController" do
 
     it 'finds a point near the location' do
       get app.url(:search, :index, :q => "Amsterdam, The Netherlands")
-      JSON.parse(last_response.body)["data"].size.should == 3
+      JSON.parse(last_response.body)["data"].size.should == 2
     end
   end
 end

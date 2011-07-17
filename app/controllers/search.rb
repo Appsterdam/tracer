@@ -1,20 +1,17 @@
 TheRaceApp.controllers :search do
-  helpers do
-    def search_location
-      { :origin => params[:q], :distance => 5.mi }
-    end
-  end
-
-  get :index do
-    tracks = Track.all(:start.near => search_location)
+  get :index, :provides => :json do
+    tracks = Track.near(params[:q])
     {
       :ok => true,
-      :data => tracks.map { |t|
-        { :name => t.name,
-          :id => t.id, 
-          :uri => url(:tracks, :show, :id => t.id)
-        }
-      }
+      :data => tracks.map { |t| prepare_track(t) }
+    }.to_json
+  end
+  
+  post :index, :provides => :json do
+    tracks = Track.near(params[:q])
+    {
+      :ok => true,
+      :data => tracks.map { |t| prepare_track(t) }
     }.to_json
   end
 end
