@@ -4,11 +4,11 @@ class TheRaceApp < Padrino::Application
 
   error 404 do
     content_type :json
-    { :ok => false, :message => "Not found" }
+    { :ok => false, :message => "Not found" }.to_json
   end
 
   error 500 do
     content_type :json
-    { :ok => false, :message => "Something went wrong" }
+    { :ok => false, :message => "Something went wrong" }.to_json
   end
 end
