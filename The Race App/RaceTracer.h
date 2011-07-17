@@ -14,7 +14,9 @@
 
 @protocol RaceTracerDelegate;
 
-@interface RaceTracer : NSObject <CLLocationManagerDelegate>
+@interface RaceTracer : NSObject <CLLocationManagerDelegate> {
+	CLLocation *currentLocation;
+}
 
 @property(nonatomic, retain) Trace      * currentTrace;
 

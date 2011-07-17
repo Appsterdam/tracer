@@ -128,12 +128,15 @@ static NSUInteger CheckpointMetersThreshold = 15;
 			return;
 		
 		[self.delegate raceTracer:self gotFirstFix:newLocation];
+		currentLocation = [newLocation retain];
 		self.userLocated = YES;
 		
 		return;
 	}
 	
 	// -------
+	[currentLocation release];
+	currentLocation = [newLocation retain];
 	
 	if (self.racing == YES)
 		[self.currentTrace addPoint:newLocation];
@@ -173,9 +176,24 @@ static NSUInteger CheckpointMetersThreshold = 15;
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
 	// Discard inaccurate headings.
 	if (newHeading.headingAccuracy < 0)
-		return;
+		return;	
 	
-	self.headingToNextCheckpoint = -newHeading.trueHeading * M_PI / 180;
+	CLLocationCoordinate2D nextCheckpoint = self.checkpointToPass.coordinate;
+	CLLocationCoordinate2D curLocation    = currentLocation.coordinate;
+	
+	float compass = newHeading.trueHeading;
+	float bearing;
+	
+	{
+		float dLon = nextCheckpoint.longitude - curLocation.longitude;
+		
+		float y = sinf(dLon) * cosf(nextCheckpoint.latitude);
+		float x = cosf(curLocation.latitude) * sinf(nextCheckpoint.latitude) -
+        sinf(curLocation.latitude) * cosf(nextCheckpoint.latitude) * cosf(dLon);
+		bearing = atan2f(y, x);
+	}
+	
+	self.headingToNextCheckpoint = bearing - (compass * M_PI / 180);
 }
 
 - (MKPointAnnotation *)checkpointToPass;
