@@ -249,11 +249,11 @@
 - (void)tableView:(UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [aTableView deselectRowAtIndexPath:indexPath animated:YES];
 	MKPointAnnotation *startPointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
-	startPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376416, 4.922218);
+	startPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.398936, 4.892424);
 	MKPointAnnotation *checkpointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
-	checkpointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376962, 4.922468);
+	checkpointAnnotation.coordinate = CLLocationCoordinate2DMake(52.399269, 4.892317);
 	MKPointAnnotation *endPointAnnotation = [[[MKPointAnnotation alloc] init] autorelease];
-	endPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.376627, 4.922283);
+	endPointAnnotation.coordinate = CLLocationCoordinate2DMake(52.398972,4.89225);
 	NSArray *checkpoints = [NSArray arrayWithObjects:
 							startPointAnnotation,
 							checkpointAnnotation,
