@@ -13,9 +13,6 @@ class Track
   property :street, String
   property :country, String
 
-  alias_method :lat, :start_lat
-  alias_method :lng, :start_lng
-
   has n, :races
 
   before :create, :geocode
