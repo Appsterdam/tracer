@@ -1,6 +1,8 @@
 //
 //  RefreshTableHeaderView.h
-//  Created by Sergey.
+//  Created by Appsterdam.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //  Based on: http://www.drobnik.com/touch/2009/12/how-to-make-a-pull-to-reload-tableview-just-like-tweetie-2/
 //
 
