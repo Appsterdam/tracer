@@ -11,5 +11,4 @@ class TheRaceApp < Padrino::Application
     content_type :json
     { :ok => false, :message => "Something went wrong" }
   end
-
 end
