@@ -36,23 +36,36 @@ TheRaceApp.controllers :tracks do
   post :stop, :map => "/tracks/:id/races/:race/stop", :provides => :json do
     track = Track.get(params[:id])
     race = track.races.first(:id => params[:race])
-    race.stop(params[:time])
-
-    {
-      :ok => true,
-      :data => {
+    if race.stop(params[:time])
+      {
+        :ok => true,
+        :data => {
         :time => race.duration,
         :won => (track.best_race == race),
-        :winner => track.best_race.username
+        :winner => track.winner,
+        :best_time => track.best_time
       }
-    }.to_json
+      }.to_json
+    else
+      {
+        :ok => false,
+        :message => "Race was already stopped"
+      }.to_json
+    end
   end
 
   get :show, :map => "/tracks/:id", :provides => :json do
-    track = Track.get(params[:id])
-    {
-      :ok => true,
-      :data => prepare_track(track)
-    }.to_json
+    if track = Track.get(params[:id])
+      {
+        :ok => true,
+        :data => prepare_track(track)
+      }.to_json
+    else
+      status 404
+      {
+        :ok => false,
+        :message => "Track was not found"
+      }.to_json
+    end
   end
 end

@@ -96,6 +96,20 @@ describe "TracksController" do
         data["start_uri"].should == TheRaceApp.url(:tracks, :start, :id => track.id, :format => :json)
       end
     end
+
+    context "when the resource does not exist" do
+      before do
+        get TheRaceApp.url(:tracks, :show, :id => 1000)
+      end
+
+      it 'sets the status to 404' do
+        last_response.status.should == 404
+      end
+
+      it 'responds with json' do
+        last_response.content_type.should =~ %r{application/json}
+      end
+    end
   end
 
   describe "POST /tracks/1/start.json" do
@@ -174,6 +188,20 @@ describe "TracksController" do
 
       it 'sets the "data.winner" key to the username of the user with the best time' do
         json["data"]["winner"].should == track.best_race.username
+      end
+    end
+
+    describe "if the race was already stopped" do
+      before do
+        post TheRaceApp.url(:tracks, :stop, :id => track.id, :race => race.id), { :time => 600 }
+      end
+
+      it 'sets the "ok" key to false' do
+        json["ok"].should == false
+      end
+
+      it 'sets the "message" key' do
+        json["message"].should_not be_nil
       end
     end
   end

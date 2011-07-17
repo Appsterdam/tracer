@@ -14,6 +14,7 @@ class Race
   belongs_to :track
 
   def stop(time)
+    return false unless self.in_progress
     self.in_progress = false
     self.duration = time
     self.save
