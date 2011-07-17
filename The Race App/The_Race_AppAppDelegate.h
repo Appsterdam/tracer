@@ -2,22 +2,21 @@
 //  The_Race_AppAppDelegate.h
 //  The Race App
 //
-//  Created by Matteo Manferdini on 09/07/11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
+//  Created by Appsterdam on 09/07/11.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
 
-#define USEGAMEKIT 0
-
 #import <UIKit/UIKit.h>
+#import <GameKit/GameKit.h>
+
+#import "AppSpecificValues.h"
+#import "GameCenterManager.h"
 
 @class Facebook;
+@class GameCenterManager;
 
-#if USEGAMEKIT
-@class GKPlayer;
-#endif
-
-
-@interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate> 
+@interface The_Race_AppAppDelegate : NSObject <UIApplicationDelegate, GameCenterManagerDelegate> 
 {
     UIWindow*               window;
     UITabBarController*     tabBarController;
@@ -27,13 +26,6 @@
 @property (nonatomic, retain) IBOutlet UIWindow*  window;
 @property (nonatomic, retain) UITabBarController* tabBarController;
 @property (nonatomic, retain) Facebook*           faceBookApi;
+@property (nonatomic, retain) GameCenterManager* gameCenterManager;
 
-#pragma mark Optional GameKit Integration
-#if USEGAMEKIT
-@property (nonatomic, retain) GKPlayer* localPlayer;
-@property (nonatomic, retain) NSArray* gameCenterFriends;
-
-- (void)authenticateLocalPlayer;
-- (void)handleGKPlayerAuthenticationDidCangeNofication:(NSNotification *)notifcation;
-#endif
 @end

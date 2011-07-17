@@ -2,8 +2,9 @@
 //  RaceTracksViewController.m
 //  The Race App
 //
-//  Created by Sergey Novitsky on 7/9/11.
-//  Copyright 2011 Pawn Company Ltd. All rights reserved.
+//  Created by Appsterdam on 7/9/11.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
 
 #import "RaceTracksViewController.h"
@@ -102,6 +103,7 @@
     [self.navigationItem setRightBarButtonItem:addItem];
     [addItem release];
     
+		
     //create a pretty hud
     hud = [[MBProgressHUD alloc] initWithView:self.view];
     hud.labelText = @"Loading tracks...";
@@ -134,6 +136,7 @@
     
     [textField becomeFirstResponder];
     [alert addSubview:textField];
+    [textField release];
     [alert show];
     [alert setTransform:CGAffineTransformMakeTranslation(0,99)];
     [alert setDelegate:creationController];
