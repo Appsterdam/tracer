@@ -10,9 +10,29 @@
 
 
 @implementation Track
-@synthesize trackName, trackScore, trackWinner;
+@synthesize trackName, trackScore, trackWinner, trackStartURI;
 @synthesize trackData;
 
+
+-(id)initWithTrackName:(NSString*)aTrackName 
+            trackScore:(NSString*)aTrackScore
+           trackWinner:(NSString*)aTrackWinner
+             trackData:(NSArray*)aTrackData
+              trackURI:(NSString *)aTrackURI
+{
+    self = [super init];
+    
+    if (self != nil)
+    {
+        self.trackWinner = aTrackWinner;
+        self.trackName = aTrackName;
+        self.trackScore = aTrackScore;
+        self.trackData = aTrackData;
+        self.trackStartURI = aTrackURI;
+    }
+    
+    return self;
+}
 
 -(id)initWithTrackName:(NSString*)aTrackName 
             trackScore:(NSString*)aTrackScore
@@ -39,6 +59,7 @@
     [trackScore release];
     [trackName release];
     [trackData release];
+    [trackStartURI release];
     
     [super dealloc];
 }

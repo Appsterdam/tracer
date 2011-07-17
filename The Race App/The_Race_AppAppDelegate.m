@@ -14,6 +14,8 @@
 #import "LoginViewController.h"
 #import "FBConnect.h"
 
+#import "RaceApi.h"
+
 #define RACE_APP_FACEBOOK_APP_ID @"198763226840194"
 
 
@@ -91,6 +93,7 @@
 	[self.window makeKeyAndVisible];
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

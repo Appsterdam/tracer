@@ -45,14 +45,19 @@
 #pragma mark - instance methods
 -(void)getTracksFromAPI
 {
-    [api getTracks];
+   // [api getTracks];
+    [api getTracksAsynchronousAround:@"Amsterdam"];
 }
 #pragma mark - api delegate
--(void)gotResponse:(NSArray *)_arr
-{
+-(void)gotResponse:(NSArray *)_arr forRequest:(RaceRequestType)_type{
     [self performSelectorOnMainThread:@selector(updateDataWithTracks:) withObject:_arr waitUntilDone:NO];
 }
-
+-(void)gotError:(NSError *)_err forRequest:(RaceRequestType)_type{
+    
+}
+-(void)gotTracks:(NSArray *)_arr{
+    NSLog(@"%@", _arr);
+}
 #pragma mark - View lifecycle
 
 
