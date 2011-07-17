@@ -11,6 +11,8 @@
 #import "TraceOverlayView.h"
 #import "GPSTracePlayer.h"
 
+#define kPinNumberTag 343
+
 @interface RaceViewController ()
 
 @property(nonatomic, retain) Trace             * currentTrace;
@@ -136,6 +138,8 @@
 	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
 	
 	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
+    UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
+    [imgView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"PinNumberGreen%d.png", checkpointReachedIdx+1]]];
 }
 
 - (void)raceTracerReachedStartPoint:(RaceTracer *)tracer;
@@ -144,6 +148,8 @@
 	MKPinAnnotationView * checkPointPinView = (MKPinAnnotationView *)[mapView viewForAnnotation:startAnnotation];
 	
 	checkPointPinView.pinColor = MKPinAnnotationColorGreen;
+    UIImageView *imgView = (UIImageView*)[checkPointPinView viewWithTag:kPinNumberTag];
+    [imgView setImage:[UIImage imageNamed:@"PinNumberGreen1.png"]];
 	
 	[UIView animateWithDuration:1
 					 animations:^{
@@ -233,6 +239,14 @@
 	MKPinAnnotationView *checkpointView = (MKPinAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:checkpointViewIdentifier];
 	if (!checkpointView) {
 		checkpointView = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:checkpointViewIdentifier] autorelease];
+        
+        NSUInteger index = [checkpoints indexOfObject:annotation];
+        
+        UIImageView *image = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"PinNumber%d.png", index+1]]];
+        [image setFrame:CGRectMake(-1, -1, 17, 17)];
+        [image setTag:kPinNumberTag];
+        [checkpointView addSubview:image];
+        [image release];
 		checkpointView.pinColor = MKPinAnnotationColorRed;
 		checkpointView.animatesDrop = YES;
 	}
