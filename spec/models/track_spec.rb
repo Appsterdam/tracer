@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "Track Model" do
   before { DataMapper.auto_migrate! }
   let(:track) { Track.gen }
+
   it 'can be created' do
     track.should_not be_nil
   end
@@ -98,25 +99,73 @@ describe "Track Model" do
     end
   end
 
-  describe "#start" do
-    it 'sets the start point' do
-      track.start_lat.should be_within(0.05).of(track.data.first["lat"].to_f)
-      track.start_lng.should be_within(0.05).of(track.data.first["lon"].to_f)
-    end
-
-    it 'resolves the location' do
-      track.start_city.should == "Amsterdam"
+  describe "#start_lat" do
+    it 'is set from data' do
+      track.start_lat.should == track.data.first["lat"].to_f
     end
   end
-  
-  describe "#finish" do
-    it 'sets the finish point' do
-      track.start_lat.should be_within(0.05).of(track.data.last["lat"].to_f)
-      track.start_lng.should be_within(0.05).of(track.data.last["lon"].to_f)
+
+  describe "#start_lng" do
+    it 'is set from data' do
+      track.start_lng.should == track.data.first["lon"].to_f
+    end
+  end
+
+  describe "#geocode" do
+    let(:track) { Track.make }
+
+    it 'can be called' do
+      track.should respond_to(:geocode)
     end
 
-    it 'resolves the location' do
-      track.finish_city.should == "Amsterdam"
+    it 'sets the city' do
+      expect do
+        track.geocode
+      end.to change(track, :city).to("Amsterdam")
+    end
+    
+    it 'sets the country' do
+      expect do
+        track.geocode
+      end.to change(track, :country).to("Nederland")
+    end
+    
+    it 'sets the street' do
+      expect do
+        track.geocode
+      end.to change(track, :street).to("Jan van Galenstraat 323, Van Galenbuurt")
+    end
+  end
+
+  describe "#data" do
+    it 'is valid with format [{"lat":"52.372246","lon":"4.844971"}]' do
+      track = Track.new(:name => "Super Track", :data => '[{"lat":"52.372246","lon":"4.844971"}]')
+      track.should be_valid
+      track.errors[:data].should be_empty
+    end
+    
+    it 'is not valid if root is not an Array' do
+      track = Track.new(:name => "Super Track", :data => '{}')
+      track.should_not be_valid
+      track.errors[:data].should_not be_empty
+    end
+    
+    it 'is not valid with empty array []' do
+      track = Track.new(:name => "Super Track", :data => '[]')
+      track.should_not be_valid
+      track.errors[:data].should_not be_empty
+    end
+    
+    it 'is not valid if objects do not have a "lat" key' do
+      track = Track.new(:name => "Super Track", :data => '[{"lon":123}]')
+      track.should_not be_valid
+      track.errors[:data].should_not be_empty
+    end
+    
+    it 'is not valid if objects do not have a "lon" key' do
+      track = Track.new(:name => "Super Track", :data => '[{"lat":123}]')
+      track.should_not be_valid
+      track.errors[:data].should_not be_empty
     end
   end
 end
