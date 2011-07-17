@@ -1,7 +1,9 @@
 //
 //  UIViewController+RefreshView.h
 //
-//  Created by Sergey.
+//  Created by Appsterdam.
+//  Use this code at your own risk for whatever you want.
+//  But if you make money out of it, please give something back to Appsterdam.
 //
 
 #import "RefreshTableHeaderView.h"
