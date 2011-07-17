@@ -55,7 +55,11 @@ class Track
 
   def self.near(location)
     loc = Geokit::Geocoders::GoogleGeocoder.geocode location
-    all(:city => loc.city)
+    all(:city.eq => loc.city)
+
+    
+
+
   end
 
   alias_method :old_as_json, :as_json
